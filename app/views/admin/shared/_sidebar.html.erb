@@ -1,0 +1,59 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+
+    <ul class="sidebar-menu">
+      <li class="header"><%= t('admin.sidebar.navegacion_primaria') %></li>
+      <li> <%= link_to '<i class="fa fa-dashboard"></i><span>Pagina de Inicio</span>'.html_safe, admin_root_path %> </li>
+
+      <li class="header"><%= t('admin.sidebar.administracion') %></li>
+      <li class="deactive">
+        <%= link_to admin_employees_path do %>
+          <i class="fa fa-group"></i>
+          Empleados
+        <% end %>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-book"></i>
+          <span>Formacion</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li> <%=link_to '<i class="fa fa-circle-o"></i> Instituciones'.html_safe, admin_schools_path %> </li>
+          <li> <%=link_to '<i class="fa fa-circle-o"></i> Educación No Formal'.html_safe, admin_abilities_path %> </li>
+          <li> <%=link_to '<i class="fa fa-circle-o"></i> Educación Formal'.html_safe, admin_educations_path %> </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-list-alt"></i>
+          <span>Estructura Laboral</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+        <li> <%=link_to '<i class="fa fa-circle-o"></i> Areas'.html_safe, admin_areas_path %> </li>
+        <li> <%=link_to '<i class="fa fa-circle-o"></i> Departamentos'.html_safe, admin_departments_path %> </li>
+        <li> <%=link_to '<i class="fa fa-circle-o"></i> Posiciones'.html_safe, admin_positions_path %> </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-users"></i>
+          <span>Usuarios</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li> <%= link_to '<i class="fa fa-circle-o"></i> Lista de Usuarios'.html_safe, admin_users_path %> </li>
+          <li> <%= link_to '<i class="fa fa-circle-o"></i> Crear Usuario'.html_safe, new_admin_user_path %> </li>
+        </ul>
+      </li>
+    </ul>
+
+  </section>
+</aside>

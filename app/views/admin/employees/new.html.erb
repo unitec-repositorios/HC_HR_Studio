@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box box-primary">
+            <div class="box-header with-border" align="center">
+                <h5 class="box-title" style="font-size:250%;">Agregar Empleado</h5>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <%= form_for @employee ,url: @url, role: :form, html: { multipart: true } do |f| %>
+                    <%= render partial: "form", locals: {f: f} %>
+                </div> 
+                <div class="input-group-btn" align="center">
+                    <%= link_to "Cancelar", admin_employees_path, class: "btn bg-red btn-flat" %>
+                    <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+                </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

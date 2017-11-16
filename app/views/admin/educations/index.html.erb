@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Educaciones Formales</h3>
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Lista de Educaciones</h3>
+        <div class="box-tools">
+          <div class="input-group input-group-sm" style="width: 90px;">
+            <%= link_to "&nbsp; Agregar Educacion &nbsp;".html_safe, new_admin_education_path, :class => "btn btn-block btn-success btn-sm" %>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tr>
+            <th>Codigo</th>
+            <th>Descripción de Educación Formal</th>
+            <th></th>
+          </tr>
+          <tbody>
+            <%- @educations.each do |f| %>
+              <% unless f.major_description.blank? %>
+              <tr>
+                <td><%= f.id%></td>
+                <% s = f.major_description.to_s %>
+                <td><%= f.major_description %></td>
+                <td align="right" style="width: 200px">
+                  <div class="input-group input-group-xs">
+                    <%= link_to edit_admin_education_path(f.id, f), class: "btn bg-blue btn-flat btn-sm" do %>
+                      <i class="fa fa-pencil"></i> Editar
+                    <% end %>
+                    <%= link_to "Eliminar", admin_education_url(f), class: 'btn bg-red btn-flat btn-sm', method: :delete,
+                        data: { confirm: 'Estas Seguro?' } %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            <%- end %>
+            </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+</div>

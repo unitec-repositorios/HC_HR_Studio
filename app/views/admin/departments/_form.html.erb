@@ -1,0 +1,17 @@
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :department_id_number, "Codigo del Departamento" %>
+        <%= f.text_field :department_id_number, class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= f.label :name, "Nombre del Departamento" %>
+        <%= f.text_field :name, class: "form-control"%>
+    </div>
+</div>
+
+<div class="col-md-6">
+  <div class="form-group">
+    <%= f.label :area_id, "Area" %>
+    <%= f.select(:area_id, @areas.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+  </div>
+</div>

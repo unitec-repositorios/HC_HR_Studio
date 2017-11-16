@@ -1,0 +1,23 @@
+<section class ="content-header" >
+  <h1>
+    Pantalla de configuracion
+    <small>Nuevo</small>
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for @home, url: @url do |f| %>
+          <%= render partial: "form", locals: {f: f} %>
+          <div class="input-group-btn">
+            <%= link_to "Cancelar", admin_root_path, class: "btn bg-red btn-flat" %>
+            <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

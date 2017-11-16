@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Institucion</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <%= form_for @school, url: @url do |f| %>
+                    <%= render partial: "form", locals: {f: f} %>
+                </div>
+                <div class="input-group-btn">
+                    <%= link_to "Cancelar", admin_schools_path, class: "btn bg-red btn-flat" %>
+                    <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+                </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

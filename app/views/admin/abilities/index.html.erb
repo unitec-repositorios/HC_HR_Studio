@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Habilidades</h3>
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Lista de Habilidades</h3>
+        <div class="box-tools">
+          <div class="input-group input-group-sm" style="width: 90px;">
+            <%= link_to "&nbsp; Agregar Habilidad &nbsp; &nbsp;".html_safe, new_admin_ability_path, :class => "btn btn-block btn-success btn-sm" %>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tr>
+            <th>Codigo</th>
+            <th>Habilidad</th>
+            <th></th>
+          </tr>
+          <tbody>
+            <% @abilities.each do |ability| %>
+              <tr>
+                <td><%= ability.id %></td>
+                <td><%= ability.ability_name %></td>
+                <td align="right" style="width: 200px">
+                  <div class="input-group input-group-xs">
+                    <%= link_to edit_admin_ability_path(ability), class: "btn bg-blue btn-flat btn-sm" do %>
+                      <i class="fa fa-pencil"></i> Editar
+                    <% end %>
+                    <%= link_to "Eliminar", admin_ability_url(ability), class: 'btn bg-red btn-flat btn-sm', method: :delete,
+                        data: { confirm: 'Estas Seguro?' } %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+</div>
