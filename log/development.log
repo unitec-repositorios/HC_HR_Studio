@@ -38794,3 +38794,623 @@ Processing by ApplicationController#home as HTML
 Completed 200 OK in 20ms (Views: 19.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-11-18 13:08:00 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+  activerecord (5.0.2) lib/active_record/migration.rb:573:in `check_pending!'
+  activerecord (5.0.2) lib/active_record/migration.rb:549:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+  actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+  rack (2.0.2) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.2) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+  rack (2.0.2) lib/rack/sendfile.rb:111:in `call'
+  railties (5.0.2) lib/rails/engine.rb:522:in `call'
+  puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+  puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+  puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+  puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+  puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/f3dfe88a233f45ae/variables" for 127.0.0.1 at 2017-11-18 13:08:00 -0600
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6654991394825774280);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHomes (20171115210810)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "homes" ("id" serial primary key, "mision" text, "vision" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171115210810"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6654991394825774280)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2017-11-18 13:08:20 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#home as HTML
+  Rendering application/home.html.erb within layouts/application
+  Rendered application/home.html.erb within layouts/application (2346.5ms)
+  Rendered shared/_navigation.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (6.9ms)
+Completed 200 OK in 2441ms (Views: 2430.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-11-18 13:08:25 -0600
+Processing by Admin::ApplicationController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/application/index.html.erb within admin/layouts/admin
+  Rendered admin/application/index.html.erb within admin/layouts/admin (1.4ms)
+  Rendered admin/shared/_header.html.erb (0.9ms)
+  Rendered admin/shared/_sidebar.html.erb (312.6ms)
+  Rendered admin/shared/_content_header.html.erb (0.4ms)
+  Rendered admin/shared/_messages.html.erb (0.5ms)
+  Rendered admin/shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 460ms (Views: 435.9ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/admin/employees" for 127.0.0.1 at 2017-11-18 13:08:45 -0600
+Processing by Admin::EmployeesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/index.html.erb within admin/layouts/admin
+  [1m[36mEmployee Load (2.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."name" ASC[0m
+  [1m[36mPosition Load (1.1ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.4ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mArea Load (0.5ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered admin/employees/index.html.erb within admin/layouts/admin (139.5ms)
+  Rendered admin/shared/_header.html.erb (0.9ms)
+  Rendered admin/shared/_sidebar.html.erb (22.4ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 231ms (Views: 198.2ms | ActiveRecord: 14.5ms)
+
+
+Started GET "/admin/employees/new" for 127.0.0.1 at 2017-11-18 13:08:47 -0600
+Processing by Admin::EmployeesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/new.html.erb within admin/layouts/admin
+  [1m[36mPosition Load (0.3ms)[0m  [1m[34mSELECT "positions".* FROM "positions"[0m
+  [1m[36mSchool Load (0.4ms)[0m  [1m[34mSELECT "schools".* FROM "schools"[0m
+  [1m[36mAbility Load (0.3ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  Rendered admin/employees/_abilities_employee_fields.html.erb (8.8ms)
+  [1m[36mEducation Load (0.5ms)[0m  [1m[34mSELECT "educations".* FROM "educations"[0m
+  Rendered admin/employees/_educations_employee_fields.html.erb (10.3ms)
+  Rendered admin/employees/_form.html.erb (73.1ms)
+  Rendered admin/employees/new.html.erb within admin/layouts/admin (75.2ms)
+  Rendered admin/shared/_header.html.erb (0.8ms)
+  Rendered admin/shared/_sidebar.html.erb (3.0ms)
+  Rendered admin/shared/_content_header.html.erb (0.2ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 123ms (Views: 94.8ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/admin/abilities" for 127.0.0.1 at 2017-11-18 13:10:12 -0600
+Processing by Admin::AbilitiesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/abilities/index.html.erb within admin/layouts/admin
+  [1m[36mAbility Load (0.4ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" ORDER BY "abilities"."ability_name" ASC[0m
+  Rendered admin/abilities/index.html.erb within admin/layouts/admin (2.6ms)
+  Rendered admin/shared/_header.html.erb (1.3ms)
+  Rendered admin/shared/_sidebar.html.erb (3.8ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.5ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 40ms (Views: 35.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/educations" for 127.0.0.1 at 2017-11-18 13:10:15 -0600
+Processing by Admin::EducationsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/educations/index.html.erb within admin/layouts/admin
+  [1m[36mEducation Load (0.4ms)[0m  [1m[34mSELECT "educations".* FROM "educations"[0m
+  Rendered admin/educations/index.html.erb within admin/layouts/admin (3.1ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (1.9ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 48ms (Views: 43.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/admin/educations" for 127.0.0.1 at 2017-11-18 13:14:25 -0600
+Processing by Admin::EducationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/educations/index.html.erb within admin/layouts/admin
+  [1m[36mEducation Load (0.4ms)[0m  [1m[34mSELECT "educations".* FROM "educations"[0m
+  Rendered admin/educations/index.html.erb within admin/layouts/admin (2.4ms)
+  Rendered admin/shared/_header.html.erb (0.8ms)
+  Rendered admin/shared/_sidebar.html.erb (2.3ms)
+  Rendered admin/shared/_content_header.html.erb (0.4ms)
+  Rendered admin/shared/_messages.html.erb (0.8ms)
+  Rendered admin/shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 44ms (Views: 41.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/employees" for 127.0.0.1 at 2017-11-18 13:14:27 -0600
+Processing by Admin::EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/index.html.erb within admin/layouts/admin
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."name" ASC[0m
+  Rendered admin/employees/index.html.erb within admin/layouts/admin (287.5ms)
+Completed 500 Internal Server Error in 292ms (ActiveRecord: 0.9ms)
+
+
+DEPRECATION WARNING: #original_exception is deprecated. Use #cause instead. (called from initialize at /home/franks/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/better_errors-2.1.1/lib/better_errors/raised_exception.rb:7)
+DEPRECATION WARNING: #original_exception is deprecated. Use #cause instead. (called from initialize at /home/franks/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/better_errors-2.1.1/lib/better_errors/raised_exception.rb:8)
+
+NameError - undefined local variable or method `education' for #<#<Class:0x00558fcab61b38>:0x007ff61c3bb018>:
+  app/views/admin/employees/index.html.erb:31:in `block in _app_views_admin_employees_index_html_erb__1644578506149799011_70347506179320'
+  activerecord (5.0.2) lib/active_record/relation/delegation.rb:38:in `each'
+  app/views/admin/employees/index.html.erb:28:in `_app_views_admin_employees_index_html_erb__1644578506149799011_70347506179320'
+  actionview (5.0.2) lib/action_view/template.rb:159:in `block in render'
+  activesupport (5.0.2) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (5.0.2) lib/action_view/template.rb:354:in `instrument'
+  actionview (5.0.2) lib/action_view/template.rb:157:in `render'
+  actionview (5.0.2) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (5.0.2) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.0.2) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (5.0.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.0.2) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (5.0.2) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  actionview (5.0.2) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (5.0.2) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (5.0.2) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (5.0.2) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (5.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (5.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (5.0.2) lib/action_view/rendering.rb:104:in `_render_template'
+  actionpack (5.0.2) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (5.0.2) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (5.0.2) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+  actionpack (5.0.2) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+  actionpack (5.0.2) lib/abstract_controller/rendering.rb:26:in `render'
+  actionpack (5.0.2) lib/action_controller/metal/rendering.rb:36:in `render'
+  actionpack (5.0.2) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (5.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/franks/.rbenv/versions/2.4.0/lib/ruby/2.4.0/benchmark.rb:308:in `realtime'
+  activesupport (5.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (5.0.2) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (5.0.2) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (5.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (5.0.2) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (5.0.2) lib/action_controller/metal/implicit_render.rb:36:in `default_render'
+  actionpack (5.0.2) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+  actionpack (5.0.2) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+  actionpack (5.0.2) lib/abstract_controller/base.rb:188:in `process_action'
+  actionpack (5.0.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+  actionpack (5.0.2) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:126:in `call'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:455:in `call'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+  actionpack (5.0.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (5.0.2) lib/action_controller/metal/rescue.rb:20:in `process_action'
+  actionpack (5.0.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (5.0.2) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (5.0.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.0.2) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (5.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (5.0.2) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+  activerecord (5.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (5.0.2) lib/abstract_controller/base.rb:126:in `process'
+  actionview (5.0.2) lib/action_view/rendering.rb:30:in `process'
+  actionpack (5.0.2) lib/action_controller/metal.rb:190:in `dispatch'
+  actionpack (5.0.2) lib/action_controller/metal.rb:262:in `dispatch'
+  actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+  actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+  actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+  actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+  actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+  warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+  warden (1.2.7) lib/warden/manager.rb:35:in `call'
+  rack (2.0.2) lib/rack/etag.rb:25:in `call'
+  rack (2.0.2) lib/rack/conditional_get.rb:25:in `call'
+  rack (2.0.2) lib/rack/head.rb:12:in `call'
+  rack (2.0.2) lib/rack/session/abstract/id.rb:232:in `context'
+  rack (2.0.2) lib/rack/session/abstract/id.rb:226:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+  activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+  activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+  actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+  rack (2.0.2) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.2) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+  rack (2.0.2) lib/rack/sendfile.rb:111:in `call'
+  railties (5.0.2) lib/rails/engine.rb:522:in `call'
+  puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+  puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+  puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+  puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+  puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/94d6c2d90b169fc6/variables" for 127.0.0.1 at 2017-11-18 13:14:27 -0600
+Started GET "/admin/employees" for 127.0.0.1 at 2017-11-18 13:15:06 -0600
+Processing by Admin::EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/index.html.erb within admin/layouts/admin
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."name" ASC[0m
+  [1m[36mPosition Load (0.3ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mArea Load (0.3ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered admin/employees/index.html.erb within admin/layouts/admin (15.4ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (2.1ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 53ms (Views: 48.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/admin/schools" for 127.0.0.1 at 2017-11-18 13:15:57 -0600
+Processing by Admin::SchoolsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/schools/index.html.erb within admin/layouts/admin
+  [1m[36mSchool Load (0.4ms)[0m  [1m[34mSELECT "schools".* FROM "schools" ORDER BY "schools"."name" ASC[0m
+  Rendered admin/schools/index.html.erb within admin/layouts/admin (1.9ms)
+  Rendered admin/shared/_header.html.erb (0.8ms)
+  Rendered admin/shared/_sidebar.html.erb (3.3ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 34ms (Views: 31.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/abilities" for 127.0.0.1 at 2017-11-18 13:15:59 -0600
+Processing by Admin::AbilitiesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/abilities/index.html.erb within admin/layouts/admin
+  [1m[36mAbility Load (0.3ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" ORDER BY "abilities"."ability_name" ASC[0m
+  Rendered admin/abilities/index.html.erb within admin/layouts/admin (2.4ms)
+  Rendered admin/shared/_header.html.erb (0.6ms)
+  Rendered admin/shared/_sidebar.html.erb (1.7ms)
+  Rendered admin/shared/_content_header.html.erb (0.2ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/educations" for 127.0.0.1 at 2017-11-18 13:16:01 -0600
+Processing by Admin::EducationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/educations/index.html.erb within admin/layouts/admin
+  [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations"[0m
+  Rendered admin/educations/index.html.erb within admin/layouts/admin (2.4ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (2.2ms)
+  Rendered admin/shared/_content_header.html.erb (0.4ms)
+  Rendered admin/shared/_messages.html.erb (0.7ms)
+  Rendered admin/shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 53ms (Views: 49.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/employees" for 127.0.0.1 at 2017-11-18 13:16:04 -0600
+Processing by Admin::EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/index.html.erb within admin/layouts/admin
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."name" ASC[0m
+  [1m[36mPosition Load (0.5ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mArea Load (0.4ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered admin/employees/index.html.erb within admin/layouts/admin (15.6ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (2.9ms)
+  Rendered admin/shared/_content_header.html.erb (0.5ms)
+  Rendered admin/shared/_messages.html.erb (1.1ms)
+  Rendered admin/shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 66ms (Views: 60.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/admin/employees/new" for 127.0.0.1 at 2017-11-18 13:16:06 -0600
+Processing by Admin::EmployeesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/new.html.erb within admin/layouts/admin
+  [1m[36mPosition Load (0.3ms)[0m  [1m[34mSELECT "positions".* FROM "positions"[0m
+  [1m[36mSchool Load (0.2ms)[0m  [1m[34mSELECT "schools".* FROM "schools"[0m
+  [1m[36mAbility Load (0.2ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities"[0m
+  Rendered admin/employees/_abilities_employee_fields.html.erb (2.9ms)
+  [1m[36mEducation Load (0.2ms)[0m  [1m[34mSELECT "educations".* FROM "educations"[0m
+  Rendered admin/employees/_educations_employee_fields.html.erb (2.9ms)
+  Rendered admin/employees/_form.html.erb (18.6ms)
+  Rendered admin/employees/new.html.erb within admin/layouts/admin (20.2ms)
+  Rendered admin/shared/_header.html.erb (1.1ms)
+  Rendered admin/shared/_sidebar.html.erb (2.5ms)
+  Rendered admin/shared/_content_header.html.erb (0.4ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 71ms (Views: 66.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/schools" for 127.0.0.1 at 2017-11-18 13:16:16 -0600
+Processing by Admin::SchoolsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/schools/index.html.erb within admin/layouts/admin
+  [1m[36mSchool Load (0.3ms)[0m  [1m[34mSELECT "schools".* FROM "schools" ORDER BY "schools"."name" ASC[0m
+  Rendered admin/schools/index.html.erb within admin/layouts/admin (2.1ms)
+  Rendered admin/shared/_header.html.erb (1.4ms)
+  Rendered admin/shared/_sidebar.html.erb (3.8ms)
+  Rendered admin/shared/_content_header.html.erb (0.4ms)
+  Rendered admin/shared/_messages.html.erb (0.5ms)
+  Rendered admin/shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 52ms (Views: 48.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/abilities" for 127.0.0.1 at 2017-11-18 13:16:18 -0600
+Processing by Admin::AbilitiesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/abilities/index.html.erb within admin/layouts/admin
+  [1m[36mAbility Load (0.3ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" ORDER BY "abilities"."ability_name" ASC[0m
+  Rendered admin/abilities/index.html.erb within admin/layouts/admin (3.1ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (2.2ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.6ms)
+  Rendered admin/shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 74ms (Views: 69.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/positions" for 127.0.0.1 at 2017-11-18 13:20:15 -0600
+Processing by Admin::PositionsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/positions/index.html.erb within admin/layouts/admin
+  [1m[36mPosition Load (0.5ms)[0m  [1m[34mSELECT "positions".* FROM "positions"[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered admin/positions/index.html.erb within admin/layouts/admin (6.4ms)
+  Rendered admin/shared/_header.html.erb (0.9ms)
+  Rendered admin/shared/_sidebar.html.erb (4.2ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 43ms (Views: 37.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2017-11-18 13:20:41 -0600
+Processing by Admin::DepartmentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/departments/index.html.erb within admin/layouts/admin
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mArea Load (0.3ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered admin/departments/index.html.erb within admin/layouts/admin (4.4ms)
+  Rendered admin/shared/_header.html.erb (0.8ms)
+  Rendered admin/shared/_sidebar.html.erb (2.2ms)
+  Rendered admin/shared/_content_header.html.erb (0.2ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 45ms (Views: 39.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/areas" for 127.0.0.1 at 2017-11-18 13:20:42 -0600
+Processing by Admin::AreasController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/areas/index.html.erb within admin/layouts/admin
+  [1m[36mArea Load (0.4ms)[0m  [1m[34mSELECT "areas".* FROM "areas"[0m
+  Rendered admin/areas/index.html.erb within admin/layouts/admin (2.4ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (2.2ms)
+  Rendered admin/shared/_content_header.html.erb (0.4ms)
+  Rendered admin/shared/_messages.html.erb (1.0ms)
+  Rendered admin/shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 38ms (Views: 35.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/areas" for 127.0.0.1 at 2017-11-18 13:22:55 -0600
+Processing by Admin::AreasController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/areas/index.html.erb within admin/layouts/admin
+  [1m[36mArea Load (0.7ms)[0m  [1m[34mSELECT "areas".* FROM "areas"[0m
+  Rendered admin/areas/index.html.erb within admin/layouts/admin (3.1ms)
+  Rendered admin/shared/_header.html.erb (2.0ms)
+  Rendered admin/shared/_sidebar.html.erb (3.7ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 46ms (Views: 41.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/schools" for 127.0.0.1 at 2017-11-18 13:22:58 -0600
+Processing by Admin::SchoolsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/schools/index.html.erb within admin/layouts/admin
+  [1m[36mSchool Load (0.9ms)[0m  [1m[34mSELECT "schools".* FROM "schools" ORDER BY "schools"."name" ASC[0m
+  Rendered admin/schools/index.html.erb within admin/layouts/admin (3.2ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (2.0ms)
+  Rendered admin/shared/_content_header.html.erb (0.2ms)
+  Rendered admin/shared/_messages.html.erb (0.5ms)
+  Rendered admin/shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 38ms (Views: 34.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/schools" for 127.0.0.1 at 2017-11-18 13:23:06 -0600
+Processing by Admin::SchoolsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/schools/index.html.erb within admin/layouts/admin
+  [1m[36mSchool Load (0.4ms)[0m  [1m[34mSELECT "schools".* FROM "schools" ORDER BY "schools"."name" ASC[0m
+  Rendered admin/schools/index.html.erb within admin/layouts/admin (1.9ms)
+  Rendered admin/shared/_header.html.erb (1.1ms)
+  Rendered admin/shared/_sidebar.html.erb (4.5ms)
+  Rendered admin/shared/_content_header.html.erb (0.8ms)
+  Rendered admin/shared/_messages.html.erb (0.6ms)
+  Rendered admin/shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 53ms (Views: 49.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/schools/new" for 127.0.0.1 at 2017-11-18 13:23:08 -0600
+Processing by Admin::SchoolsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/schools/new.html.erb within admin/layouts/admin
+  Rendered admin/schools/_form.html.erb (0.5ms)
+  Rendered admin/schools/new.html.erb within admin/layouts/admin (2.5ms)
+  Rendered admin/shared/_header.html.erb (1.5ms)
+  Rendered admin/shared/_sidebar.html.erb (9.3ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 60ms (Views: 50.0ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/admin/schools" for 127.0.0.1 at 2017-11-18 13:23:11 -0600
+Processing by Admin::SchoolsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wiwZFutiG3XZZmg9dufu1KN+PvuGuzAn6Fwzp0ble0PUqaUN7t0ExrxPBpQ5H9m+3bxOgkrd3IjwZu8lvZbz1A==", "school"=>{"name"=>"fsd"}, "commit"=>"Crear"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schools" ("created_at", "updated_at", "name") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", 2017-11-18 19:23:11 UTC], ["updated_at", 2017-11-18 19:23:11 UTC], ["name", "fsd"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/schools
+Completed 302 Found in 10ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/admin/schools" for 127.0.0.1 at 2017-11-18 13:23:11 -0600
+Processing by Admin::SchoolsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/schools/index.html.erb within admin/layouts/admin
+  [1m[36mSchool Load (0.4ms)[0m  [1m[34mSELECT "schools".* FROM "schools" ORDER BY "schools"."name" ASC[0m
+  Rendered admin/schools/index.html.erb within admin/layouts/admin (2.9ms)
+  Rendered admin/shared/_header.html.erb (1.0ms)
+  Rendered admin/shared/_sidebar.html.erb (2.8ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 42ms (Views: 39.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/schools/3/edit" for 127.0.0.1 at 2017-11-18 13:23:15 -0600
+Processing by Admin::SchoolsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSchool Load (0.2ms)[0m  [1m[34mSELECT  "schools".* FROM "schools" WHERE "schools"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering admin/schools/edit.html.erb within admin/layouts/admin
+  Rendered admin/schools/_form.html.erb (0.5ms)
+  Rendered admin/schools/edit.html.erb within admin/layouts/admin (1.8ms)
+  Rendered admin/shared/_header.html.erb (1.0ms)
+  Rendered admin/shared/_sidebar.html.erb (2.5ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.5ms)
+  Rendered admin/shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 41ms (Views: 37.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/abilities" for 127.0.0.1 at 2017-11-18 13:23:21 -0600
+Processing by Admin::AbilitiesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/abilities/index.html.erb within admin/layouts/admin
+  [1m[36mAbility Load (0.3ms)[0m  [1m[34mSELECT "abilities".* FROM "abilities" ORDER BY "abilities"."ability_name" ASC[0m
+  Rendered admin/abilities/index.html.erb within admin/layouts/admin (3.2ms)
+  Rendered admin/shared/_header.html.erb (0.9ms)
+  Rendered admin/shared/_sidebar.html.erb (3.1ms)
+  Rendered admin/shared/_content_header.html.erb (0.5ms)
+  Rendered admin/shared/_messages.html.erb (0.6ms)
+  Rendered admin/shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 40ms (Views: 36.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/educations" for 127.0.0.1 at 2017-11-18 13:23:22 -0600
+Processing by Admin::EducationsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/educations/index.html.erb within admin/layouts/admin
+  [1m[36mEducation Load (0.4ms)[0m  [1m[34mSELECT "educations".* FROM "educations"[0m
+  Rendered admin/educations/index.html.erb within admin/layouts/admin (3.4ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered admin/shared/_sidebar.html.erb (4.5ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.4ms)
+  Rendered admin/shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 43ms (Views: 39.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/employees" for 127.0.0.1 at 2017-11-18 13:23:25 -0600
+Processing by Admin::EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admin/employees/index.html.erb within admin/layouts/admin
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."name" ASC[0m
+  [1m[36mPosition Load (0.3ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mArea Load (0.4ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered admin/employees/index.html.erb within admin/layouts/admin (15.1ms)
+  Rendered admin/shared/_header.html.erb (0.9ms)
+  Rendered admin/shared/_sidebar.html.erb (2.2ms)
+  Rendered admin/shared/_content_header.html.erb (0.3ms)
+  Rendered admin/shared/_messages.html.erb (0.5ms)
+  Rendered admin/shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 51ms (Views: 46.6ms | ActiveRecord: 2.0ms)
+
+
