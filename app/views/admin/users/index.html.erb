@@ -27,7 +27,7 @@
                         <td> <%= user.email %> </td>
                         <td>
                           <div class="btn-row">
-                            <%= link_to raw('<i class="fa fa-cogs"></i>'), edit_admin_user_url(user), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_user_url(user), class: 'btn btn-sm btn-warning' %>
                             <%= link_to raw('<i class="fa fa-trash"></i>'), admin_user_url(user), class: 'btn btn-sm btn-danger', method: :delete,
                                             data: { confirm: 'Esta seguro de borrar?' } %>
                           </div>
