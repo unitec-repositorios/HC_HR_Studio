@@ -3,7 +3,7 @@
       <div class="box">
 
         <div class="box-header">
-          <h3 class="box-title">Lista de Educaciones</h3>
+          <h3 class="box-title">Lista de Empleados</h3>
         </div>
 
         <div class="box-body">
@@ -39,7 +39,7 @@
                         <%end%>
                         <td>
                           <div class="btn-row">
-                            <%= link_to raw('<i class="fa fa-cogs"></i>'), edit_admin_employee_url(employee), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_employee_url(employee), class: 'btn btn-sm btn-warning' %>
                             <%= link_to raw('<i class="fa fa-trash"></i>'), admin_employee_url(employee), class: 'btn btn-sm btn-danger', method: :delete,
                                             data: { confirm: 'Esta seguro de borrar?' } %>
                           </div>
