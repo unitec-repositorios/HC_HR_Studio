@@ -7015,7 +7015,7 @@ button.list-group-item-danger.active:focus {
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     cursor: pointer;
     filter: alpha(opacity=50);
@@ -7036,9 +7036,9 @@ button.close {
 
 .modal {
     position: fixed;
-    top: 0;
+    top: 10%;
     right: 0;
-    bottom: 0;
+    bottom: 10%;
     left: 0;
     z-index: 1050;
     display: none;
@@ -7077,11 +7077,11 @@ button.close {
 
 .modal-content {
     position: relative;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #999;
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid rgba(255, 0, 0, 0);
     border-radius: 6px;
     outline: 0;
     -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
@@ -7092,10 +7092,10 @@ button.close {
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
+    bottom: 100;
     left: 0;
     z-index: 1040;
-    background-color: #000;
+    background-color: rgb(255, 255, 255);
 }
 
 .modal-backdrop.fade {

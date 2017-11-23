@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-8 col-xs-offset-2">
+    <div class="form-group">
+      <%= f.label :layoff_reason, "Razon de Supresión" %>
+      <%= f.text_area :layoff_reason, class: "form-control"%>
+      <%= f.hidden_field :employee_status, value: false %>
+      <%= f.hidden_field :layoff_date, value: DateTime.now.to_date %>
+    </div>
+  </div>
+</div>

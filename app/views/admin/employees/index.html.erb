@@ -33,20 +33,19 @@
                         <td><%= employee.position.department.name %></td>
                         <td><%= employee.position.name %></td>
                         <% if employee.employee_status == true %>
-                          <td><span class="label label-success label"> &nbsp Activo  &nbsp</span></td>
+                          <td><span class="label label-success label">Activo</span></td>
                         <% else %>
                           <td><span class="label label-danger">Inactivo</span></td>
                         <%end%>
-                        <td style="width: 9%;">
+                        <td style="width: 10%;">
                           <div class="btn-row">
                             <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_employee_url(employee), class: 'btn btn-sm btn-warning' %>
                             <%= link_to raw('<i class="fa fa-user"></i> Ver'), admin_employee_url(employee), class: 'btn btn-sm btn-primary' %>
                           </div>
                         </td>
+                    <%end%>
                       </tr>
-                    <% end %>
                   </tbody>
-
                   <tfoot>
                     <tr role="row">
                       <th>Id</th>
@@ -61,10 +60,8 @@
                 </table>
               </div>
             </div>
-
           </div>
         </div>
-
     </div>
   </div>
 </div>
