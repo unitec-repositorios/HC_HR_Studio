@@ -16,9 +16,9 @@
           <h4><%=raw('<i class="fa fa-tags"></i> ')%><%=@employee.employee_id_number%></h4>
           <div class="" role="tabpanel" data-example-id="togglable-tabs" >
             <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class=""><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a>
+              <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a>
               </li>
-              <li role="presentation" class=""><a href="#tab_desactivar" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Desactivar Empleado</a>
+              <li role="presentation" class=""><a href="#tab_desactivar" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Configurar Empleado</a>
               </li>
             </ul>
           </div>
@@ -220,7 +220,7 @@
   <div role="tabpanel" class="tab-pane fade active in" id="tab_desactivar" aria-labelledby="home-tab">
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
-        <h3>Supresión de Empleado</h3>
+        <h3>Configuracion de Empleado</h3>
         <div class="box box-primary">
           <div class="box-body">
               <div class="row">
