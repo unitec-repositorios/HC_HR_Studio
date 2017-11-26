@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-	has_attached_file :image, styles: {medium: "170x170>"}, :default_url => ":style/default_user.jpg"
+	has_attached_file :image, styles: {medium: "168x168!"}, :default_url => ":style/default_user.jpg"
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
 	validates_numericality_of :salary, greater_than: 0
