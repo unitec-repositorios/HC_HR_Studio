@@ -5,23 +5,31 @@
       <div class="text-right">
       </div>
       <div class="box-body no-padding">
-        <div class="col-sm-12" style="margin-top:1.5%;">
+        <div class="col-md-2" style="margin-top:1.5%;">
           <%=image_tag @employee.image.url(:medium), :class =>"profile-user-img"%>
+        </div>
+        <div class="col-md-5" style="margin-top:2.5%;">
+          <h4><%=raw('<i class="fa fa-user"></i> <b>Nombre: </b>')%><%=@employee.name%></h4>
+          <h4><%=raw('<i class="fa fa-tags"></i> <b>Identidad Empleado: </b>')%><%=@employee.employee_id_number%></h4>
+          <h4><%=raw('<i class="fa fa-cog"></i> <b>Estado: </b>')%><%=@employee.employee_status%></h4>
+        </div>
+        <div class="col-md-4" style="margin-top:2.5%;">
+          <h4><%=raw('<i class="fa fa-list"></i> <b>Area: </b>')%><%=@employee.position.department.area.name%></h4>
+          <h4><%=raw('<i class="fa fa-list"></i> <b>Departamento: </b>')%><%=@employee.position.department.name%></h4>
+          <h4><%=raw('<i class="fa fa-list"></i> <b>Puesto: </b>')%><%=@employee.position.name%></h4>
         </div>
       </div>
       <div class="box-body no-padding">
         <div class="col-sm-12 text-left">
-          <div class="form-group" style="margin-bottom:0%">
-          <h3><%=raw('<i class="fa fa-user"></i> ')%><%=@employee.name%></h3>
-          <h4><%=raw('<i class="fa fa-tags"></i> ')%><%=@employee.employee_id_number%></h4>
-          <div class="" role="tabpanel" data-example-id="togglable-tabs" >
-            <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a>
-              </li>
-              <li role="presentation" class=""><a href="#tab_desactivar" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Configurar Empleado</a>
-              </li>
-            </ul>
-          </div>
+          <div class="form-group" style="margin-bottom:0%; margin-top:2%">
+            <div class="" role="tabpanel" data-example-id="togglable-tabs" >
+              <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a>
+                </li>
+                <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Configurar Empleado</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -144,7 +152,6 @@
         </div>
       </div>
     <!-- Habilidades -->
-
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
         <h3>Habilidades</h3>
@@ -173,7 +180,6 @@
         </div>
       </div>
     </div>
-
     <!-- Educaciones -->
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
@@ -217,18 +223,22 @@
       </div>
     </div>
   </div>
-  <div role="tabpanel" class="tab-pane fade active in" id="tab_desactivar" aria-labelledby="home-tab">
+  <div role="tabpanel" class="tab-pane fade active in" id="tab_config" aria-labelledby="home-tab">
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
         <h3>Configuracion de Empleado</h3>
         <div class="box box-primary">
           <div class="box-body">
               <div class="row">
-                <%= form_for @employee ,url: @url do |f| %>
-                <%= render partial: "suprimir", locals: {f: f} %>
+              <%= form_for @employee ,url: @url do |f| %>
+              <%= render partial: "suprimir", locals: {f: f} %>
               </div>
               <div class="input-group-btn" align="center">
-                <%= f.submit "Enviar", class: "btn bg-green btn-flat" %>
+              <%if @employee.employee_status?%>
+                <%= f.submit "Suprimir", class: "btn bg-green btn-flat" %>
+              <%else%>
+                <%= f.submit "Restaurar", class: "btn bg-green btn-flat" %>
+              <%end%>
               </div>
               <%end%>
           </div>
