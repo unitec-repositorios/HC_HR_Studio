@@ -1,0 +1,28 @@
+<%= form_tag("/admin/reports/comparacion", method: "post") do %>
+  <%= select_tag(:position, options_from_collection_for_select(@positions,'id', 'name')) %>
+  <%= select_tag(:employee, options_from_collection_for_select(@employees,'id', 'name')) %>
+  <%= submit_tag("Submit") %>
+<%end%>
+
+<div class="row">
+      <div class="col-md-12">
+        <h3>Habilidades</h3>
+        <div class="box box-primary">
+          <div class="box-body">
+          <% if @abilities_possessed != nil %>
+            <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Cuenta Con: </b>')%></h4>
+            <% @abilities_possessed.each do |foundAbility| %>
+            <% @abilities_possessed_n =  Ability.select('ability_name').find(foundAbility.ability_id)%>
+            <!-- Primera Columna -->
+            <div class="col-md-6">
+              <div class="row">
+              <h4><%=@abilities_possessed_n.ability_name%></h4>
+              </div>
+              <hr size = 3>
+            </div>
+          <%end%>
+          <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
