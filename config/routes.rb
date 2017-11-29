@@ -18,10 +18,7 @@ Rails.application.routes.draw do
 
   # Front routes start
   devise_for :users, only: [:session, :registration], path: 'session',
-             path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
-             
-  get 'suprimir', to: 'employees#suprimir'
-             
+             path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }                        
   # Application root
   root to: 'application#home'
   # Front routes end

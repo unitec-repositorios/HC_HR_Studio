@@ -2,68 +2,83 @@
 <div class="row">
   <div class="col-sm-8 col-xs-offset-2">
     <div class="box box-primary">
-      <div class="text-right">
-      </div>
       <div class="box-body no-padding">
-        <div class="col-sm-12" style="margin-top:1.5%;">
-          <%=image_tag @employee.image.url(:medium), :class =>"profile-user-img"%>
+        <div class="col-md-2" style="margin-top:1.5%;">
+          <%=image_tag @employee.image.url(:medium), :class =>"profile-user-img", :style =>"height:144px;width:110px;"%>
+        </div>
+        <div class="col-md-5" style="margin-top:2.5%;">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-user"></i> <b>Nombre: </b>')%><%=@employee.name%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-qrcode"></i> <b>Identidad Empleado: </b>')%><%=@employee.employee_id_number%></h4>
+          </div>
+          <div class="row">
+            <%if @employee.employee_status%>
+              <h4><%=raw('<i class="glyphicon glyphicon-cog"></i> <b>Estado: </b>Activo')%></h4>
+            <%else%>
+              <h4><%=raw('<i class="glyphicon glyphicon-cog"></i> <b>Estado: </b>Inactivo')%></h4>
+            <%end%>
+          </div>
+        </div>
+        <div class="col-md-4" style="margin-top:2.5%;">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-list"></i> <b>Area: </b>')%><%=@employee.position.department.area.name%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-list-alt"></i> <b>Departamento: </b>')%><%=@employee.position.department.name%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-briefcase"></i> <b>Puesto: </b>')%><%=@employee.position.name%></h4>
+          </div>
         </div>
       </div>
       <div class="box-body no-padding">
         <div class="col-sm-12 text-left">
-          <div class="form-group" style="margin-bottom:0%">
-          <h3><%=raw('<i class="fa fa-user"></i> ')%><%=@employee.name%></h3>
-          <h4><%=raw('<i class="fa fa-tags"></i> ')%><%=@employee.employee_id_number%></h4>
-          <div class="" role="tabpanel" data-example-id="togglable-tabs" >
-            <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a>
-              </li>
-              <li role="presentation" class=""><a href="#tab_desactivar" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Configurar Empleado</a>
-              </li>
-            </ul>
-          </div>
+          <div class="form-group" style="margin-bottom:0%; margin-top:2%">
+            <div class="" role="tabpanel" data-example-id="togglable-tabs" >
+              <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a></li>
+                <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Configurar Empleado</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Informacion Personal -->
 <div id="myTabContent" class="tab-content">
   <div role="tabpanel" class="tab-pane fade active in" id="tab_info" aria-labelledby="home-tab">
+<!-- Informacion Personal -->
     <div class="row">
-      <div class="col-sm-8 col-xs-offset-2">
+      <div class="col-md-8 col-md-offset-2">
         <h3>Informacion Personal</h3>
         <div class="box box-primary">
           <div class="box-body">
+            <!-- Primera columna -->
             <div class="col-md-6">
-              <h4>
-                <span class="glyphicon glyphicon-tag" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Numero de Identidad:</b> <%= @employee.id_number %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-user" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Genero:</b> <%= @employee.gender %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-tint" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Tipo de Sangre:</b> <%= @employee.blood_type %>
-              </h4>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-tag col-md-offset-1"></i> <b>Numero de Identidad: </b>')%><%=@employee.id_number%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-user col-md-offset-1"></i> <b>Genero: </b>')%><%=@employee.gender%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-tint col-md-offset-1"></i> <b>Genero: </b>')%><%=@employee.blood_type%></h4>
+              </div>
             </div>
             <!-- Segunda columna -->
             <div class="col-md-6">
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-gift" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Fecha de Nacimiento:</b> <%= @employee.birth_date %>
-              </h4>
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-globe" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Lugar de nacimiento:</b> <%= @employee.birth_place %>
-              </h4>
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-heart-empty" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Estado Civil:</b> <%= @employee.marital_status %>
-              </h4>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-gift col-md-offset-1"></i> <b>Fecha de Nacimiento: </b>')%><%=@employee.birth_date%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-globe col-md-offset-1"></i> <b>Lugar de Nacimiento: </b>')%><%=@employee.birth_place%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-heart-empty col-md-offset-1"></i> <b>Estado Civil: </b>')%><%=@employee.marital_status%></h4>
+              </div>
             </div>
           </div>
         </div>
@@ -75,34 +90,29 @@
         <h3>Informacion de Contacto</h3>
         <div class="box box-primary">
           <div class="box-body">
+             <!-- Primera columna -->
             <div class="col-md-6">
-              <h4>
-                <span class="glyphicon glyphicon-earphone" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Numero de Telefono:</b> <%= @employee.cellphone %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-envelope" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Correo Electronico:</b> <%= @employee.email %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-home" style="font-size:75%;"></span>&nbsp&nbsp
-                <b>Direccion:</b> <%= @employee.address %>
-              </h4>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-phone col-md-offset-1"></i> <b>Numero de Contacto de Emergencia: </b>')%><%=@employee.emergency_contact_number%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-user col-md-offset-1"></i> <b>Nombre de Contacto de Emergencia: </b>')%><%=@employee.emergency_contact_name%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-qrcode col-md-offset-1"></i> <b>Codigo Rap: </b>')%><%=@employee.rap_code%></h4>
+              </div>
             </div>
             <!-- Segunda columna -->
             <div class="col-md-6">
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-user" style="font-size:70%;"></span>&nbsp&nbsp
-                <b>Numero de Contacto de Emergencia:</b> <%= @employee.emergency_contact_number %>
-              </h4>
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-user" style="font-size:70%;"></span>&nbsp&nbsp
-                <b>Nombre de Contacto de Emergencia:</b> <%= @employee.emergency_contact_name %>
-              </h4>
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-user" style="font-size:70%;"></span>&nbsp&nbsp
-                <b>Codigo Rap:</b> <%= @employee.rap_code %>
-              </h4>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-earphone col-md-offset-1"></i> <b>Numero de Telefono: </b>')%><%=@employee.cellphone%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-envelope col-md-offset-1"></i> <b>Correo Electronico: </b>')%><%=@employee.email%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-home col-md-offset-1"></i> <b>Codigo Rap: </b>')%><%=@employee.address%></h4>
+              </div>
             </div>
           </div>
         </div>
@@ -114,66 +124,56 @@
         <h3>Informacion de la Empresa</h3>
         <div class="box box-primary">
           <div class="box-body">
+            <!-- Primera Columna -->
             <div class="col-md-6">
-              <h4>
-                <span class="glyphicon glyphicon-briefcase" style="font-size:75%;"></span>
-                <b>Puesto Laboral:</b> <%= @employee.position.name %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-equalizer" style="font-size:75%;"></span>
-                <b>Base:</b> <%= @employee.company %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-tasks" style="font-size:75%;"></span>              
-                <b>Tipo de Contrato:</b> <%= @employee.contract_type %>
-              </h4>
+              <div class="row">
+                <h4><%=raw('<i class=" glyphicon glyphicon-equalizer col-md-offset-1"></i> <b>Base: </b>')%><%=@employee.company%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-list-alt col-md-offset-1"></i> <b>Tipo de Contrato: </b>')%><%=@employee.contract_type%></h4>
+              </div>
             </div>
             <!-- Segunda Columna -->
-            <div class="col-md-6">
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-credit-card" style="font-size:75%;"></span>              
-                <b>Numero de Cuenta Bancaria:</b> <%= @employee.bank_account %>
-              </h4>
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-credit-card" style="font-size:75%;"></span>
-                <b>Salario:</b> L. <%= @employee.salary %>
-              </h4>
-            </div>
+            <div class="col-md-6">   
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-credit-card col-md-offset-1"></i> <b>Codigo Numero de Cuenta Bancaria: </b>')%><%=@employee.bank_account%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-credit-card col-md-offset-1"></i> <b>Codigo Salario: </b>')%><%=@employee.salary%></h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     <!-- Habilidades -->
-
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
         <h3>Habilidades</h3>
         <div class="box box-primary">
           <div class="box-body">
-          <% @employee_abilities.each do |employee_abilities| %>
-            <% @_school =  School.select('name').find(employee_abilities.school_id)%>
-            <% @_ability =  Ability.select('ability_name').find(employee_abilities.ability_id)%>
-            <div class="col-md-6">
-              <h4>
-                <span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>
-                <b>Institucion:</b> <%= @_school.name %>
-              </h4>
-              <hr size = 3>
-            </div>
-            <!-- Segunda Columna -->
-            <div class="col-md-6">
-              <h4>&nbsp&nbsp&nbsp
-                <span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>
-                <b>Habilidad:</b> <%= @_ability.ability_name %>
-              </h4>
-              <hr size = 3>
-            </div>
-          <% end %>
+            <% @employee_abilities.each do |employee_abilities| %>
+            <% @employee_institutions =  School.select('name').find(employee_abilities.school_id)%>
+            <% @employee_abilities =  Ability.select('ability_name').find(employee_abilities.ability_id)%>
+              <!-- Primera Columna -->
+              <div class="col-md-6">
+                <div class="row">
+                  <h4><%=raw('<i class="glyphicon glyphicon-wrench col-md-offset-1"></i> <b>Institucion:: </b>')%><%=@employee_institutions.name%></h4>
+                </div>
+                <hr size = 3>
+              </div>
+              <!-- Segunda Columna -->
+              <div class="col-md-6">
+                <div class="row">
+                  <h4><%=raw('<i class="glyphicon glyphicon-wrench col-md-offset-1"></i> <b>Habilidad: </b>')%><%=@employee_abilities.ability_name%></h4>
+                </div>
+                <hr size = 3>
+              </div>
+            <%end%>
           </div>
         </div>
       </div>
     </div>
-
     <!-- Educaciones -->
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
@@ -181,43 +181,39 @@
         <div class="box box-primary">
           <div class="box-body">
           <% @employee_education.each do |employee_education| %>
-            <% @_school =  School.select('name').find(employee_education.school_id)%>
-            <% @_education = Education.select('major_description').find(employee_education.education_id)%>
+          <% @employee_institutions =  School.select('name').find(employee_education.school_id)%>
+          <% @employee_educations = Education.select('major_description').find(employee_education.education_id)%>
+            <!-- Primera Columna -->
             <div class="col-md-6">
-              <h4>
-                <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>
-                <b>Institucion:</b> <%= @_school.name %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>
-                <b>Titulo:</b> <%= employee_education.title %>
-              </h4>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Institucion:: </b>')%><%=@employee_institutions.name%></h4>
+              </div>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Titulo:: </b>')%><%= employee_education.title%></h4>
+              </div>
               <hr size = 3>
             </div>
             <!-- Segunda Columna -->
             <div class="col-md-6">
-              <h4>
-                <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>
-                <b>Descripcion de Educacion:</b> <%= @_education.major_description %>
-              </h4>
-              <h4>
-                <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>
-                <% if employee_education.completed == true%>
-                  <b>Completo:</b> <%= "Si" %>
+              <div class="row">
+                <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Descripcion de Educacion:: </b>')%><%=@employee_educations.major_description%></h4>
+              </div>
+              <div class="row">
+                <%if employee_education.completed%>
+                  <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Completado: </b>Si')%></h4>
                 <%else%>
-                  <b>Completo:</b> <%= "No" %>
-                <% end %>
-              </h4>
+                  <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Completado: </b>No')%></h4>
+                <%end%>
+              </div>
               <hr size = 3>
-              <br>
             </div>
-          <% end %>
+          <%end%>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div role="tabpanel" class="tab-pane fade active in" id="tab_desactivar" aria-labelledby="home-tab">
+  <div role="tabpanel" class="tab-pane fade" id="tab_config" aria-labelledby="profile-tab">
     <div class="row">
       <div class="col-sm-8 col-xs-offset-2">
         <h3>Configuracion de Empleado</h3>
@@ -228,7 +224,11 @@
                 <%= render partial: "suprimir", locals: {f: f} %>
               </div>
               <div class="input-group-btn" align="center">
-                <%= f.submit "Enviar", class: "btn bg-green btn-flat" %>
+                <%if @employee.employee_status?%>
+                  <%= f.submit "Suprimir", class: "btn bg-green btn-flat" %>
+                <%else%>
+                  <%= f.submit "Restaurar", class: "btn bg-green btn-flat" %>
+                <%end%>
               </div>
               <%end%>
           </div>
