@@ -2,7 +2,7 @@ module Admin
   class EmployeesController < Admin::ApplicationController
 
     def index
-        @employees = Employee.order(:employee_status)
+        @employees= Employee.order("created_at ASC")
     end
 
     def show
