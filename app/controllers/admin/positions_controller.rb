@@ -6,6 +6,8 @@ module Admin
     
     def new
       @position = Position.new
+      @abilities = Ability.all
+      @educations = Education.all
       @departments = Department.all
       @url = admin_positions_path   
     end
@@ -23,6 +25,8 @@ module Admin
     def edit
       @position = Position.find(params[:id])
       @departments = Department.all
+      @abilities = Ability.all
+      @educations = Education.all
       @url = admin_position_path(@position)
     end
 

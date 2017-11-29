@@ -14,4 +14,41 @@
     <%= f.label :department_id, "Departamento" %>
     <%= f.select(:department_id, @departments.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
   </div>
+</div
+
+<div class="row">
+  <div class="col-sm-8 col-xs-offset-2">
+    <h3>Habilidades</h3>
+      <div class="box box-primary">
+        <div class="box-body">
+          <%= f.fields_for :abilities_positions do |abemp| %>
+            <%= render 'abilities_position_fields', f:abemp %>
+          <% end %>
+          <div class="links">
+          <div class="col-sm-12 text-center">
+            <br>
+            <%= link_to_add_association 'Agregar Habilidad', f, :abilities_positions, class: "btn bg-blue btn-flat" %>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8 col-xs-offset-2">
+    <h3>Educacion Formal</h3>
+    <div class="box box-primary">
+      <div class="box-body">
+        <%= f.fields_for :educations_positions do |edemp| %>
+          <%= render 'educations_position_fields', f:edemp %>
+        <% end %>
+        <div class="links">
+          <div class="col-sm-12 text-center">
+            <br>
+            <%= link_to_add_association 'Agregar Educacion', f, :educations_positions, class: "btn bg-blue btn-flat" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
