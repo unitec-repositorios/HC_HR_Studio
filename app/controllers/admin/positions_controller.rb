@@ -49,7 +49,9 @@ module Admin
     protected
 
     def position_params
-      params.require(:position).permit!
+      params.require(:position).permit(:position_id_number, :name, :department_id, abilities_positions_attributes: [:id, :ability_id, 
+                                        :position_id, :_destroy], educations_positions_attributes: [:id, :education_id, :position_id,
+                                        :completed, :title, :_destroy])
     end
   end
 end

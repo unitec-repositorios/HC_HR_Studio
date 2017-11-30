@@ -1,28 +1,83 @@
-<%= form_tag("/admin/reports/comparacion", method: "post") do %>
-  <%= select_tag(:position, options_from_collection_for_select(@positions,'id', 'name')) %>
-  <%= select_tag(:employee, options_from_collection_for_select(@employees,'id', 'name')) %>
-  <%= submit_tag("Submit") %>
-<%end%>
-
 <div class="row">
-      <div class="col-md-12">
-        <h3>Habilidades</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-          <% if @abilities_possessed != nil %>
-            <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Cuenta Con: </b>')%></h4>
-            <% @abilities_possessed.each do |foundAbility| %>
-            <% @abilities_possessed_n =  Ability.select('ability_name').find(foundAbility.ability_id)%>
-            <!-- Primera Columna -->
-            <div class="col-md-6">
-              <div class="row">
-              <h4><%=@abilities_possessed_n.ability_name%></h4>
-              </div>
-              <hr size = 3>
-            </div>
-          <%end%>
-          <%end%>
-          </div>
+  <div class="col-sm-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Perfil Comparativo</h3>
+      </div>
+      <div class="box-body">
+      <%= form_tag("/admin/reports/comparacion", method: "post") do %>
+        <div class="col-sm-12">
+        <%= label :employee, "Empleado" %>
+        <%= select_tag(:employee, options_from_collection_for_select(@employees,'id', 'name'), { :class => 'form-control' })%>
+        </div>
+        <div class="col-sm-12" style="padding-top:1%">
+        <div class="input-group-btn">
+        <%= submit_tag "Comparar", class: "btn bg-green btn-flat"%>
+        </div>
         </div>
       </div>
     </div>
+  </div>
+  <%end%>
+  <% if @abilities_possessed != nil  or @abilities_missing != nil%>
+  <div class="col-sm-12">
+    <div class="box box-primary">
+        <div class="box-header with-border" >
+        <h3 class="box-title">Habilidades</h3>
+        </div>
+        <div class="box-body">
+        <div class="col-sm-6">
+        <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Cuenta Con: </b>')%></h4>
+        </div>
+        <div class="col-sm-6">
+        <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Hace Falta: </b>')%></h4>
+        </div>
+        <div class="col-md-6">
+        <% @abilities_possessed.each do |possessed| %>
+        <% @abilities_possessed_n =  Ability.select('ability_name').find(possessed.ability_id)%>
+          <h4><%=@abilities_possessed_n.ability_name%></h4>
+          <hr size = 3>
+        <%end%>
+        </div>
+        <div class="col-md-6">
+        <% @abilities_missing.each do |missing| %>
+        <% @abilities_missing_n =  Ability.select('ability_name').find(missing.ability_id)%>
+          <h4><%=@abilities_missing_n.ability_name%></h4>
+          <hr size = 3>
+        <%end%>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+  <% if @educations_possessed != nil  or @educations_missing != nil%>
+  <div class="col-sm-12">
+    <div class="box box-primary">
+        <div class="box-header with-border" >
+        <h3 class="box-title">Educacion Formal</h3>
+        </div>
+        <div class="box-body">
+        <div class="col-sm-6">
+        <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Cuenta Con: </b>')%></h4>
+        </div>
+        <div class="col-sm-6">
+        <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Hace Falta: </b>')%></h4>
+        </div>
+        <div class="col-md-6">
+        <% @educations_possessed.each do |possessed| %>
+        <% @educations_possessed_n =  Education.select('major_description').find(possessed.education_id)%>
+          <h4><%=@educations_possessed_n.major_description%></h4>
+          <hr size = 3>
+        <%end%>
+        </div>
+        <div class="col-md-6">
+        <% @educations_missing.each do |missing| %>
+        <% @educations_missing_n =  Education.select('major_description').find(missing.education_id)%>
+          <h4><%=@educations_missing_n.major_description%></h4>
+          <hr size = 3>
+        <%end%>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>
