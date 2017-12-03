@@ -1,0 +1,27 @@
+module Admin
+	class ReportsController < Admin::ApplicationController
+
+		def new
+			@employees = Employee.all
+	    	@positions = Position.all
+		end
+
+	    def create
+	    	@employees = Employee.all
+	    	@positions = Position.all
+	    	@employee_id = params[:employee]
+	    	@position_id = Employee.where(:id => @employee_id).pluck(:position_id)
+	    	ab_intersect_query = "select ability_id from abilities_employees where employee_id = ? intersect select ability_id from abilities_positions where position_id = ?;"
+	    	ab_notin_query = "select ability_id from abilities_positions where position_id = ? except select ability_id from abilities_employees where employee_id = ?;"
+	    	@abilities_possessed = AbilitiesEmployee.find_by_sql([ab_intersect_query, @employee_id, @position_id])
+	    	@abilities_missing = AbilitiesPosition.find_by_sql([ab_notin_query, @position_id, @employee_id])
+
+	    	ed_intersect_query = "select education_id from educations_employees where employee_id = ? intersect select education_id from educations_positions where position_id = ?;"
+	    	ed_notin_query = "select education_id from educations_positions where position_id = ? except select education_id from educations_employees where employee_id = ?;"
+	    	@educations_possessed = EducationsEmployee.find_by_sql([ed_intersect_query, @employee_id, @position_id])
+	    	@educations_missing = EducationsPosition.find_by_sql([ed_notin_query, @position_id, @employee_id])
+	    	render :new
+	    end
+
+	end
+end

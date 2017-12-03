@@ -6,6 +6,8 @@ module Admin
     
     def new
       @position = Position.new
+      @abilities = Ability.all
+      @educations = Education.all
       @departments = Department.all
       @url = admin_positions_path   
     end
@@ -23,6 +25,8 @@ module Admin
     def edit
       @position = Position.find(params[:id])
       @departments = Department.all
+      @abilities = Ability.all
+      @educations = Education.all
       @url = admin_position_path(@position)
     end
 
@@ -45,7 +49,9 @@ module Admin
     protected
 
     def position_params
-      params.require(:position).permit!
+      params.require(:position).permit(:position_id_number, :name, :department_id, abilities_positions_attributes: [:id, :ability_id, 
+                                        :position_id, :_destroy], educations_positions_attributes: [:id, :education_id, :position_id,
+                                        :completed, :title, :_destroy])
     end
   end
 end
