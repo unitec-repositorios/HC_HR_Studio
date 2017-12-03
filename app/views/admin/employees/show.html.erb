@@ -39,7 +39,11 @@
             <div class="" role="tabpanel" data-example-id="togglable-tabs" >
               <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
                 <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a></li>
-                <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Inactivar Empleado</a></li>
+                <%if @employee.employee_status%>
+                  <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Inactivar Empleado</a></li>
+                <%else%>
+                  <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Reactivar Empleado</a></li>
+                <%end%>
               </ul>
             </div>
           </div>
@@ -216,7 +220,7 @@
   <div role="tabpanel" class="tab-pane fade" id="tab_config" aria-labelledby="profile-tab">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h3>Inactivar Empleado</h3>
+        <h3>Estado de Empleado</h3>
         <div class="box box-primary">
           <div class="box-body">
               <div class="row">
