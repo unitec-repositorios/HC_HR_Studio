@@ -16,10 +16,12 @@ module Admin
 	    	@abilities_possessed = AbilitiesEmployee.find_by_sql([ab_intersect_query, @employee_id, @position_id])
 	    	@abilities_missing = AbilitiesPosition.find_by_sql([ab_notin_query, @position_id, @employee_id])
 
-	    	ed_intersect_query = "select education_id from educations_employees where employee_id = ? intersect select education_id from educations_positions where position_id = ?;"
-	    	ed_notin_query = "select education_id from educations_positions where position_id = ? except select education_id from educations_employees where employee_id = ?;"
+	    	ed_intersect_query = "select education_id, title, completed from educations_employees where employee_id = ? intersect select education_id, title, completed from educations_positions where position_id = ?;"
+	    	ed_notin_query = "select education_id, title, completed from educations_positions where position_id = ? except select education_id, title, completed from educations_employees where employee_id = ?;"
+	    	title_compare_query = "select title from educations_employees where employee_id = ? intersect select title from educations_positions where position_id = ?;"
 	    	@educations_possessed = EducationsEmployee.find_by_sql([ed_intersect_query, @employee_id, @position_id])
 	    	@educations_missing = EducationsPosition.find_by_sql([ed_notin_query, @position_id, @employee_id])
+	    	@title_compare = EducationsEmployee.find_by_sql([title_compare_query, @employee_id, @position_id])
 	    	render :new
 	    end
 

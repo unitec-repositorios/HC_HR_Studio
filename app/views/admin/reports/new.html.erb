@@ -66,6 +66,7 @@
         <div class="col-md-6">
         <% @educations_possessed.each do |possessed| %>
         <% @educations_possessed_n =  Education.select('major_description').find(possessed.education_id)%>
+          <h4><%=possessed.title%></h4>
           <h4><%=@educations_possessed_n.major_description%></h4>
           <hr size = 3>
         <%end%>
@@ -73,7 +74,11 @@
         <div class="col-md-6">
         <% @educations_missing.each do |missing| %>
         <% @educations_missing_n =  Education.select('major_description').find(missing.education_id)%>
-          <h4><%=@educations_missing_n.major_description%></h4>
+          <h4><%=missing.title%></h4>
+          <h4><%=@educations_missing_n.major_description%>
+        <%if missing.completed == true && !@title_compare.blank?%>
+          (Pasante)</h4>
+        <%end%>
           <hr size = 3>
         <%end%>
       <%end%>
