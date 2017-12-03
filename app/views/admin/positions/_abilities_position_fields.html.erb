@@ -1,0 +1,15 @@
+<div class = "nested-fields">
+    <div class="col-md-12">
+    <h4>
+    	<div class="form-group">
+			<span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>&nbsp&nbsp
+    			<%= f.label :ability_id, "Nombre de Habilidad" %>
+    			<%= f.select(:ability_id, @abilities.collect{|a| [a.ability_name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+    	</div>
+    </h4>
+    </div>
+    <br>
+    	<div class="col-sm-12 text-center">
+    	<%= link_to_remove_association "&nbsp; Quitar Habilidad &nbsp;".html_safe, f, class: "btn bg-red btn-flat"%>
+    </div>
+</div>

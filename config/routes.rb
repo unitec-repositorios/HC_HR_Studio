@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   # Front routes start
   devise_for :users, only: [:session, :registration], path: 'session',
-             path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }                        
+             path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
+  post 'admin/reports/comparacion' => 'admin/reports#create'
+  get 'admin/comparacion' => 'admin/reports#new'                  
   # Application root
   root to: 'application#home'
   # Front routes end
