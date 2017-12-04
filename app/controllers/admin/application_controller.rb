@@ -16,10 +16,6 @@ module Admin
       end
     end
 
-    def suprimir
-      @employee = Employee.find(params[:id])
-    end
-
     private def layout_by_resource
       if devise_controller?
         'layouts/devise'
