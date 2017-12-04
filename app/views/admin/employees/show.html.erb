@@ -3,8 +3,8 @@
   <div class="col-md-8 col-md-offset-2">
     <div class="box box-primary">
       <div class="box-body no-padding">
-        <div class="col-md-2" style="margin-top:1%;">
-          <div class="row" style="margin: 0 auto;">
+        <div class="col-md-2" style="margin: 1%;">
+          <div class="row">
             <%=image_tag @employee.image.url(:medium), :class =>"profile-user-img", :style =>"height:144px;width:110px;"%>
           </div>
         </div>
@@ -17,9 +17,9 @@
           </div>
           <div class="row">
             <%if @employee.employee_status%>
-              <h4><%=raw('<i class="glyphicon glyphicon-cog"></i> <b>Estado: </b><b class="text-success">Activo</b>')%></h4>
+              <h4><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> <b>Estado: </b><b class="text-success">Activo</b>'), "#my-modal", "data-toggle" => "modal" %></h4>
             <%else%>
-              <h4><%=raw('<i class="glyphicon glyphicon-cog"></i> <b>Estado: </b><b class="text-danger">Inactivo</b>')%></h4>
+              <h4><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> <b>Estado: </b><b class="text-danger">Inactivo</b>'), "#my-modal", :class => "btn", "data-toggle" => "modal" %></h4>
             <%end%>
           </div>
         </div>
@@ -35,211 +35,188 @@
           </div>
         </div>
       </div>
-      <div class="box-body no-padding">
-        <div class="col-md-12 text-left">
-          <div class="form-group" style="margin-bottom:0%; margin-top:2%">
-            <div class="" role="tabpanel" data-example-id="togglable-tabs" >
-              <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
-                <li role="presentation" class="active"><a href="#tab_info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"></br>Informacion General</a></li>
-                <%if @employee.employee_status%>
-                  <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Inactivar Empleado</a></li>
-                <%else%>
-                  <li role="presentation" class=""><a href="#tab_config" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"></br>Reactivar Empleado</a></li>
-                <%end%>
-              </ul>
-            </div>
+    </div>
+  </div>
+</div>
+<!-- Informacion Personal -->
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Informacion Personal</h3>
+    <div class="box box-primary">
+      <div class="box-body">
+        <!-- Primera columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-tag col-md-offset-1"></i> <b>Numero de Identidad: </b>')%><%=@employee.id_number%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-user col-md-offset-1"></i> <b>Genero: </b>')%><%=@employee.gender%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-tint col-md-offset-1"></i> <b>Genero: </b>')%><%=@employee.blood_type%></h4>
+          </div>
+        </div>
+        <!-- Segunda columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-gift col-md-offset-1"></i> <b>Fecha de Nacimiento: </b>')%><%=@employee.birth_date%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-globe col-md-offset-1"></i> <b>Lugar de Nacimiento: </b>')%><%=@employee.birth_place%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-heart-empty col-md-offset-1"></i> <b>Estado Civil: </b>')%><%=@employee.marital_status%></h4>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div id="myTabContent" class="tab-content">
-  <div role="tabpanel" class="tab-pane fade active in" id="tab_info" aria-labelledby="home-tab">
-<!-- Informacion Personal -->
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Informacion Personal</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-            <!-- Primera columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-tag col-md-offset-1"></i> <b>Numero de Identidad: </b>')%><%=@employee.id_number%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-user col-md-offset-1"></i> <b>Genero: </b>')%><%=@employee.gender%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-tint col-md-offset-1"></i> <b>Genero: </b>')%><%=@employee.blood_type%></h4>
-              </div>
-            </div>
-            <!-- Segunda columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-gift col-md-offset-1"></i> <b>Fecha de Nacimiento: </b>')%><%=@employee.birth_date%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-globe col-md-offset-1"></i> <b>Lugar de Nacimiento: </b>')%><%=@employee.birth_place%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-heart-empty col-md-offset-1"></i> <b>Estado Civil: </b>')%><%=@employee.marital_status%></h4>
-              </div>
-            </div>
+<!-- Informacion de Contacto -->
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Informacion de Contacto</h3>
+    <div class="box box-primary">
+      <div class="box-body">
+          <!-- Primera columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-phone col-md-offset-1"></i> <b>Numero de Contacto de Emergencia: </b>')%><%=@employee.emergency_contact_number%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-user col-md-offset-1"></i> <b>Nombre de Contacto de Emergencia: </b>')%><%=@employee.emergency_contact_name%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-qrcode col-md-offset-1"></i> <b>Codigo Rap: </b>')%><%=@employee.rap_code%></h4>
+          </div>
+        </div>
+        <!-- Segunda columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-earphone col-md-offset-1"></i> <b>Numero de Telefono: </b>')%><%=@employee.cellphone%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-envelope col-md-offset-1"></i> <b>Correo Electronico: </b>')%><%=@employee.email%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-home col-md-offset-1"></i> <b>Codigo Rap: </b>')%><%=@employee.address%></h4>
           </div>
         </div>
       </div>
     </div>
-    <!-- Informacion de Contacto -->
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Informacion de Contacto</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-             <!-- Primera columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-phone col-md-offset-1"></i> <b>Numero de Contacto de Emergencia: </b>')%><%=@employee.emergency_contact_number%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-user col-md-offset-1"></i> <b>Nombre de Contacto de Emergencia: </b>')%><%=@employee.emergency_contact_name%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-qrcode col-md-offset-1"></i> <b>Codigo Rap: </b>')%><%=@employee.rap_code%></h4>
-              </div>
-            </div>
-            <!-- Segunda columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-earphone col-md-offset-1"></i> <b>Numero de Telefono: </b>')%><%=@employee.cellphone%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-envelope col-md-offset-1"></i> <b>Correo Electronico: </b>')%><%=@employee.email%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-home col-md-offset-1"></i> <b>Codigo Rap: </b>')%><%=@employee.address%></h4>
-              </div>
-            </div>
+  </div>
+</div>
+<!-- Informacion de la Empresa -->
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Informacion de la Empresa</h3>
+    <div class="box box-primary">
+      <div class="box-body">
+        <!-- Primera Columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class=" glyphicon glyphicon-equalizer col-md-offset-1"></i> <b>Base: </b>')%><%=@employee.company%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-list-alt col-md-offset-1"></i> <b>Tipo de Contrato: </b>')%><%=@employee.contract_type%></h4>
+          </div>
+        </div>
+        <!-- Segunda Columna -->
+        <div class="col-md-6">   
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-credit-card col-md-offset-1"></i> <b>Codigo Numero de Cuenta Bancaria: </b>')%><%=@employee.bank_account%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-credit-card col-md-offset-1"></i> <b>Codigo Salario: </b>')%><%=@employee.salary%></h4>
           </div>
         </div>
       </div>
     </div>
-    <!-- Informacion de la Empresa -->
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Informacion de la Empresa</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-            <!-- Primera Columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class=" glyphicon glyphicon-equalizer col-md-offset-1"></i> <b>Base: </b>')%><%=@employee.company%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-list-alt col-md-offset-1"></i> <b>Tipo de Contrato: </b>')%><%=@employee.contract_type%></h4>
-              </div>
+  </div>
+</div>
+<!-- Habilidades -->
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Habilidades</h3>
+    <div class="box box-primary">
+      <div class="box-body">
+        <% @employee_abilities.each do |employee_abilities| %>
+        <% @employee_institutions =  School.select('name').find(employee_abilities.school_id)%>
+        <% @employee_abilities =  Ability.select('ability_name').find(employee_abilities.ability_id)%>
+          <!-- Primera Columna -->
+          <div class="col-md-6">
+            <div class="row">
+              <h4><%=raw('<i class="glyphicon glyphicon-wrench col-md-offset-1"></i> <b>Institucion:: </b>')%><%=@employee_institutions.name%></h4>
             </div>
-            <!-- Segunda Columna -->
-            <div class="col-md-6">   
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-credit-card col-md-offset-1"></i> <b>Codigo Numero de Cuenta Bancaria: </b>')%><%=@employee.bank_account%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-credit-card col-md-offset-1"></i> <b>Codigo Salario: </b>')%><%=@employee.salary%></h4>
-              </div>
-            </div>
+            <hr size = 3>
           </div>
-        </div>
+          <!-- Segunda Columna -->
+          <div class="col-md-6">
+            <div class="row">
+              <h4><%=raw('<i class="glyphicon glyphicon-wrench col-md-offset-1"></i> <b>Habilidad: </b>')%><%=@employee_abilities.ability_name%></h4>
+            </div>
+            <hr size = 3>
+          </div>
+        <%end%>
       </div>
     </div>
-    <!-- Habilidades -->
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Habilidades</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-            <% @employee_abilities.each do |employee_abilities| %>
-            <% @employee_institutions =  School.select('name').find(employee_abilities.school_id)%>
-            <% @employee_abilities =  Ability.select('ability_name').find(employee_abilities.ability_id)%>
-              <!-- Primera Columna -->
-              <div class="col-md-6">
-                <div class="row">
-                  <h4><%=raw('<i class="glyphicon glyphicon-wrench col-md-offset-1"></i> <b>Institucion:: </b>')%><%=@employee_institutions.name%></h4>
-                </div>
-                <hr size = 3>
-              </div>
-              <!-- Segunda Columna -->
-              <div class="col-md-6">
-                <div class="row">
-                  <h4><%=raw('<i class="glyphicon glyphicon-wrench col-md-offset-1"></i> <b>Habilidad: </b>')%><%=@employee_abilities.ability_name%></h4>
-                </div>
-                <hr size = 3>
-              </div>
+  </div>
+</div>
+<!-- Educaciones -->
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Educacion Formal</h3>
+    <div class="box box-primary">
+      <div class="box-body">
+      <% @employee_education.each do |employee_education| %>
+      <% @employee_institutions =  School.select('name').find(employee_education.school_id)%>
+      <% @employee_educations = Education.select('major_description').find(employee_education.education_id)%>
+        <!-- Primera Columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Institucion: </b>')%><%=@employee_institutions.name%></h4>
+          </div>
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Titulo: </b>')%><%= employee_education.title%></h4>
+          </div>
+          <hr size = 3>
+        </div>
+        <!-- Segunda Columna -->
+        <div class="col-md-6">
+          <div class="row">
+            <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Descripcion de Educacion: </b>')%><%=@employee_educations.major_description%></h4>
+          </div>
+          <div class="row">
+            <%if employee_education.completed%>
+              <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Completado: </b>Si')%></h4>
+            <%else%>
+              <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Completado: </b>No')%></h4>
             <%end%>
           </div>
+          <hr size = 3>
         </div>
-      </div>
-    </div>
-    <!-- Educaciones -->
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Educacion Formal</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-          <% @employee_education.each do |employee_education| %>
-          <% @employee_institutions =  School.select('name').find(employee_education.school_id)%>
-          <% @employee_educations = Education.select('major_description').find(employee_education.education_id)%>
-            <!-- Primera Columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Institucion: </b>')%><%=@employee_institutions.name%></h4>
-              </div>
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Titulo: </b>')%><%= employee_education.title%></h4>
-              </div>
-              <hr size = 3>
-            </div>
-            <!-- Segunda Columna -->
-            <div class="col-md-6">
-              <div class="row">
-                <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Descripcion de Educacion: </b>')%><%=@employee_educations.major_description%></h4>
-              </div>
-              <div class="row">
-                <%if employee_education.completed%>
-                  <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Completado: </b>Si')%></h4>
-                <%else%>
-                  <h4><%=raw('<i class="glyphicon glyphicon-education col-md-offset-1"></i> <b>Completado: </b>No')%></h4>
-                <%end%>
-              </div>
-              <hr size = 3>
-            </div>
-          <%end%>
-          </div>
-        </div>
+      <%end%>
       </div>
     </div>
   </div>
-  <div role="tabpanel" class="tab-pane fade" id="tab_config" aria-labelledby="profile-tab">
+</div>
+<div class="modal fade" id="my-modal" tabindex="-1">
+  <div class="modal-header">
+    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+    <h3 id="myModalLabel">Estado de Empleado</h3>
+  </div>
+  <div class="modal-body">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Estado de Empleado</h3>
-        <div class="box box-primary">
-          <div class="box-body">
-              <div class="row">
-                <%= form_for @employee ,url: @url do |f| %>
-                <%= render partial: "suprimir", locals: {f: f} %>
-              </div>
-              <div class="input-group-btn" align="center">
-                <%if @employee.employee_status?%>
-                  <%= f.submit "Suprimir", class: "btn bg-red btn-flat" %>
-                <%else%>
-                  <%= f.submit "Restaurar", class: "btn bg-green btn-flat" %>
-                <%end%>
-              </div>
-              <%end%>
-          </div>
-        </div>
-      </div>
+      <%= form_for @employee ,url: @url do |f| %>
+      <%= render partial: "suprimir", locals: {f: f} %>
     </div>
   </div>
+  <div class="modal-footer">
+    <%if @employee.employee_status?%>
+      <%= f.submit "Suprimir", class: "btn bg-red btn-flat" %>
+    <%else%>
+      <%= f.submit "Restaurar", class: "btn bg-green btn-flat" %>
+    <%end%>
+  </div>
+    <%end%>
 </div>
