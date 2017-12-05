@@ -1,5 +1,7 @@
 module Admin  
   class EmployeesController < Admin::ApplicationController
+    respond_to :json, :html
+    before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
     def index
         @employees= Employee.order("created_at ASC")
@@ -13,27 +15,28 @@ module Admin
     end
 
     def new
-        @employee = Employee.new
-        @positions = Position.all
-        @abilities = Ability.all
-        @educations = Education.all
-        @schools = School.all
-        @url = admin_employees_path   
+      @employee = Employee.new
+      @positions = Position.all
+      @abilities = Ability.all
+      @educations = Education.all
+      @schools = School.all
+      @url = admin_employees_path
     end
 
     def create
-        @employee = Employee.new(employee_params)
-        @employee.rap_code = @employee.id_number
-        @employee.hired_date = Date.today
-        @employee.employee_status = true
-        @positions = Position.all
+      @employee = Employee.new(employee_params)
+      @employee.rap_code = @employee.id_number
+      @employee.hired_date = Date.today
+      @employee.employee_status = true
+      @positions = Position.all
 
-        if  @employee.save
-            redirect_to admin_employees_path
-
-        else
-          render :new
-        end
+      if  @employee.save
+        flash[:notice] = t('admin.employees.create.success')
+        respond_with :edit, :admin, @employee
+      else
+        flash[:warning] = @employee.errors.full_messages.uniq.join(', ')
+        respond_with :new, :admin, :employee
+      end
     end
 
     def edit
@@ -54,6 +57,10 @@ module Admin
         else
           render :edit
         end
+    end
+
+    private def set_employee
+      @employee = Employee.find(params[:id])
     end
 
     protected
