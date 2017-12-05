@@ -7,7 +7,6 @@ module Admin
     layout :layout_by_resource
 
     def index
-      @home = Home.all.limit(1)
     end
 
     def configure_permitted_parameters
