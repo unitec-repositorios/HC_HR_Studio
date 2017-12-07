@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129070951) do
+ActiveRecord::Schema.define(version: 20171205034620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20171129070951) do
     t.string   "name"
     t.string   "area_id_number"
     t.index ["area_id_number"], name: "index_areas_on_area_id_number", unique: true, using: :btree
+  end
+
+  create_table "configurations", force: :cascade do |t|
+    t.text     "mission"
+    t.text     "vision"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -126,13 +137,6 @@ ActiveRecord::Schema.define(version: 20171129070951) do
     t.string   "employee_id_number"
     t.index ["employee_id_number"], name: "index_employees_on_employee_id_number", unique: true, using: :btree
     t.index ["position_id"], name: "index_employees_on_position_id", using: :btree
-  end
-
-  create_table "homes", force: :cascade do |t|
-    t.text     "mision"
-    t.text     "vision"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "positions", force: :cascade do |t|

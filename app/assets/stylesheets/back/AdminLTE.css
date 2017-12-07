@@ -24,6 +24,14 @@ body {
     height: 100%;
 }
 
+.table tbody > tr > td.vert-aligned {
+    vertical-align: middle;
+}
+
+.table tbody > tr > th.vert-aligned-th {
+   text-align: center;   
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
