@@ -1,24 +1,42 @@
 <div class = "nested-fields">
-	<div class="col-md-6">
-	<h4>
-		<div class="form-group">
-			<span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>&nbsp&nbsp
-				<%= f.label :school_id, "Instituto" %>
-    			<%= f.select(:school_id, @schools.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
-    	</div>
-    </h4>
-    </div>
-    <div class="col-md-6">
-    <h4>
-    	<div class="form-group">
-			<span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>&nbsp&nbsp
-    			<%= f.label :ability_id, "Nombre de Habilidad" %>
-    			<%= f.select(:ability_id, @abilities.collect{|a| [a.ability_name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
-    	</div>
-    </h4>
-    </div>
-    <br>
-    	<div class="col-sm-12 text-center">
-    	<%= link_to_remove_association "&nbsp; Quitar Habilidad &nbsp;".html_safe, f, class: "btn bg-red btn-flat"%>
-    </div>
+<div class="col-sm-12">
+    <table id="user_index" class='table borderless' role="grid">
+      <thead>
+        <tr>
+          <th>
+                <h4>
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>&nbsp&nbsp
+                            <%= f.label :school_id, "Instituto" %>
+                    </div>
+                </h4>
+          </th>
+          <th>
+                <h4>
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-wrench" style="font-size:75%;"></span>&nbsp&nbsp
+                            <%= f.label :ability_id, "Nombre de Habilidad" %>
+                    </div>
+                </h4>
+          </th>
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <td>
+                <%= f.select(:school_id, @schools.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+            </td>
+            <td>
+                <%= f.select(:ability_id, @abilities.collect{|a| [a.ability_name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+            </td>
+            <td align="center">
+                    <%= link_to_remove_association "&nbsp; Quitar Habilidad &nbsp;".html_safe, f, class: 'btn btn-sm btn-danger'%>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 </div>
+</div>
+

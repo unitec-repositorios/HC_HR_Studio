@@ -1,36 +1,52 @@
 <div class = "nested-fields">
+    <div class="col-sm-12">
+    <table id="user_index" class='table borderless' role="grid">
+      <thead>
+        <tr>
+          <th>
+                <h4>
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
+                            <%= f.label :title, "Titulo" %>
+                    </div>
+                </h4>
+          </th>
+          <th>
+                <h4>
+                <div class="form-group">
+                    <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
+                        <%= f.label :education_id, "Descripcion de Educacion" %>
+                </div>
+                </h4>
+          </th>
+          <th class="col-xs-1" align="center">
+                <h4>
+                <div class="form-group">
+                        <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
+                            <%= f.label :completed, "Completo" %>    
+                </div>
+                </h4>
+          </th>
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
 
-    <div class="col-md-4">
-	<h4>
-		<div class="form-group">
-			<span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
-				<%= f.label :title, "Titulo" %>
-    			<%= f.select(:title, ['Secundaria', 'Bachillerato', 'Educación Pregrado', 'Educación Postgrado', 'Educación Doctorado'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
-    	</div>
-    </h4>
-    </div>
-    <div class="col-md-6">
-    <h4>
-    	<div class="form-group">
-			<span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
-    			<%= f.label :education_id, "Descripcion de Educacion" %>
-    			<%= f.select(:education_id, @educations.collect{|a| [a.major_description, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
-    	</div>
-    </h4>
-    </div>
-    <div class="col-md-2">
-    <h4>
-        <div class="form-group">
-            <center>
-            <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
-                <%= f.label :completed, "Completo" %>
-                <br>
-                <%= f.check_box :completed%></center>      
-        </div>
-    </h4>
-    </div>
-    <br>
-    <div class="col-sm-12 text-center">
-    	<%= link_to_remove_association "&nbsp; Quitar Educacion &nbsp;".html_safe, f, class: "btn bg-red btn-flat"%>
-    </div>
+      <tbody>
+          <tr>
+            <td>
+                <%= f.select(:title, ['Secundaria', 'Bachillerato', 'Educación Pregrado', 'Educación Postgrado', 'Educación Doctorado'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+            </td>
+            <td>
+                <%= f.select(:education_id, @educations.collect{|a| [a.major_description, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+            </td>
+            <td align="center" class="vert-aligned">
+                <%= f.check_box :completed%>
+            </td>
+            <td align="center">
+                <%= link_to_remove_association "&nbsp; Quitar Educacion &nbsp;".html_safe, f, class: "btn btn-sm btn-danger"%>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+</div>
 </div>

@@ -204,7 +204,7 @@
             <div class="links">
             <div class="col-sm-12 text-center">
               <br>
-              <%= link_to_add_association 'Agregar Habilidad', f, :abilities_employees, class: "btn bg-blue btn-flat" %>
+              <%= link_to_add_association 'Agregar Habilidad', f, :abilities_employees, class: "btn btn-sm btn-primary" %>
             </div>
             </div>
         </div>
@@ -222,7 +222,7 @@
           <div class="links">
             <div class="col-sm-12 text-center">
               <br>
-              <%= link_to_add_association 'Agregar Educacion', f, :educations_employees, class: "btn bg-blue btn-flat" %>
+              <%= link_to_add_association 'Agregar Educacion', f, :educations_employees, class: "btn btn-sm btn-primary" %>
             </div>
           </div>
         </div>
@@ -231,6 +231,6 @@
   </div>
   <div class="input-group-btn" align="center">
     <%= link_to "Cancelar", admin_employees_path, class: "btn bg-red btn-flat" %>
-    <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+    <%= f.submit "Editar", class: "btn bg-green btn-flat" %>
   </div>
 <%end%>
