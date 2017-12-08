@@ -51,7 +51,7 @@ module Admin
     def update
         @employee = Employee.find(params[:id])
         @employee.rap_code = @employee.id_number
-    
+      
         if @employee.update_attributes(employee_params)
           redirect_to admin_employees_path
         else

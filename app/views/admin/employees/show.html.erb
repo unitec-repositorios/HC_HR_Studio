@@ -5,7 +5,11 @@
       <div class="box-body no-padding">
         <div class="col-md-2" style="margin: 1%;">
           <div class="row" style="">
-            <%=image_tag @employee.image.url(:medium), :class =>"profile-user-img", :style =>"height:144px;width:110px;"%>
+            <% if @employee.image.present? %>
+              <%=image_tag @employee.image.url(:medium), :class =>"profile-user-img", :style =>"height:144px;width:110px;"%>
+            <%else%>
+              <img class="profile-user-img" id="preview" src="https://cdn.pixabay.com/photo/2013/07/13/13/38/man-161282_960_720.png" style="height:144px;width:110px;"/>
+            <%end%>
           </div>
         </div>
         <div class="col-md-5" style="margin: 1%;">

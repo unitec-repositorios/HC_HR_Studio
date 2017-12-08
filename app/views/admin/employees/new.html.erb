@@ -103,14 +103,14 @@
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-earphone"></i>')%>               
                 <%= f.label :cellphone, "Número de Telefono" %>
-                <%= f.number_field :cellphone, class: "form-control", placeholder: "Ingresar número de telefono", required: true%>
+                <%= f.number_field :cellphone, class: "form-control", placeholder: "Ingresar número de telefono", required: false%>
               </div>
             </h4>
             <h4>
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-envelope"></i>')%>
                 <%= f.label :email, "Correo Electrónico" %>
-                <%= f.text_field :email, class: "form-control", placeholder: "Ingresar correo electrónico", required: true%>            
+                <%= f.text_field :email, class: "form-control", placeholder: "Ingresar correo electrónico", required: false%>            
               </div>
             </h4>
             <h4>
@@ -127,14 +127,14 @@
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-user"></i>')%>
                 <%= f.label :emergency_contact_name, "Nombre de Contacto de Emergencia" %>
-                <%= f.text_field :emergency_contact_name, class: "form-control", placeholder: "Ingresar contacto de emergencia", required: true%>
+                <%= f.text_field :emergency_contact_name, class: "form-control", placeholder: "Ingresar contacto de emergencia", required: false%>
               </div>
             </h4>
             <h4>
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-earphone"></i>')%>
                 <%= f.label :emergency_contact_number, "Número de Contacto de Emergencia" %>
-                <%= f.number_field :emergency_contact_number, class: "form-control", placeholder: "Ingresar número de contacto de emergencia", required: true%>
+                <%= f.number_field :emergency_contact_number, class: "form-control", placeholder: "Ingresar número de contacto de emergencia", required: false%>
               </div>
             </h4>
           </div>
