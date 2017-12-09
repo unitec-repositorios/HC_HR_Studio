@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205034620) do
+ActiveRecord::Schema.define(version: 20171209164632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,18 @@ ActiveRecord::Schema.define(version: 20171205034620) do
     t.index ["position_id"], name: "index_employees_on_position_id", using: :btree
   end
 
+  create_table "instructors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "school"
+    t.string   "cellphone"
+    t.string   "email"
+    t.string   "profession"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "school_id"
+    t.index ["school_id"], name: "index_instructors_on_school_id", using: :btree
+  end
+
   create_table "positions", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -183,5 +195,6 @@ ActiveRecord::Schema.define(version: 20171205034620) do
 
   add_foreign_key "departments", "areas"
   add_foreign_key "employees", "positions"
+  add_foreign_key "instructors", "schools"
   add_foreign_key "positions", "departments"
 end

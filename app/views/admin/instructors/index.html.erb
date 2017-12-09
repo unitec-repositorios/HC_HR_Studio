@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">Lista de Instructores</h3>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th>Profesión</th>
+                      <th>Institución</th>
+                      <th class="col-xs-1">Opciones</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @instructors.each do |instructor| %>
+                      <tr>
+                      <td> <%= instructor.id %> </td>
+                      <td> <%= instructor.name %> </td>
+                      <td> <%= instructor.profession %> </td>
+                      <td> <%= instructor.school.name%> </td>
+                        <td>
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_instructor_url(instructor), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-trash"></i>'), admin_instructor_url(instructor), class: 'btn btn-sm btn-danger', method: :delete,
+                                            data: { confirm: 'Esta seguro de borrar?' } %>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-10">
+    <%= link_to 'Nuevo Instructor', new_admin_instructor_path, class: 'btn btn-success pull-right' %>
+  </div>
+</div>

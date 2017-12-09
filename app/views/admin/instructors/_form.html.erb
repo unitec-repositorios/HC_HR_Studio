@@ -1,0 +1,25 @@
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :name, "Nombre Completo" %>
+        <%= f.text_field :name, class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= f.label :profession, "Profesión" %>
+        <%= f.select(:profession, @professions.collect{|a| [a.major_description, a.major_description]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+        <%= f.label :cellphone, "Número de Telefono" %>
+        <%= f.text_field :cellphone, class: "form-control"%>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :email, "Correo Electrónico" %>
+        <%= f.text_field :email, class: "form-control"%>
+    </div>
+  <div class="form-group">
+    <%= f.label :school_id, "Instituto" %>
+    <%= f.select(:school_id, @schools.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+  </div>
+</div>
