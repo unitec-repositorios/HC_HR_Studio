@@ -43,7 +43,19 @@ module Admin
 			@call = Call.find(params[:id])
 			@call.destroy
 			redirect_to admin_calls_path
+	    end
+
+	    def attendance
+	    	@calls = Call.all
 	    end	
+
+	    def showlist
+	    	@calls = Call.all
+	    	@call_id = params[:call]
+	    	participants_ids_query = "select employee_id from calls_employees where call_id = ?;"
+	    	@participants_ids = CallsEmployee.find_by_sql([participants_ids_query, @call_id])
+	    	render :attendance
+	    end
 
 		protected
 

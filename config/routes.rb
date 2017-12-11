@@ -22,7 +22,10 @@ Rails.application.routes.draw do
   devise_for :users, only: [:session, :registration], path: 'session',
              path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   post 'admin/reports/comparacion' => 'admin/reports#create'
-  get 'admin/comparacion' => 'admin/reports#new'              
+  get 'admin/comparacion' => 'admin/reports#new'
+
+  post 'admin/calls/asistencia' => 'admin/calls#showlist' 
+  get 'admin/asistencia' => 'admin/calls#attendance'             
   # Application root
   root to: 'application#home'
   # Front routes end
