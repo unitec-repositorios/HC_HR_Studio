@@ -8,6 +8,8 @@ class Employee < ApplicationRecord
 	has_many :abilities, through: :abilities_employees
 	has_many :educations_employees
 	has_many :educations, through: :educations_employees
+	has_many :calls_employees
+	has_many :calls, through: :calls_employees
 	belongs_to :position
 
 	accepts_nested_attributes_for :abilities_employees, allow_destroy: true

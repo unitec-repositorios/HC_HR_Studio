@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209164632) do
+ActiveRecord::Schema.define(version: 20171211092929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,33 @@ ActiveRecord::Schema.define(version: 20171209164632) do
     t.string   "name"
     t.string   "area_id_number"
     t.index ["area_id_number"], name: "index_areas_on_area_id_number", unique: true, using: :btree
+  end
+
+  create_table "calls", force: :cascade do |t|
+    t.string   "topic"
+    t.string   "category"
+    t.string   "place"
+    t.date     "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "ability_id"
+    t.index ["ability_id"], name: "index_calls_on_ability_id", using: :btree
+  end
+
+  create_table "calls_employees", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "employee_id"
+    t.integer  "call_id"
+  end
+
+  create_table "calls_instructors", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "instructor_id"
+    t.integer  "call_id"
   end
 
   create_table "configurations", force: :cascade do |t|
@@ -165,6 +192,8 @@ ActiveRecord::Schema.define(version: 20171209164632) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.string   "cellphone"
+    t.text     "address"
   end
 
   create_table "schools_educations", force: :cascade do |t|
@@ -193,6 +222,7 @@ ActiveRecord::Schema.define(version: 20171209164632) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "calls", "abilities"
   add_foreign_key "departments", "areas"
   add_foreign_key "employees", "positions"
   add_foreign_key "instructors", "schools"

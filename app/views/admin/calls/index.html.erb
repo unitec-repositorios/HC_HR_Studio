@@ -3,7 +3,7 @@
       <div class="box">
 
         <div class="box-header">
-          <h3 class="box-title">Lista de Institutos</h3>
+          <h3 class="box-title">Lista de Convocatorias</h3>
         </div>
 
         <div class="box-body">
@@ -15,28 +15,33 @@
                   <thead>
                     <tr>
                       <th>Código</th>
-                      <th>Instituto</th>
-                      <th class="col-xs-3">Número de Teléfono</th>
+                      <th>Tipo</th>
+                      <th>Tema</th>
+                      <th>Habilidad Adquirida</th>
+                      <th>Fecha</th>
                       <th class="col-xs-1">Opciones</th>
                     </tr>
                   </thead>
 
                   <tbody>
-                    <% @schools.each do |school| %>
+                    <% @calls.each do |call| %>
                       <tr>
-                      <td> <%= school.id %> </td>
-                      <td> <%= school.name %> </td>
-                      <td> <%= school.cellphone %> </td>
+                      <td> <%= call.id %> </td>
+                      <td> <%= call.category %> </td>
+                      <td> <%= call.topic%> </td>
+                      <td> <%= call.ability.ability_name%> </td>
+                      <td> <%= call.date%> </td>
                         <td>
                           <div class="btn-row">
-                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_school_url(school), class: 'btn btn-sm btn-warning' %>
-                            <%= link_to raw('<i class="fa fa-trash"></i>'), admin_school_url(school), class: 'btn btn-sm btn-danger', method: :delete,
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_call_url(call), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-trash"></i>'), admin_call_url(call), class: 'btn btn-sm btn-danger', method: :delete,
                                             data: { confirm: 'Esta seguro de borrar?' } %>
                           </div>
                         </td>
                       </tr>
                     <% end %>
                   </tbody>
+
 
                 </table>
               </div>
@@ -51,7 +56,6 @@
 
 <div class="row">
   <div class="col-md-2 col-md-offset-10">
-    <%= link_to 'Nuevo Instituto', new_admin_school_path, class: 'btn btn-success pull-right' %>
+    <%= link_to 'Nueva Convocatoria', new_admin_call_path, class: 'btn btn-success pull-right' %>
   </div>
 </div>
-
