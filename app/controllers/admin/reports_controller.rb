@@ -3,7 +3,6 @@ module Admin
 
 		def new
 			@employees = Employee.all
-	    	@positions = Position.all
 		end
 
 	    def create

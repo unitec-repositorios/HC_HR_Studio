@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Lista de Asistencia</h3>
+      </div>
+      <div class="box-body">
+        <%= form_tag("/admin/calls/asistencia", method: "post") do %>
+          <div class="col-sm-12">
+            <%= label :call, "Tema de Convocatoria" %>
+            <%= select_tag(:call, options_from_collection_for_select(@calls,'id', 'topic'), { :class => 'form-control' })%>
+          </div>
+          <div class="col-sm-12" style="padding-top:1%">
+            <div class="input-group-btn">
+              <%= submit_tag "Tomar Asistencia", class: "btn bg-green btn-flat"%>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <% if @participants_ids != nil %>
+  <div class="col-sm-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Lista de Participantes</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead>
+                                            <tr>
+                                              <th>Código</th>
+                                              <th>Nombre de Participante</th>
+                                              <th class="col-xs-1">Asistió</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% @participants_ids.each do |pid| %>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <%end%>
+</div>
