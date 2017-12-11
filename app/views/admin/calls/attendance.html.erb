@@ -43,8 +43,9 @@
                                         <tbody>
                                             <% @participants_ids.each do |pid| %>
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td><%= pid.employee_id %></td>
+                                                    <% @p_name =  Employee.select('name').find(pid.employee_id)%>
+                                                    <td><%= @p_name.name %></td>
                                                     <td></td>
                                                 </tr>
                                             <% end %>
