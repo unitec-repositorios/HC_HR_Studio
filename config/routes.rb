@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     resources :educations, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :positions, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :instructors, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :calls, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :calls, only: [:index, :new, :create, :edit, :update, :destroy] do
+      collection do
+      post :attended
+      end 
+    end
   end
   # Back admin routes end
 
@@ -24,7 +28,8 @@ Rails.application.routes.draw do
   post 'admin/reports/comparacion' => 'admin/reports#create'
   get 'admin/comparacion' => 'admin/reports#new'
 
-  post 'admin/calls/asistencia' => 'admin/calls#showlist' 
+  post 'admin/calls/asistencia' => 'admin/calls#showlist'
+
   get 'admin/asistencia' => 'admin/calls#attendance'             
   # Application root
   root to: 'application#home'
