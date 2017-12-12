@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :schools, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :abilities, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :educations, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :positions, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :positions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :instructors, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :calls, only: [:index, :new, :create, :edit, :update, :destroy] do
       collection do

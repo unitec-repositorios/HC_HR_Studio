@@ -17,7 +17,7 @@
                       <th>Código</th>
                       <th>Posición</th>
                       <th>Departamento</th>
-                      <th class="col-xs-1">Opciones</th>
+                      <th class="col-xs-2">Opciones</th>
                     </tr>
                   </thead>
 
@@ -28,10 +28,11 @@
                       <td> <%= position.name %> </td>
                       <td> <%= position.department.name %> </td>
                         <td>
-                          <div class="btn-row">
+                          <div class="btn-row" align = "center">
                             <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_position_url(position), class: 'btn btn-sm btn-warning' %>
                             <%= link_to raw('<i class="fa fa-trash"></i>'), admin_position_url(position), class: 'btn btn-sm btn-danger', method: :delete,
                                             data: { confirm: 'Esta seguro de borrar?' } %>
+                            <%= link_to raw('<i class="fa fa-user"></i> Ver'), admin_position_url(position), class: 'btn btn-sm btn-primary' %>
                           </div>
                         </td>
                       </tr>
