@@ -3,6 +3,13 @@ module Admin
     def index
       @positions = Position.all
     end
+
+    def show
+      @position = Position.find(params[:id])
+      @position_abilities = AbilitiesPosition.where("position_id = ?", params[:id])
+      @position_educations = EducationsPosition.where("position_id = ?", params[:id])
+      @url = admin_position_path(@position)
+    end
     
     def new
       @position = Position.new
