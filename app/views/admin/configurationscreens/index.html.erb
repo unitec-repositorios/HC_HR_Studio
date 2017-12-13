@@ -1,0 +1,40 @@
+<div>
+<h3><b>Hondu</b>Caribe</h3>
+  <div class="box box-primary">
+    <div class="box-header">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel" style="height: auto;">
+          <div class="x_title"><br/><br/>
+            <div class="clearfix"></div>
+          </div>
+          <% if @configuration_all != nil %>
+            <div style="text-align: center;">
+                <% if @configuration_all.image.exists? %>
+                  <%=image_tag @configuration_all.image.url, :alt => "rss feed"%>
+                <% else %>
+                  <%= image_tag("front/Logo.png", :alt => "rss feed") %>  
+                <%end%>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <h3><b>Nuestra Misión</b></h3>
+                <%= @configuration_all.mission %>
+              </div>
+              <div class="col-sm-6">
+                <h3><b>Nuestra Visión</b></h3>
+                <%= @configuration_all.vision %>
+              </div>
+            </div>
+          <% end %>
+          <% else %>
+            <div class="row" style="text-align: center;">
+              <%= image_tag("front/Logo.png", :alt => "rss feed") %>  
+            </div>
+            <div class="row" style="text-align: center;">
+              <%= link_to 'Configurar Misión y Visión', new_admin_configurationscreen_path, class: 'btn btn-success' %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
