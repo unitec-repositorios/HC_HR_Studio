@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :users
 
     # Admin root
-    root to: 'application#index'
+    root to: 'configurationscreens#index'
     resources :homes, except: [:show, :index]
     resources :employees, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :areas, only: [:index, :new, :create, :edit, :update, :destroy]
@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :educations, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :positions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :instructors, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :calls, only: [:index, :new, :create, :edit, :update, :destroy] do
+    resources :configurationscreens, only: [:new, :create]
+    resources :calls, only:[:index, :new, :create, :edit, :update, :destroy] do
       collection do
       post :attended
       end 

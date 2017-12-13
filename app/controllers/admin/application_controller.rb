@@ -7,6 +7,7 @@ module Admin
     layout :layout_by_resource
 
     def index
+      @configuration_all = Configurationscreen.limit(1).first
     end
 
     def configure_permitted_parameters
