@@ -3,6 +3,13 @@ module Admin
     def index
       @positions = Position.all
     end
+
+    def show
+      @position = Position.find(params[:id])
+      @position_abilities = AbilitiesPosition.where("position_id = ?", params[:id])
+      @position_educations = EducationsPosition.where("position_id = ?", params[:id])
+      @url = admin_position_path(@position)
+    end
     
     def new
       @position = Position.new
@@ -49,7 +56,7 @@ module Admin
     protected
 
     def position_params
-      params.require(:position).permit(:position_id_number, :name, :department_id, abilities_positions_attributes: [:id, :ability_id, 
+      params.require(:position).permit(:position_id_number, :description, :name, :department_id, abilities_positions_attributes: [:id, :ability_id, 
                                         :position_id, :_destroy], educations_positions_attributes: [:id, :education_id, :position_id,
                                         :completed, :title, :_destroy])
     end

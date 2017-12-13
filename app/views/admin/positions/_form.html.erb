@@ -14,44 +14,48 @@
     <%= f.label :department_id, "Departamento" %>
     <%= f.select(:department_id, @departments.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
   </div>
+  <div class="form-group">
+        <%= f.label :description, "Descripción de la Posición" %>
+        <%= f.text_area :description, class: "form-control"%>
+    </div>
 </div>
 
 
-  <div class="col-sm-12">
-    <div class="box-header with-border">
-    <h3 class="box-title">Habilidades</h3>
-    </div>
-      <div class="box box-primary">
-        <div class="box-body">
-          <%= f.fields_for :abilities_positions do |abemp| %>
-            <%= render 'abilities_position_fields', f:abemp %>
-          <% end %>
-          <div class="links">
-          <div class="col-sm-12 text-center">
-            <br>
-            <%= link_to_add_association 'Agregar Habilidad', f, :abilities_positions, class: "btn btn-sm btn-primary" %>
-          </div>
-          </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-sm-12">
+<div class="col-sm-12">
   <div class="box-header with-border">
-    <h3 class="box-title">Educación Formal</h3>
-    </div>
+  <h3 class="box-title">Habilidades</h3>
+  </div>
     <div class="box box-primary">
       <div class="box-body">
-        <%= f.fields_for :educations_positions do |edemp| %>
-          <%= render 'educations_position_fields', f:edemp %>
+        <%= f.fields_for :abilities_positions do |abemp| %>
+          <%= render 'abilities_position_fields', f:abemp %>
         <% end %>
         <div class="links">
-          <div class="col-sm-12 text-center">
-            <br>
-            <%= link_to_add_association 'Agregar Educación', f, :educations_positions, class: "btn btn-sm btn-primary" %>
-          </div>
+        <div class="col-sm-12 text-center">
+          <br>
+          <%= link_to_add_association 'Agregar Habilidad', f, :abilities_positions, class: "btn btn-sm btn-primary" %>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-sm-12">
+<div class="box-header with-border">
+  <h3 class="box-title">Educación Formal</h3>
+  </div>
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= f.fields_for :educations_positions do |edemp| %>
+        <%= render 'educations_position_fields', f:edemp %>
+      <% end %>
+      <div class="links">
+        <div class="col-sm-12 text-center">
+          <br>
+          <%= link_to_add_association 'Agregar Educación', f, :educations_positions, class: "btn btn-sm btn-primary" %>
         </div>
       </div>
     </div>
   </div>
+</div>

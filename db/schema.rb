@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205034620) do
+ActiveRecord::Schema.define(version: 20171213183542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,35 @@ ActiveRecord::Schema.define(version: 20171205034620) do
     t.index ["area_id_number"], name: "index_areas_on_area_id_number", unique: true, using: :btree
   end
 
-  create_table "configurations", force: :cascade do |t|
+  create_table "calls", force: :cascade do |t|
+    t.string   "topic"
+    t.string   "category"
+    t.string   "place"
+    t.date     "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "ability_id"
+    t.index ["ability_id"], name: "index_calls_on_ability_id", using: :btree
+  end
+
+  create_table "calls_employees", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "employee_id"
+    t.integer  "call_id"
+    t.boolean  "attended"
+  end
+
+  create_table "calls_instructors", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "instructor_id"
+    t.integer  "call_id"
+  end
+
+  create_table "configurationscreens", force: :cascade do |t|
     t.text     "mission"
     t.text     "vision"
     t.datetime "created_at",         null: false
@@ -139,12 +167,25 @@ ActiveRecord::Schema.define(version: 20171205034620) do
     t.index ["position_id"], name: "index_employees_on_position_id", using: :btree
   end
 
+  create_table "instructors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "school"
+    t.string   "cellphone"
+    t.string   "email"
+    t.string   "profession"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "school_id"
+    t.index ["school_id"], name: "index_instructors_on_school_id", using: :btree
+  end
+
   create_table "positions", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.bigint   "department_id"
     t.string   "name"
     t.string   "position_id_number"
+    t.text     "description"
     t.index ["department_id"], name: "index_positions_on_department_id", using: :btree
     t.index ["position_id_number"], name: "index_positions_on_position_id_number", unique: true, using: :btree
   end
@@ -153,6 +194,8 @@ ActiveRecord::Schema.define(version: 20171205034620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.string   "cellphone"
+    t.text     "address"
   end
 
   create_table "schools_educations", force: :cascade do |t|
@@ -181,7 +224,9 @@ ActiveRecord::Schema.define(version: 20171205034620) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "calls", "abilities"
   add_foreign_key "departments", "areas"
   add_foreign_key "employees", "positions"
+  add_foreign_key "instructors", "schools"
   add_foreign_key "positions", "departments"
 end

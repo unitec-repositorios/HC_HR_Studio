@@ -16,6 +16,7 @@
                     <tr>
                       <th>Código</th>
                       <th>Instituto</th>
+                      <th class="col-xs-3">Número de Teléfono</th>
                       <th class="col-xs-1">Opciones</th>
                     </tr>
                   </thead>
@@ -25,6 +26,7 @@
                       <tr>
                       <td> <%= school.id %> </td>
                       <td> <%= school.name %> </td>
+                      <td> <%= school.cellphone %> </td>
                         <td>
                           <div class="btn-row">
                             <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_school_url(school), class: 'btn btn-sm btn-warning' %>

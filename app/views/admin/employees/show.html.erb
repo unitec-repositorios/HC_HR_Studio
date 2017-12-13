@@ -29,13 +29,13 @@
         </div>
         <div class="col-md-4" style="margin:1%;">
           <div class="row">
-            <h4><%=raw('<i class="glyphicon glyphicon-list"></i> <b>Área: </b>')%><%=@employee.position.department.area.name%></h4>
+            <h4><%=raw('<i class="glyphicon glyphicon-list"></i> <b>Área: </b>')%><%=@employee.position.department.area.area_id_number.to_s + " - " + @employee.position.department.area.name%></h4>
           </div>
           <div class="row">
-            <h4><%=raw('<i class="glyphicon glyphicon-list-alt"></i> <b>Departamento: </b>')%><%=@employee.position.department.name%></h4>
+            <h4><%=raw('<i class="glyphicon glyphicon-list-alt"></i> <b>Departamento: </b>')%><%=@employee.position.department.department_id_number.to_s + " - " + @employee.position.department.name%></h4>
           </div>
           <div class="row">
-            <h4><%=raw('<i class="glyphicon glyphicon-briefcase"></i> <b>Puesto: </b>')%><%=@employee.position.name%></h4>
+            <h4><%=raw('<i class="glyphicon glyphicon-briefcase"></i> <b>Puesto: </b>')%><%=@employee.position.position_id_number.to_s + " - " + @employee.position.name%></h4>
           </div>
         </div>
       </div>
