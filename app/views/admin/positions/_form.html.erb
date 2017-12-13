@@ -14,6 +14,10 @@
     <%= f.label :department_id, "Departamento" %>
     <%= f.select(:department_id, @departments.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
   </div>
+  <div class="form-group">
+        <%= f.label :description, "Descripción de la Posición" %>
+        <%= f.text_area :description, class: "form-control"%>
+    </div>
 </div>
 
 
