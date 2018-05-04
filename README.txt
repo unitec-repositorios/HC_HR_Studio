@@ -7,6 +7,9 @@ Rails Version: 5.1.4
 Linux Versions: 
 Linux Mint 18.1 Serena
 
+For further consults on how to download Ruby and/or Rails:
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rvm-on-ubuntu-16-04
+
 1. Download and install postgresql
 
 One way to do so: step by step
@@ -29,6 +32,7 @@ $ git clone *copy bitbucket link*
 
 2. Install dependencies and configure database
 
+$ rvm --default use 2.4.0
 $ bundle install 
 $ rake db:drop
 $ rake db:create
