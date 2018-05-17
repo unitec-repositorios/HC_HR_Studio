@@ -1,5 +1,5 @@
 <div>
-<h3><b>Bien</b>venido</h3>
+<h3><b>Honducaribe</b></h3>
   <div class="box box-primary">
     <div class="box-header">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -10,9 +10,9 @@
           <% if @configuration_all != nil %>
             <div style="text-align: center;">
                 <% if @configuration_all.image.exists? %>
-                  <%=image_tag @configuration_all.image.url, :alt => "rss feed", :size => '340x240'%>
+                  <%=image_tag @configuration_all.image.url, :alt => "rss feed", :size => '600x150'%>
                 <% else %>
-                  <%= image_tag("front/GrupoBLogo.png", :alt => "rss feed", :size => '340x240') %>  
+                  <%= image_tag("front/Logo.png", :alt => "rss feed", :size => '600x150') %>  
                 <%end%>
             </div>
             <div class="row">
