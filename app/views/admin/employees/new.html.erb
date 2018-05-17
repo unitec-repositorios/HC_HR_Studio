@@ -63,7 +63,7 @@
                 <%=raw('<i class="glyphicon glyphicon-user"></i>')%>
                 <%= f.label :gender, "Género" %>
                 <small style="color:red;"> *Campo Obligatorio </small>
-                <%= f.select(:gender, ['Masculino', 'Femenino', 'Otro'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+                <%= f.select(:gender, ['Masculino', 'Femenino', 'Otro'], {include_blank: "Escoger..."}, { :class => 'form-control', :required => true }) %>
               </div>
             </h4>
             <h4>
@@ -97,7 +97,7 @@
                 <%=raw('<i class="glyphicon glyphicon-heart-empty"></i>')%>
                 <%= f.label :marital_status, "Estado Civil" %>
                 <small style="color:red;"> *Campo Obligatorio </small>
-                <%= f.select(:marital_status, ['Soltero', 'Casado', 'Viudo', 'Unión Libre'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+                <%= f.select(:marital_status, ['Soltero', 'Casado', 'Viudo', 'Unión Libre'], {include_blank: "Escoger..."}, { :class => 'form-control', :required => true }) %>
               </div>
             </h4>
           </div>                

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Ruby version
-ruby '2.4.0'
+ruby '~> 2.4.0'
 
 # General list of gems
 gem 'rails', '5.0.2'
