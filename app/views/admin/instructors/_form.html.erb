@@ -8,7 +8,7 @@
         <%= f.select(:profession, @professions.collect{|a| [a.major_description, a.major_description]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
     </div>
     <div class="form-group">
-        <%= f.label :cellphone, "Número de Telefono" %>
+        <%= f.label :cellphone, "Número de Teléfono" %>
         <%= f.text_field :cellphone, class: "form-control"%>
     </div>
 </div>
