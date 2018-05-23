@@ -75,7 +75,7 @@
             <h4>
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-gift"></i>')%>
-                <%= f.label :birth_date, "Fecha de Nacimiento" %> 
+                <%= f.label :birth_date, "Fecha de Nacimiento" %>
                 <%= f.date_field :birth_date, class: "form-control", required: true%>
               </div>
             </h4>
@@ -84,8 +84,8 @@
                 <%=raw('<i class="glyphicon glyphicon-globe"></i>')%>
                 <%= f.label :birth_place, "Lugar de Nacimiento" %>
                 <%= f.text_field :birth_place, class: "form-control", placeholder: "Ingresar lugar de nacimiento", required: true%>
-              </div>  
-            </h4>  
+              </div>
+            </h4>
             <h4>
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-heart-empty"></i>')%>
@@ -93,7 +93,7 @@
                 <%= f.select(:marital_status, ['Soltero', 'Casado', 'Viudo', 'Unión Libre'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
               </div>
             </h4>
-          </div>                
+          </div>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
           <div class="col-md-6">
             <h4>
               <div class="form-group">
-                <%=raw('<i class="glyphicon glyphicon-earphone"></i>')%>               
+                <%=raw('<i class="glyphicon glyphicon-earphone"></i>')%>
                 <%= f.label :cellphone, "Número de Telefono" %>
                 <%= f.number_field :cellphone, class: "form-control", placeholder: "Ingresar numero de telefono", required: false%>
               </div>
@@ -117,7 +117,7 @@
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-envelope"></i>')%>
                 <%= f.label :email, "Correo Electrónico" %>
-                <%= f.text_field :email, class: "form-control", placeholder: "Ingresar correo electronico", required: false%>        
+                <%= f.text_field :email, class: "form-control", placeholder: "Ingresar correo electronico", required: false%>
               </div>
             </h4>
             <h4>
@@ -130,7 +130,7 @@
           </div>
           <!--Segunda columna -->
           <div class="col-md-6">
-            <h4>  
+            <h4>
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-user"></i>')%>
                 <%= f.label :emergency_contact_name, "Nombre de Contacto de Emergencia" %>
