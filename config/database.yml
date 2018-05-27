@@ -32,6 +32,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: hc_rrhh_production
+  host: localhost
   pool: 5
   username: hc_rrhh
   password: secret
