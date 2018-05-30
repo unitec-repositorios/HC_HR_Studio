@@ -14,7 +14,7 @@
                 <%=raw('<i class="glyphicon glyphicon-user"></i>')%>
                 <%= f.label :name, "Nombre Completo" %>
                 <medium style="color:red;"> * </medium>
-                <%= f.text_field :name, class: "form-control", placeholder: "Ingresar nombre", required: true%>
+                <%= f.text_field :name, class: "form-control", placeholder: "Ingresar nombre", required: true, autofocus:true%>
               </h4>
             </div>
             <div class="form-group">
@@ -22,7 +22,7 @@
                 <%=raw('<i class="glyphicon glyphicon-qrcode"></i>')%>
                 <%= f.label :employee_id_number, "Código de Empleado" %>
                 <medium style="color:red;"> * </medium>
-                <%= f.text_field :employee_id_number, class: "form-control", placeholder: "Ingresar codigo de empleado", required: true%>
+                <%= f.text_field :employee_id_number, class: "form-control", placeholder: "Ingresar código de empleado", required: true%>
               </h4>
             </div>
           </div>
@@ -48,7 +48,7 @@
                 <%=raw('<i class="glyphicon glyphicon-tag"></i>')%>
                 <%= f.label :id_number, "Número de Identidad" %>
                 <medium style="color:red;"> * </medium>
-                <%= f.number_field :id_number, class: "form-control", placeholder: "Ingresar numero de identidad", required: true%>
+                <%= f.number_field :id_number, class: "form-control", placeholder: "Ingresar número de identidad", required: true%>
               </div>
             </h4>
             <h4>
@@ -118,7 +118,7 @@
                 <%=raw('<i class="glyphicon glyphicon-earphone"></i>')%>
                 <%= f.label :cellphone, "Número de Teléfono" %>
                 <medium style="color:red;"> * </medium>
-                <%= f.number_field :cellphone, class: "form-control", placeholder: "Ingresar numero de teléfono", required: true%>
+                <%= f.number_field :cellphone, class: "form-control", placeholder: "Ingresar número de teléfono", required: true%>
               </div>
             </h4>
             <h4>
@@ -196,7 +196,7 @@
                 <%=raw('<i class="glyphicon glyphicon-credit-card"></i>')%>
                 <%= f.label :bank_account, "Número de Cuenta Bancaria" %>
                 <medium style="color:red;"> * </medium>
-                <%= f.number_field :bank_account, class: "form-control", placeholder: "Ingresar # de cuenta", required: true%>
+                <%= f.number_field :bank_account, class: "form-control", placeholder: "Ingresar número de cuenta", required: true%>
               </div>
             </h4>
             <h4>
