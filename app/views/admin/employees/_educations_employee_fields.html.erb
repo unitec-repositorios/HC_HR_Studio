@@ -13,6 +13,8 @@
         </th>
       <th>
             <h4>
+                <div class="form-group">
+
                 <span class="glyphicon glyphicon-education" style="font-size:75%;"></span>&nbsp&nbsp
                     <%= f.label :title, "Título" %>
                 </div>
@@ -41,6 +43,7 @@
   </thead>
 
   <tbody>
+  <table id="user_index" class='table borderless' role="grid">
       <tr>
         <td>
             <%= f.select(:school_id, @schools.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
@@ -48,8 +51,8 @@
         <td>
             <%= f.select(:title, ['Secundaria', 'Bachillerato', 'Educación Pregrado', 'Educación Postgrado', 'Educación Doctorado'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
         </td>
-        <td>
-            <%= f.select(:education_id, @educations.collect{|a| [a.major_description, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+        <td class="col-xs-5">
+            <%= f.select(:education_id, @educations.collect{|a| [a.major_description, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%> 
         </td>
         <td align="center" class="vert-aligned">
             <%= f.check_box :completed%>
@@ -58,6 +61,7 @@
             <%= link_to_remove_association "&nbsp; Quitar Educación &nbsp;".html_safe, f, class: "btn btn-sm btn-danger"%>
         </td>
       </tr>
+      </table>
   </tbody>
 </table>
 </div>
