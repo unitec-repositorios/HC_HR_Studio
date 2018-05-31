@@ -218,16 +218,16 @@
     <div class="col-sm-8 col-xs-offset-2">
       <h3>Habilidades</h3>
         <div class="box box-primary">
+          <div class="links">
+            <div class="col-sm-12 text-center">
+              <br>
+              <%= link_to_add_association 'Agregar Habilidad', f, :abilities_employees, class: "btn btn-sm btn-primary", data: {association_insertion_method: :append} %>
+            </div>
+          </div>
           <div class="box-body">
             <%= f.fields_for :abilities_employees do |abemp| %>
               <%= render 'abilities_employee_fields', f:abemp %>
             <% end %>
-            <div class="links">
-            <div class="col-sm-12 text-center">
-              <br>
-              <%= link_to_add_association 'Agregar Habilidad', f, :abilities_employees, class: "btn btn-sm btn-primary" %>
-            </div>
-            </div>
         </div>
       </div>
     </div>
