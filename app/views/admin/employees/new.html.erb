@@ -169,8 +169,9 @@
             <h4>
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-briefcase"></i>')%>
-                <%= f.label :position_id, "Puesto Laboral" %>
-                <%= f.select(:position_id, @positions.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+                <%= f.label :position_id, "Puesto Laboral" %> 
+                <medium style="color:red;"> * </medium>
+                <%= f.select(:position_id, @positions.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control', :required => true })%>
               </div>
             </h4>
             <h4>
@@ -185,7 +186,8 @@
               <div class="form-group">
                 <%=raw('<i class="glyphicon glyphicon-list-alt"></i>')%>
                 <%= f.label :contract_type, "Tipo de Contrato" %>
-                <%= f.select(:contract_type, ['Contrato Permanente / Indefinido', 'Contrato Temporal / Definido', 'Practicante'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+                <medium style="color:red;"> * </medium>
+                <%= f.select(:contract_type, ['Contrato Permanente / Indefinido', 'Contrato Temporal / Definido', 'Practicante'], {include_blank: "Escoger..."}, { :class => 'form-control', :required => true }) %>
               </div>
             </h4>
           </div>

@@ -1,18 +1,18 @@
 <div class="col-md-6">
     <div class="form-group">
         <%= f.label :position_id_number, "Código de la Posición" %>
-        <%= f.text_field :position_id_number, class: "form-control", autofocus:true%>
+        <%= f.text_field :position_id_number, class: "form-control", autofocus:true, required:true%>
     </div>
     <div class="form-group">
         <%= f.label :name, "Nombre de la Posición" %>
-        <%= f.text_field :name, class: "form-control"%>
+        <%= f.text_field :name, class: "form-control", required:true%>
     </div>
 </div>
 
 <div class="col-md-6">
   <div class="form-group">
     <%= f.label :department_id, "Departamento" %>
-    <%= f.select(:department_id, @departments.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+    <%= f.select(:department_id, @departments.collect{|a| [a.name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control', :required => true }) %>
   </div>
   <div class="form-group">
         <%= f.label :description, "Descripción de la Posición" %>
