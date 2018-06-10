@@ -12,6 +12,13 @@ module Admin
 			@url = admin_calls_path
 		end
 
+		def show
+			@call = Call.find(params[:id])
+			@call_instructors = CallsInstructor.where("call_id = ?", params[:id])
+			@call_employees = CallsEmployee.where("call_id = ?", params[:id])
+			@url = admin_call_path(@call)	
+		end
+
 		def create
 			@call = Call.new(call_params)
 			if @call.save
