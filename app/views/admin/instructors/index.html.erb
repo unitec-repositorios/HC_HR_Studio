@@ -4,6 +4,7 @@
 
         <div class="box-header">
           <h3 class="box-title">Lista de Instructores</h3>
+          <%= link_to 'Nuevo Instructor', new_admin_instructor_path, class: 'btn btn-success pull-right' %>
         </div>
 
         <div class="box-body">
@@ -52,8 +53,3 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-2 col-md-offset-10">
-    <%= link_to 'Nuevo Instructor', new_admin_instructor_path, class: 'btn btn-success pull-right' %>
-  </div>
-</div>
