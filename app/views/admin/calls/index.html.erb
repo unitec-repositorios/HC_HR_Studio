@@ -15,12 +15,12 @@
                 <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
                   <thead>
                     <tr>
-                      <th>Código</th>
+                      <th width="7">Código</th>
                       <th>Tipo</th>
-                      <th>Tema</th>
+                      <th width="150">Tema</th>
                       <th>Habilidad Adquirida</th>
                       <th>Fecha</th>
-                      <th class="col-xs-1">Opciones</th>
+                      <th width="150">Opciones</th>
                     </tr>
                   </thead>
 
@@ -35,8 +35,10 @@
                         <td>
                           <div class="btn-row">
                             <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_call_url(call), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-user"></i> Ver'), admin_call_url(call), class: 'btn btn-sm btn-primary' %>
                             <%= link_to raw('<i class="fa fa-trash"></i>'), admin_call_url(call), class: 'btn btn-sm btn-danger', method: :delete,
                                             data: { confirm: 'Esta seguro de borrar?' } %>
+                                            
                           </div>
                         </td>
                       </tr>

@@ -15,13 +15,13 @@
                 <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Empleado</th>
-                      <th>Área</th>
-                      <th>Departamento</th>
-                      <th>Puesto</th>
-                      <th>Estado</th>
-                      <th class="col-xs-1">Opciones</th>
+                      <th width="10">Código</th>
+                      <th width="20%">Empleado</th>
+                      <th width="15%">Área</th>
+                      <th width="20%">Departamento</th>
+                      <th width="15%">Puesto</th>
+                      <th width="5%">Estado</th>
+                      <th width="15%">Opciones</th>
                     </tr>
                   </thead>
 
@@ -38,14 +38,14 @@
                         <% else %>
                           <td><span class="label label-danger">Inactivo</span></td>
                         <%end%>
-                        <td style="width: 10%;">
+                        <td style="width: 15%;">
                           <div class="btn-row">
                             <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_employee_url(employee), class: 'btn btn-sm btn-warning' %>
                             <%= link_to raw('<i class="fa fa-user"></i> Ver'), admin_employee_url(employee), class: 'btn btn-sm btn-primary' %>
                           </div>
                         </td>
-                    <%end%>
-                      </tr>
+                      <%end%>
+                    </tr>
                   </tbody>
 
                 </table>
