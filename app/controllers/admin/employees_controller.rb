@@ -31,7 +31,7 @@ module Admin
 
       if  @employee.save
         flash[:notice] = t('admin.employees.create.success')
-        respond_with :edit, :admin, @employee
+        respond_with :admin, @employee #nuevo path
       else
         flash[:warning] = @employee.errors.full_messages.uniq.join(', ')
         respond_with :new, :admin, :employee
