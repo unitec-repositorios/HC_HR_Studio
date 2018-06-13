@@ -9,7 +9,7 @@ module Admin
 
     def show
         @employee = Employee.find(params[:id])
-        @employee_abilities = AbilitiesEmployee.where("employee_id = ?", params[:id])
+        @employee_abilities = AbilitiesEmployee.select(:employee_id, :ability_id, :school_id).where("employee_id = ?", params[:id]).distinct()
         @employee_education = EducationsEmployee.where("employee_id = ?", params[:id])
         @url = admin_employee_path(@employee)
     end
