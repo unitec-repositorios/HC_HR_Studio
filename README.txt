@@ -24,6 +24,10 @@ $ sudo apt-get install postgresql postgresql-contrib
 
 $ sudo apt-get install libpq-dev
 
+Check to see if you have Imagemagick in the computer, is used for handling the images. If not you can install it with the following command.
+
+$ sudo apt-get install imagemagick
+
 2. Download Project
 
 Go to preferred directory
