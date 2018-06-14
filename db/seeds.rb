@@ -29,6 +29,9 @@ School.create!([{
 
 Ability.create!([{
   ability_name: "Habilidad 1"
+},
+{
+  ability_name: "Habilidad 2"
 }])
 
 Department.create!([{
