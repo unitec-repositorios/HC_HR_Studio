@@ -34,7 +34,7 @@
       <tbody>
           <tr>
             <td>
-                <%= f.select(:title, ['Secundaria', 'Bachillerato', 'Educación Pregrado', 'Educación Postgrado', 'Educación Doctorado'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+                <%= f.select(:title, ['Primaria', 'Secundaria', 'Bachillerato', 'Técnico', 'Educación Pregrado', 'Educación Postgrado', 'Educación Doctorado'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
             </td>
             <td>
                 <%= f.select(:education_id, @educations.collect{|a| [a.major_description, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' })%>
