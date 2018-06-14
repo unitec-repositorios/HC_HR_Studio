@@ -1,7 +1,7 @@
 <div class="col-md-6">
     <div class="form-group">
         <%= f.label :category, "Tipo de Convocatoria" %>
-        <%= f.select(:category, ['Capacitación', 'Socialización', 'Taller', 'Evaluación'], {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+        <%= f.select(:category, ['Capacitación', 'Socialización', 'Taller', 'Evaluación'], {include_blank: "Escoger..."}, { :class => 'form-control'}) %>
     </div>
     <div class="form-group">
         <%= f.label :topic, "Tema" %>
@@ -20,7 +20,7 @@
 <div class="col-md-6">
     <div class="form-group">
         <%= f.label :ability_id, "Habilidad Adquirida" %>
-        <%= f.select(:ability_id, @abilities.collect{|a| [a.ability_name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control' }) %>
+        <%= f.select(:ability_id, @abilities.collect{|a| [a.ability_name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control', :required => true }) %>
     </div>
   <div class="form-group">
     <%= f.label :start_time, "Hora de Inicio" %>
