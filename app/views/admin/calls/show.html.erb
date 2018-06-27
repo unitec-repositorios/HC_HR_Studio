@@ -78,7 +78,6 @@
             <div class="col-md-12">
               <div class="row">
                 <h4>
-                  <b><%= "Nombre del Instructor: " %></b>
                   <%=@i_name.name%>
                 </h4>
               </div>
@@ -103,7 +102,6 @@
             <div class="col-md-12">
               <div class="row">
                 <h4>
-                  <b><%= "Nombre del Participante: " %></b>
                   <%=@p_name.name%>
                 </h4>
               </div>
@@ -115,3 +113,5 @@
     </div>
   </div>
 </div>
+<div class="input-group-btn" align="center">
+    <%= link_to "Regresar", admin_calls_path, class: "btn bg-red btn-flat" %>
