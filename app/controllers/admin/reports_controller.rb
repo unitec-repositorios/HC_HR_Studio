@@ -9,7 +9,9 @@ module Admin
 	    	@employees = Employee.all
 	    	@positions = Position.all
 	    	@employee_id = params[:employee]
+	    	@employee = Employee.where(:id => @employee_id)[0]
 	    	@position_id = Employee.where(:id => @employee_id).pluck(:position_id)
+	    	@position = Position.find(@position_id)[0]
 	    	ab_intersect_query = "select ability_id from abilities_employees where employee_id = ? intersect select ability_id from abilities_positions where position_id = ?;"
 	    	ab_not_from_position_query = "select ability_id from abilities_employees where employee_id = ? except select ability_id from abilities_positions where position_id = ?;"
 	    	ab_notin_query = "select ability_id from abilities_positions where position_id = ? except select ability_id from abilities_employees where employee_id = ?;"

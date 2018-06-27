@@ -6016,7 +6016,7 @@ table.text-center th {
     margin-right: auto;
   }
   
-  #btn-regresar-employee{
+  btn, .btn, #cmb-empleado{
     display: none;
   }
   
