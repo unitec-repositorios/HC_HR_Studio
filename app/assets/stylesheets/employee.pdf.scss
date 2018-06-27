@@ -1,0 +1,28 @@
+@import "front/bootstrap/bootstrap.min";
+@import "front/styles";
+footer {
+    font-size: 9px;
+    color: #f00;
+    text-align: center;
+}
+
+header {
+    .logo {
+        width: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.row2 {
+    height: auto;
+    background-color: yellow;
+    margin: 1px;
+    
+    .profile-user-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

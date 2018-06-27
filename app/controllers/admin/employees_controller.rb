@@ -12,6 +12,12 @@ module Admin
         @employee_abilities = AbilitiesEmployee.select(:employee_id, :ability_id, :school_id).where("employee_id = ?", params[:id]).distinct()
         @employee_education = EducationsEmployee.where("employee_id = ?", params[:id])
         @url = admin_employee_path(@employee)
+        
+        respond_to do |format|
+          format.html
+          format.pdf {render template: 'admin/employees/report', pdf: 'Reporte'}
+        end
+        
     end
 
     def new

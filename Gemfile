@@ -22,6 +22,8 @@ gem 'layer-handler'
 gem 'friendly_id'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'cocoon'
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
 
 # Only Development env gems
 group :development do
