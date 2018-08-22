@@ -32,7 +32,8 @@ Rails.application.routes.draw do
 
   post 'admin/calls/asistencia' => 'admin/calls#showlist'
 
-  get 'admin/asistencia' => 'admin/calls#attendance'             
+  get 'admin/asistencia' => 'admin/calls#attendance'
+  get 'admin/reports/employee' => 'admin/reports#employee'             
   # Application root
   root to: 'application#home'
   # Front routes end

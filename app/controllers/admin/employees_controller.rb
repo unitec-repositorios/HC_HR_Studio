@@ -4,8 +4,19 @@ module Admin
     before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
     def index
-        @employees= Employee.order("created_at ASC")
+        if params[:filter] == '1'
+          @employees= Employee.order("created_at ASC")
+         elsif params[:filter] == '2'
+          @employees = Employee.where('contract_type = ?','Practicante')
+         elsif params[:filter] == '3'
+          @employees = Employee.where('contract_type = ?','Contrato Temporal / Definido')
+         elsif params[:filter] == '4'
+          @employees = Employee.where('contract_type = ?','Contrato Permanente / Indefinido')
+         else
+          @employees= Employee.order("created_at ASC")  
+         end
     end
+
 
     def show
         @employee = Employee.find(params[:id])
@@ -16,8 +27,7 @@ module Admin
         respond_to do |format|
           format.html
           format.pdf {render template: 'admin/employees/report', pdf: 'Reporte'}
-        end
-        
+        end       
     end
 
     def new

@@ -1,7 +1,8 @@
+
 source 'https://rubygems.org'
 
 # Ruby version
-ruby '~> 2.4.0'
+ruby '>= 2.4.0'
 
 # General list of gems
 gem 'rails', '~> 5.0.2'
@@ -15,7 +16,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
-gem 'devise'
+gem 'devise','~>4.4'
 gem 'pundit'
 gem 'sendgrid'
 gem 'layer-handler'
