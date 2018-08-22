@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :positions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :instructors, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :configurationscreens, only: [:new, :create]
+    resources :schedules, only: [:index, :show, :new, :edit]
     resources :calls, only:[:index, :new, :create, :edit, :update, :destroy, :show ] do
       collection do
       post :attended
