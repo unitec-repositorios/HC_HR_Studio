@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :organizacionals
+  end
   # Back admin routes start
   namespace :admin do
     resources :users
@@ -29,7 +32,8 @@ Rails.application.routes.draw do
              path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   post 'admin/reports/comparacion' => 'admin/reports#create'
   get 'admin/comparacion' => 'admin/reports#new'
-
+  post 'admin/organizacionals/orga' => 'admin/organizacionals#create'
+  get 'admin/orga' => 'admin/organizacionals#new'
   post 'admin/calls/asistencia' => 'admin/calls#showlist'
 
   get 'admin/asistencia' => 'admin/calls#attendance'
