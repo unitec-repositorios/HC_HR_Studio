@@ -11,6 +11,7 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : Rails.application.secrets[:site_title] %>">
     <title><%= content_for?(:title) ? yield(:title) : Rails.application.secrets[:site_title] %></title>
 
+<<<<<<< HEAD
     <%= stylesheet_link_tag 'application_back', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
@@ -31,6 +32,26 @@
   </body>
 
   <%= javascript_include_tag 'application_back' %>
+=======
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <%= render partial: 'shared/navigation' %>
+          <%= yield %>
+          <%= render partial: 'shared/footer' %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <%= javascript_include_tag 'application' %>
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
 
   <% if content_for?(:added_scripts) %>
     <%= yield :added_scripts %>

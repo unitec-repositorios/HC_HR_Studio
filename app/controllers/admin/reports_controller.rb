@@ -30,5 +30,26 @@ module Admin
 	    	render :new
 	    end
 
+<<<<<<< HEAD
 	end
+=======
+	    def employee
+	    	if params[:filter] == '1'
+          		@employees= Employee.order("created_at ASC")
+         	elsif params[:filter] == '2'
+          		@employees = Employee.where('contract_type = ?','Practicante')
+         	elsif params[:filter] == '3'
+          		@employees = Employee.where('contract_type = ?','Contrato Temporal / Definido')
+         	elsif params[:filter] == '4'
+          		@employees = Employee.where('contract_type = ?','Contrato Permanente / Indefinido')
+         	else
+          		@employees= Employee.order("created_at ASC")  
+         	end
+	    end
+
+	    protected def reports_params
+        	params.require(:filter);
+    		end
+		end
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
 end

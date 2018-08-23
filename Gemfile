@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 source 'https://rubygems.org'
 
 # Ruby version
 ruby '~> 2.4.0'
+=======
+
+source 'https://rubygems.org'
+
+# Ruby version
+ruby '>= 2.4.0'
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
 
 # General list of gems
 gem 'rails', '~> 5.0.2'
@@ -15,7 +23,11 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
+<<<<<<< HEAD
 gem 'devise'
+=======
+gem 'devise','~>4.4'
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
 gem 'pundit'
 gem 'sendgrid'
 gem 'layer-handler'

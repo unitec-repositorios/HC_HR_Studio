@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180822064017) do
+=======
+ActiveRecord::Schema.define(version: 20180821160231) do
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +40,14 @@ ActiveRecord::Schema.define(version: 20180822064017) do
     t.datetime "updated_at",  null: false
   end
 
+<<<<<<< HEAD
   create_table "admin_organizacionals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
   create_table "applications", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -184,11 +191,14 @@ ActiveRecord::Schema.define(version: 20180822064017) do
     t.index ["school_id"], name: "index_instructors_on_school_id", using: :btree
   end
 
+<<<<<<< HEAD
   create_table "organizacionals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
   create_table "positions", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -200,6 +210,17 @@ ActiveRecord::Schema.define(version: 20180822064017) do
     t.index ["position_id_number"], name: "index_positions_on_position_id_number", unique: true, using: :btree
   end
 
+<<<<<<< HEAD
+=======
+  create_table "schedules", force: :cascade do |t|
+    t.date     "fecha"
+    t.time     "hora_entrada"
+    t.time     "hora_salida"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
   create_table "schools", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

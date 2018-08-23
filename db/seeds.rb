@@ -46,4 +46,7 @@ Department.create!([{
 }])
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e8bca6bb73155a8c3466680b203ce354ceb96fd0
