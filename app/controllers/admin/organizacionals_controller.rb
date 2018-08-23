@@ -1,4 +1,5 @@
-class Admin::OrganizacionalsController < ApplicationController
+module Admin
+class Admin::OrganizacionalsController < ApplicationController 
   def new
     @departments = Department.all
     @areas = Area.all
@@ -6,4 +7,5 @@ class Admin::OrganizacionalsController < ApplicationController
     @employees= Employee.all
   end
 
+end
 end
