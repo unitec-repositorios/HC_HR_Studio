@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213183542) do
+ActiveRecord::Schema.define(version: 20180823100043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20171213183542) do
     t.integer  "position_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "admin_organizacionals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "applications", force: :cascade do |t|
@@ -188,6 +193,14 @@ ActiveRecord::Schema.define(version: 20171213183542) do
     t.text     "description"
     t.index ["department_id"], name: "index_positions_on_department_id", using: :btree
     t.index ["position_id_number"], name: "index_positions_on_position_id_number", unique: true, using: :btree
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.date     "fecha"
+    t.time     "hora_entrada"
+    t.time     "hora_salida"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "schools", force: :cascade do |t|

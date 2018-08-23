@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :positions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :instructors, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :configurationscreens, only: [:new, :create]
+    resources :schedules, only: [:index, :show, :new, :edit]
     resources :calls, only:[:index, :new, :create, :edit, :update, :destroy, :show ] do
       collection do
       post :attended
@@ -29,9 +30,12 @@ Rails.application.routes.draw do
   post 'admin/reports/comparacion' => 'admin/reports#create'
   get 'admin/comparacion' => 'admin/reports#new'
 
+  get 'admin/organizacionals' => 'admin/organizacionals#new'
+  
   post 'admin/calls/asistencia' => 'admin/calls#showlist'
 
-  get 'admin/asistencia' => 'admin/calls#attendance'             
+  get 'admin/asistencia' => 'admin/calls#attendance'
+  get 'admin/reports/employee' => 'admin/reports#employee'             
   # Application root
   root to: 'application#home'
   # Front routes end
