@@ -1,0 +1,2 @@
+module ConfigurationsControllerHelper
+end

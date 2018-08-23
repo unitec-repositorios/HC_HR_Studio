@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">Lista de Empleados</h3>
+          <%= link_to 'Nuevo Empleado', new_admin_employee_path, class: 'btn btn-success pull-right' %>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th width="10">Código</th>
+                      <th width="20%">Empleado</th>
+                      <th width="15%">Área</th>
+                      <th width="20%">Departamento</th>
+                      <th width="15%">Puesto</th>
+                      <th width="5%">Estado</th>
+                      <th width="15%">Opciones</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @employees.each do |employee| %>
+                      <tr>
+                        <td><%= employee.employee_id_number %></td>
+                        <td><%= employee.name %></td>
+                        <td><%= employee.position.department.area.name %></td>
+                        <td><%= employee.position.department.name %></td>
+                        <td><%= employee.position.name %></td>
+                        <% if employee.employee_status == true %>
+                          <td><span class="label label-success label">Activo</span></td>
+                        <% else %>
+                          <td><span class="label label-danger">Inactivo</span></td>
+                        <%end%>
+                        <td style="width: 15%;">
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_employee_url(employee), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-user"></i> Ver'), admin_employee_url(employee), class: 'btn btn-sm btn-primary' %>
+                          </div>
+                        </td>
+                      <%end%>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

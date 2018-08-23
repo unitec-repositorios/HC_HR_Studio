@@ -1,0 +1,136 @@
+<table class="table">
+  <thead>
+    <tr class="row">
+      <th>
+        <div class="logo_header" style="text-align: center; display: none;">
+          <%= image_tag("front/Logo.png", :alt => "rss feed", :size => '600x150') %>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row">
+      <td class="col-sm-12">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+              <h3 class="box-title">Convocatoria</h3>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <h4>
+                      <b><%= "Código de la Convocatoria: " %></b>
+                      <%= @call.id %>
+                    </h4>
+                  </div>
+                  <div class="form-group">
+                    <h4>
+                      <b><%= "Tipo de Convocatoria: " %></b>
+                      <%= @call.category%>
+                    </h4>
+                  </div>
+                  <div class="form-group">
+                    <h4>
+                      <b><%= "Tema: " %></b>
+                      <%= @call.topic%>
+                    </h4>
+                  </div>
+                  <div class="form-group">
+                    <h4>
+                      <b><%= "Lugar: " %></b>
+                      <%= @call.place%>
+                    </h4>
+                  </div>
+              </div>
+    
+              <div class="col-md-6">
+                <div class="form-group">
+                <h4>
+                    <b><%= "Habilidad Adquirida: " %></b>
+                    <%= @call.ability.ability_name %>
+                </h4>
+                </div>
+                <div class="form-group">
+                <h4>
+                    <b><%= "Fecha: " %></b>
+                    <%= @call.date%>
+                </h4>
+                </div>
+                <div class="form-group">
+                <h4>
+                    <b><%= "Hora de Inicio: " %></b>
+                    <%= @call.start_time%>
+                </h4>
+                </div>
+                <div class="form-group">
+                <h4>
+                    <b><%= "Hora de Fin: " %></b>
+                    <%= @call.end_time%>
+                </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    
+    <tr class="row">
+      <td class="col-md-12">
+        <h3>Instructores</h3>
+        <div class="box box-primary">
+          <div class="box-body">
+            <% if @call_instructors != nil %>  
+              <% @call_instructors.each do |call_instructors| %>
+              <% @i_name =  Instructor.select('name').find(call_instructors.instructor_id)%>
+                <!-- Primera Columna -->
+                <div class="col-md-12">
+                  <div class="row">
+                    <h4>
+                      <%=@i_name.name%>
+                    </h4>
+                  </div>
+                  <hr size = 3>
+                </div>
+                <%end%>
+              <%end%>
+          </div>
+        </div>
+      </td>
+    </tr>
+    
+    <tr class="row">
+      <td class="col-md-12">
+        <h3>Participantes</h3>
+        <div class="box box-primary">
+          <div class="box-body">
+            <% if @call_employees != nil %>  
+              <% @call_employees.each do |call_employees| %>
+              <% @p_name =  Employee.select('name').find(call_employees.employee_id)%>
+                <!-- Primera Columna -->
+                <div class="col-md-12">
+                  <div class="row">
+                    <h4>
+                      <%=@p_name.name%>
+                    </h4>
+                  </div>
+                  <hr size = 3>
+                </div>
+                <%end%>
+              <%end%>
+          </div>
+        </div>
+      </td>
+    </tr>
+    
+    <tr id="btn-imprimir-convocatoria" class="row">
+    	<td>
+	      <div class="input-group-btn" align="center">
+          <%= link_to "Regresar", admin_calls_path, class: "btn bg-red btn-flat" %>
+	        <%= link_to 'Imprimir', '#', :onclick => 'window.print();return false;', class: "btn bg-green btn-flat"%>
+	      </div>
+  	  </td>
+    </tr>
+  </tbody>
+</table>

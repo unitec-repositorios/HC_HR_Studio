@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">Lista de Institutos</h3>
+          <%= link_to 'Nuevo Instituto', new_admin_school_path, class: 'btn btn-success pull-right' %>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Instituto</th>
+                      <th width="15%">Número de Teléfono</th>
+                      <th width="11%">Opciones</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @schools.each do |school| %>
+                      <tr>
+                      <td> <%= school.id %> </td>
+                      <td> <%= school.name %> </td>
+                      <td> <%= school.cellphone %> </td>
+                        <td>
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_school_url(school), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-trash"></i>'), admin_school_url(school), class: 'btn btn-sm btn-danger', method: :delete,
+                                            data: { confirm: 'Esta seguro de borrar?' } %>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+

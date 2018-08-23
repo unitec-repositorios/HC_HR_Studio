@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-8 col-xs-offset-2">
+    <div class="form-group">
+    <%if @employee.employee_status%>
+      <%=f.label :layoff_reason, "Razón"%>
+      <%=f.text_area :layoff_reason, class: "form-control"%>
+      <%=f.hidden_field :employee_status, value: false%>
+      <%=f.hidden_field :layoff_date, value: DateTime.now.to_date %>
+    <%else%>
+      <%=f.label :layoff_reason, "Se inactivó por:"%>
+      <%=f.text_area :layoff_reason, class: "form-control", :readonly => true%>
+    <%end%>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8 col-xs-offset-2">
+    <div class="form-group">
+    <%if !@employee.employee_status%>
+      <%=f.hidden_field :layoff_reason, value: nil%>
+      <%=f.hidden_field :employee_status, value: true%>
+      <%=f.hidden_field :layoff_date, value: DateTime.now.to_date %>
+    <%end%>
+    </div>
+  </div>
+</div>

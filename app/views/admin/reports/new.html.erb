@@ -1,0 +1,155 @@
+<table class="table">
+  <thead>
+    <tr class="row">
+      <th>
+        <div class="logo_header" style="text-align: center; display: none;">
+          <%= image_tag("front/Logo.png", :alt => "rss feed", :size => '600x150') %>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr class="row">
+      <td>
+        <div class="col-sm-12">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Perfil Comparativo</h3>
+            </div>
+            <div class="box-body">
+              <%= form_tag("/admin/reports/comparacion", method: "post") do %>
+                <div id="cmb-empleado" class="col-sm-12">
+                  <%= label :employee, "Empleado" %>
+                  <%= select_tag(:employee, options_from_collection_for_select(@employees,'id', 'name', @employee_id), { :class => 'form-control' })%>
+                </div>
+                <% if @employee != nil and @position != nil %>
+                  <div class="col-sm-12">
+                    <h4><%=raw('<b>Nombre: </b>')%><%=@employee.name%></h4>
+                    <h4><%=raw('<b>Puesto: </b>')%><%=@position.id.to_s + " - " + @position.name%></h4>
+                  </div>
+                <%end%>
+                <div class="col-sm-12" style="padding-top:1%">
+                  <div id="btn-comparar" class="input-group-btn">
+	                  <%= submit_tag "Comparar", class: "btn bg-green btn-flat"%>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          </div>
+        </div>
+        <% if @abilities_possessed != nil  or @abilities_missing != nil or @abilities_not_position != nil%>
+          <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header with-border" >
+                  <h3 class="box-title">Habilidades</h3>
+                </div>
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <div class="row">
+                    <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Cuenta Con: </b>')%></h4>
+                  </div>
+                  <div class-"row">
+                    
+                    <% @abilities_possessed.each do |possessed| %>
+                      <% @abilities_possessed_n =  Ability.select('ability_name').find(possessed.ability_id)%>
+                      
+                      <div class="row">
+                        <h4><p><em><strong><%=@abilities_possessed_n.ability_name%></strong></em></p></h4>
+                      </div>
+                    <%end%>
+                    <% @abilities_not_position.each do |not_position| %>
+                      <% @abilities_not_position_n =  Ability.select('ability_name').find(not_position.ability_id)%>
+                      <div class="row">
+                        <h4><%=@abilities_not_position_n.ability_name%></h4>
+                      </div>
+                    <%end%>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="row">
+                    <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Hace Falta: </b>')%></h4>
+                  </div>
+                  
+                  <div class="row">
+                    <% @abilities_missing.each do |missing| %>
+                      <% @abilities_missing_n =  Ability.select('ability_name').find(missing.ability_id)%>
+                      <div class="row">
+                        <h4><%=@abilities_missing_n.ability_name%></h4>
+                      </div>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+        <% if @educations_possessed != nil  or @educations_missing != nil or @educations_not_position != nil%>
+          <div class="col-sm-12">
+            <div class="box box-primary">
+              <div class="box-header with-border" >
+                <h3 class="box-title">Educación Formal</h3>
+              </div>
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <div class="row">
+                    <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Cuenta Con: </b>')%></h4>
+                  </div>
+                  
+                  <div class="row">
+                    <% @educations_possessed.each do |possessed| %>
+                      <% @educations_possessed_n =  Education.select('major_description').find(possessed.education_id)%>
+                      <h4><p><em><strong><%=possessed.title%></strong></em></p></h4>
+                      <h4><p><em><strong><%=@educations_possessed_n.major_description%></strong></em></p></h4>
+                      <hr size = 3>
+                    <%end%>
+                    <% @educations_not_position.each do |not_position| %>
+                      <% @educations_not_position_n =  Education.select('major_description').find(not_position.education_id)%>
+                      <% @educations_not_position_c =  EducationsEmployee.find_by_sql(["select completed from educations_employees where education_id = ? and title = ? and employee_id = ?;", not_position.education_id, not_position.title, @employee_id])%>
+                      <h4><%=not_position.title%></h4>
+                      <h4><%=@educations_not_position_n.major_description%>
+                      <% @educations_not_position_c.each do |completed| %>
+                        <% if completed.completed == false %>
+                          (Pasante)</h4>
+                        <%end%>
+                      <%end%>
+                      <hr size = 3>
+                    <%end%>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="row">
+                    <h4><%=raw('<i class="glyphicon glyphicon-education"></i> <b>Hace Falta: </b>')%></h4>
+                  </div>
+                  <div class="row">
+                    <% @educations_missing.each do |missing| %>
+                      <% @educations_missing_n =  Education.select('major_description').find(missing.education_id)%>
+                      <% @educations_missing_c =  EducationsEmployee.find_by_sql(["select completed from educations_employees where education_id = ? and title = ? and employee_id = ?;", missing.education_id, missing.title, @employee_id])%>
+                      <h4><%=missing.title%></h4>
+                      <h4><%=@educations_missing_n.major_description%>
+                      <% @educations_missing_c.each do |completed| %>
+                        <%if completed.completed == false and !@title_compare.blank?%>
+                          (Pasante)</h4>
+                        <%end%>
+                      <%end%>
+                      <hr size = 3>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </td>
+    </tr>
+    <% if @employee != nil %>
+      <tr class="row">
+      	<td>
+  	      <div class="input-group-btn" align="center">
+  	        <%= link_to 'Imprimir', '#', :onclick => 'window.print();return false;', class: "btn bg-green btn-flat"%>
+  	      </div>
+    	  </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

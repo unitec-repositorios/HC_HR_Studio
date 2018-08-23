@@ -1,0 +1,8 @@
+<%= form_for @employee, url: @url, role: :form, html: { multipart: true } do |f| %>
+<%= render partial: "form", locals: {f: f} %>
+  
+  <div class="input-group-btn" align="center">
+    <%= link_to "Cancelar", admin_employees_path, class: "btn bg-red btn-flat" %>
+    <%= f.submit "Editar", class: "btn bg-green btn-flat" %>
+  </div>
+<%end%>

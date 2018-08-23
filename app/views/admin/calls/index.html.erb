@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <h3 class="box-title">Lista de Convocatorias</h3>
+          <%= link_to 'Nueva Convocatoria', new_admin_call_path, class: 'btn btn-success pull-right' %>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th width="7">Código</th>
+                      <th>Tipo</th>
+                      <th width="150">Tema</th>
+                      <th>Habilidad Adquirida</th>
+                      <th>Fecha</th>
+                      <th width="16%">Opciones</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @calls.each do |call| %>
+                      <tr>
+                      <td> <%= call.id %> </td>
+                      <td> <%= call.category %> </td>
+                      <td> <%= call.topic%> </td>
+                      <td> <%= call.ability.ability_name%> </td>
+                      <td> <%= call.date%> </td>
+                        <td>
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-cogs"></i> Editar'), edit_admin_call_url(call), class: 'btn btn-sm btn-warning' %>
+                            <%= link_to raw('<i class="fa fa-user"></i> Ver'), admin_call_url(call), class: 'btn btn-sm btn-primary' %>
+                            <%= link_to raw('<i class="fa fa-trash"></i>'), admin_call_url(call), class: 'btn btn-sm btn-danger', method: :delete,
+                                            data: { confirm: 'Esta seguro de borrar?' } %>
+                                            
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+

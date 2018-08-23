@@ -1,0 +1,2 @@
+module EstructuraOrganizacionalHelper
+end

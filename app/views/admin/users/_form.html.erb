@@ -1,0 +1,23 @@
+<div class="form-group">
+  <%= f.label :correo_electrónico %>
+  <%= f.email_field :email, class: "form-control", placeholder: "Ingresar correo electrónico", required: true, autofocus:true %>
+  <span class="help-block"><i>* Requerido</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :contraseña %>
+  <%= f.password_field :password, class: "form-control", placeholder: "Ingresar contraseña", required: (@user.new_record? ? true : false) %>
+  <span class="help-block"><i>* Requerido (dejar en blanco si no desean cambiar la contraseña)</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :verificación_de_contraseña %>
+  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmar la contraseña", required: (@user.new_record? ? true : false) %>
+  <span class="help-block"><i>* Requerido (dejar en blanco si no desean cambiar la contraseña)</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :nombre %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Ingresar nombre", required: true %>
+  <span class="help-block"><i>* Requerido</i><span>
+</div>
