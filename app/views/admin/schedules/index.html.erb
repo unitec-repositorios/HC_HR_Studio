@@ -3,9 +3,23 @@
       <div class="box">
 
         <div class="box-header">
-          <h3 class="box-title">Reloj de Empleados</h3>
-          <%= link_to 'Subir Archivo', new_admin_employee_path, class: 'btn btn-success pull-right' %>
-          <%= link_to 'Ingreso Manual', new_admin_schedule_path, class: 'btn btn-success pull-right' %>
+          <h3 class="box-title">Horas Extras</h3>
+           <div class="dropdown pull-right">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Nuevo<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item">
+                  <%= link_to 'Ingreso Manual', admin_schedules_new_path%>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item">
+                <%= link_to 'Subir Archivo', import_admin_schedule_path_url%> 
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
         </div>
 
         <div class="box-body">
@@ -17,26 +31,23 @@
                   <thead>
                     <tr>
                       <th width="10%">Fecha</th>
-                      <th width="10%">Codigo</th>
-                      <th width="20%">Nombre de Empleado</th>
-                      <th width="15%">Departamento</th>
                       <th width="15%">Hora de Entrada</th>
                       <th width="15%">Hora de Salida</th>
+                      <th width="10%">Nombre de Empleado</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <% @schedules.each do |schedule| %>
                       <tr>
-                      <td> <%= schedule.date %> </td>
-                      <td> <%= schedule.employee.employee_id_number %> </td>
-                      <td> <%= schedule.employee.name %> </td>
-                      <td> <%= schedule.employee.department%> </td>
-                      <td> <%= schedule.start_time%> </td>
-                      <td> <%= schedule.end_time%> </td>
+                        <td> <%= schedule.fecha %> </td>
+                        <td> <%= schedule.hora_entrada%> </td>
+                        <td> <%= schedule.hora_salida%> </td>
+                        <td> <%= schedule.employees%> </td>
                       </tr>
                     <% end %>
                   </tbody>
+                  
 
                 </table>
               </div>

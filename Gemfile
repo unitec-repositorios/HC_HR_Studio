@@ -25,6 +25,9 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'cocoon'
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
+gem "spreadsheet"
+gem "roo"
+gem "iconv", "~> 1.0.3"
 
 # Only Development env gems
 group :development do

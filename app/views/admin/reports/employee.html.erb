@@ -7,12 +7,33 @@
           <div class="dropdown pull-right">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Filtrar por Contrato <b class="caret"></b></a>
     
+             <div class="dropdown pull-right">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Filtrar por Contrato <b class="caret"></b></a>
+    
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item">
                   <%= link_to 'Todos', admin_reports_employee_url(:filter => "1")%>
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item">
+                  <%= link_to 'Practicantes', admin_reports_employee_url(:filter => "2")%>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item">
+                  <%= link_to 'Temporal / Definido', admin_reports_employee_url(:filter => "3")%>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item">
+                  <%= link_to 'Permanente / Indefinido', admin_reports_employee_url(:filter => "4")%>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
               <li>
                 <a class="dropdown-item">
                   <%= link_to 'Practicantes', admin_reports_employee_url(:filter => "2")%>
