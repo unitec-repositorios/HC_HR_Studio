@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   post 'admin/reports/comparacion' => 'admin/reports#create'
   get 'admin/comparacion' => 'admin/reports#new'
 
-  get 'admin/organizacionals' => 'admin/organizacionals#new'
-  
+  get 'admin/organizacionals' => 'admin/organizacionals#index'
+
   post 'admin/calls/asistencia' => 'admin/calls#showlist'
 
   get 'admin/asistencia' => 'admin/calls#attendance'

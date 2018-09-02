@@ -12,6 +12,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'jstree-rails-4'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

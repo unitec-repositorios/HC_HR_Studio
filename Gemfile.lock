@@ -146,6 +146,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.1.0)
+    jstree-rails-4 (3.3.4)
     kgio (2.11.2)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -350,6 +351,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder
   jquery-rails
+  jstree-rails-4
   launchy
   layer-handler
   listen
