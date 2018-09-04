@@ -16,17 +16,26 @@ class Schedule < ApplicationRecord
       def self.import(file)
         case File.extname(file.original_filename)
         when ".csv" then Roo::Csv.new(file.path, packed: false, file_warning: :ignore)
-        when ".XLS" 
+        when ".xls" 
           then archivo = Roo::Excel.new(file.path,packed: false, file_warning: :ignore)
-          sheet = archivo.sheet(2)
+          sheet = archivo.sheet(0)
           fecha = sheet.cell(4,2)
-          hora_in = sheet.cell(12,32)
-          hora_out = sheet.cell(12,37)
-          nuevo = Schedule.new :fecha => fecha, :hora_entrada => hora_in, :hora_salida => hora_out
-          nuevo.save!
-          #id = sheet.cell(4,40)
-          #id = '21'
-          puts nuevo.hora_entrada
+          #fecha = sheet.cell(12,31)
+          $columna_hora_in = 32
+          $columna_hora_out = 37
+          $i = 12
+          while $i < 18 do
+            hora_in = sheet.cell($i,$columna_hora_in)
+            hora_out = sheet.cell(12,$columna_hora_out)
+            nuevo = Schedule.new :fecha => fecha, :hora_entrada => hora_in, :hora_salida => hora_out
+            nuevo.save!
+            #id = sheet.cell(4,40)
+            #id = '21'
+            #puts sheet
+            $i += 1
+          end
+          
+          
 
           #puts Employee.select(:name).where("employee_id_number = ?",id)
         when ".xlsx" then Roo::Excelx.new(file.path, packed: false, file_warning: :ignore)
