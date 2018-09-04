@@ -3,7 +3,7 @@ module Admin
     respond_to :json, :html
     before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
-    def index
+    def index  
         if params[:filter] == '1'
           @employees= Employee.order("created_at ASC")
          elsif params[:filter] == '2'
@@ -40,16 +40,30 @@ module Admin
     end
 
     def create
+      exist = false
+      @employees = Employee.all
+      
+      @employees.each do |employee|
+        if(employee.employee_id_number == employee_params[:employee_id_number])
+         exist = true
+       end
+      end
+
       @employee = Employee.new(employee_params)
       @employee.hired_date = Date.today
       @employee.employee_status = true
       @positions = Position.all
 
-      if  @employee.save
-        flash[:notice] = t('admin.employees.create.success')
-        respond_with :admin, @employee #nuevo path
+      if !exist
+        if @employee.save
+          flash[:notice] = t('admin.employees.create.success')
+          respond_with :admin, @employee #nuevo path
+        else
+         flash[:warning] = @employee.errors.full_messages.uniq.join(', ')
+         respond_with :new, :admin, :employee
+        end
       else
-        flash[:warning] = @employee.errors.full_messages.uniq.join(', ')
+        flash[:alert] = "Ya existe ese codigo de empleado"
         respond_with :new, :admin, :employee
       end
     end
