@@ -1,11 +1,14 @@
 module Admin
     class SchedulesController < ApplicationController
         respond_to :json, :html, :xls
-        before_action only: [:show, :edit, :update, :destroy]
+        before_action only: [:show, :edit, :update, :destroy, :index]
 
         def index
             @schedules = Schedule.all
-            @employees = Employee.all
+            @employees = Employee.select(:name).where(:employee_id_number => 21)
+            @employee_id = :employees_id
+            @employees = Employee.select(:name).where(:employee_id_number => @employee_id)[0]
+            puts @employees.inspect
         end
 
         def new
@@ -21,7 +24,6 @@ module Admin
 
         def create
             @schedule = Schedule.new(schedule_params)
-            @employees = Employee.all
             if @schedule.save
                 redirect_to admin_schedules_path
               else
@@ -30,12 +32,12 @@ module Admin
         end
 
         def show
-            @schedule = Schedule.find(params[:id])
-
+            @schedule = Schedule.all
+            @employees = Employee.select(:name).where("employee_id_number = ?",:employees_id)
         end
 
         def import
-            @url = import_admin_schedule_path
+            @url = admin_schedules_import_path
             Schedule.import(params[:file])
             redirect_to admin_schedules_path, notice: "Datos Importados"
         end
@@ -43,7 +45,7 @@ module Admin
         private 
 
         def schedule_params
-            params.require(:schedule).permit(:fecha,:hora_entrada, :hora_salida, employee:[:name]) #falta department????
+            params.require(:schedule).permit(:fecha,:hora_entrada, :hora_salida, :employees_id, employees:[:name]) #falta department????
         end
     
     end

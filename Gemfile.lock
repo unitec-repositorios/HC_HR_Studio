@@ -244,6 +244,10 @@ GEM
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
+    roo-xls (1.2.0)
+      nokogiri
+      roo (>= 2.0.0, < 3)
+      spreadsheet (> 0.9.0)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -273,6 +277,9 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-ole (1.2.12.1)
     ruby-progressbar (1.8.1)
+    rubyXL (3.3.30)
+      nokogiri (>= 1.4.4)
+      rubyzip (>= 1.1.6)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.4.23)
@@ -376,8 +383,10 @@ DEPENDENCIES
   rb-fsevent
   rb-inotify
   roo
+  roo-xls
   rspec-rails
   rubocop
+  rubyXL
   sass-rails
   selenium-webdriver
   sendgrid
