@@ -1,0 +1,10 @@
+<h2>Importar Datos</h2>
+
+<%= form_tag admin_schedules_import_path, multipart: true do %>
+<br>
+  <%= file_field_tag :file %>
+  <br>
+  <br>
+  <%= submit_tag "Import" %>
+<% end %>
+

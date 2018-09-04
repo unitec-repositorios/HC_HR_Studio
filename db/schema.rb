@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180823100043) do
+ActiveRecord::Schema.define(version: 20180904200419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,8 +168,12 @@ ActiveRecord::Schema.define(version: 20180823100043) do
     t.datetime "image_updated_at"
     t.string   "company"
     t.string   "employee_id_number"
+    t.integer  "schedule_id"
+    t.integer  "schedules_id"
     t.index ["employee_id_number"], name: "index_employees_on_employee_id_number", unique: true, using: :btree
     t.index ["position_id"], name: "index_employees_on_position_id", using: :btree
+    t.index ["schedule_id"], name: "index_employees_on_schedule_id", using: :btree
+    t.index ["schedules_id"], name: "index_employees_on_schedules_id", using: :btree
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -201,6 +205,8 @@ ActiveRecord::Schema.define(version: 20180823100043) do
     t.time     "hora_salida"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "employees_id"
+    t.index ["employees_id"], name: "index_schedules_on_employees_id", using: :btree
   end
 
   create_table "schools", force: :cascade do |t|
@@ -240,6 +246,7 @@ ActiveRecord::Schema.define(version: 20180823100043) do
   add_foreign_key "calls", "abilities"
   add_foreign_key "departments", "areas"
   add_foreign_key "employees", "positions"
+  add_foreign_key "employees", "schedules"
   add_foreign_key "instructors", "schools"
   add_foreign_key "positions", "departments"
 end
