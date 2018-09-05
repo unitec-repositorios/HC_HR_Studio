@@ -67,6 +67,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 # Only Production env gems
