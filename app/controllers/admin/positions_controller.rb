@@ -1,5 +1,7 @@
 module Admin
   class PositionsController < Admin::ApplicationController
+    respond_to :json, :html
+    
     def index
       @positions = Position.all
     end
@@ -20,13 +22,28 @@ module Admin
     end
 
     def create
+      @exist = false
+      @positions = Position.all
+      
+      @positions.each do |position|
+        if(position.position_id_number == position_params[:position_id_number])
+         @exist = true
+       end
+      end
+
       @position = Position.new(position_params)
 
-      if @position.save
-        redirect_to admin_positions_path
+      if !@exist     
+        if @position.save
+          redirect_to admin_positions_path
+        else
+          render :new
+        end
       else
-        render :new
+        flash[:alert] = "Ya existe ese codigo de posicion"
+        respond_with :new,:admin,:position
       end
+
     end
 
     def edit

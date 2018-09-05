@@ -1,5 +1,6 @@
 module Admin  
   class AreasController < Admin::ApplicationController
+    respond_to :html, :js
     def index
       @areas = Area.all
     end
@@ -10,13 +11,29 @@ module Admin
     end
 
     def create
+      @exist = false
+      @areas = Area.all
+      
+      @areas.each do |area|
+        if(area.area_id_number == area_params[:area_id_number])
+         @exist = true
+       end
+      end
+
+
       @area = Area.new(area_params)
 
-      if @area.save
-        redirect_to admin_areas_path
+      if !@exist
+        if @area.save
+          redirect_to admin_areas_path
+        else
+          render :new
+        end
       else
-        render :new
+        flash[:alert] = "Ya existe ese codigo de area"
+        respond_with :new, :admin, :area
       end
+
     end
 
     def edit

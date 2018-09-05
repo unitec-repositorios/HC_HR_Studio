@@ -3,7 +3,8 @@ module Admin
     respond_to :json, :html
     before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
-    def index  
+    def index
+        @exist = false  
         if params[:filter] == '1'
           @employees= Employee.order("created_at ASC")
          elsif params[:filter] == '2'
@@ -40,12 +41,12 @@ module Admin
     end
 
     def create
-      exist = false
+      @exist = false
       @employees = Employee.all
       
       @employees.each do |employee|
         if(employee.employee_id_number == employee_params[:employee_id_number])
-         exist = true
+         @exist = true
        end
       end
 
@@ -54,7 +55,7 @@ module Admin
       @employee.employee_status = true
       @positions = Position.all
 
-      if !exist
+      if !@exist
         if @employee.save
           flash[:notice] = t('admin.employees.create.success')
           respond_with :admin, @employee #nuevo path

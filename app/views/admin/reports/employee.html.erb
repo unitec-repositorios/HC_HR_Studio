@@ -2,9 +2,14 @@
   <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
+          <div class="logo_header" style="text-align: center; display: none;">
+          <%= image_tag("front/Logo.png", :alt => "rss feed", :size => '600x150') %>
+          <br><br>
+        </div>
+        
           <h3 class="box-title">Lista de Empleados</h3>
           
-          <div class="dropdown pull-right">
+          <div class="dropdown pull-right oculto">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Filtrar por Contrato <b class="caret"></b></a>
     
             <ul class="dropdown-menu">
@@ -64,12 +69,19 @@
                       <%end%>
                     </tr>
                   </tbody>
-
                 </table>
               </div>
             </div>
+            <div class="input-group-btn" align="center">
+            <%= link_to 'Imprimir', '#', :onclick => 'window.print();return false;', class: "btn bg-green btn-flat"%>
+          </div>
           </div>
         </div>
     </div>
   </div>
+  <style type="text/css">
+      @media print {
+        .oculto {display:none}
+      }
+</style>
 </div>
