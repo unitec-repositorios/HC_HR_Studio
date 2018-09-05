@@ -2,9 +2,12 @@
 
 <%= form_tag admin_schedules_import_path, multipart: true do %>
 <br>
-  <%= file_field_tag :file %>
+ <div style="filebtn">
+  <%= file_field_tag :file%>
   <br>
   <br>
-  <%= submit_tag "Import" %>
+  </div> 
+  
+  <%= submit_tag "Subir Archivo" %>
 <% end %>
 
