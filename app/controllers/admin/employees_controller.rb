@@ -96,7 +96,7 @@ module Admin
     def employee_params
         params.require(:employee).permit(:image, :name, :employee_id_number, :rap_code, :id_number, :birth_date, :gender, :birth_place, :blood_type, :marital_status,
                                         :cellphone, :emergency_contact_name, :email, :emergency_contact_number, :address, :layoff_reason, :layoff_date, :employee_status,
-                                        :position_id, :bank_account, :company, :salary, :contract_type, abilities_employees_attributes: [:id, :ability_id, 
+                                        :position_id, :bank_account, :company, :salary, :contract_type, :horario, abilities_employees_attributes: [:id, :ability_id, 
                                         :employee_id, :school_id, :_destroy], educations_employees_attributes: [:id, :school_id, :education_id, :employee_id,
                                         :completed, :title, :_destroy])
     end

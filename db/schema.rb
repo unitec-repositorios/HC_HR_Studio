@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180904200419) do
+ActiveRecord::Schema.define(version: 20180911164256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20180904200419) do
     t.string   "employee_id_number"
     t.integer  "schedule_id"
     t.integer  "schedules_id"
+    t.string   "horario"
     t.index ["employee_id_number"], name: "index_employees_on_employee_id_number", unique: true, using: :btree
     t.index ["position_id"], name: "index_employees_on_position_id", using: :btree
     t.index ["schedule_id"], name: "index_employees_on_schedule_id", using: :btree

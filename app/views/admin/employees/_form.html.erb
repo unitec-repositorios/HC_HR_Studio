@@ -208,6 +208,13 @@
                 <%= f.number_field :salary, step: :any ,class: "form-control", placeholder: "Ingresar salario", required: true%>
               </div>
             </h4>
+            <h4>
+              <div class="form-group">
+                <%=raw('<i class="glyphicon glyphicon-time"></i>')%>
+                <%= f.label :horario, "Horario" %> 
+                <%= f.select(:horario, ['8AM - 4PM', '6AM - 2PM', '2PM - 9PM', '9PM - 6AM'], {include_blank: "Escoger..."}, { :class => 'form-control' })%>
+              </div>
+            </h4>
           </div>
         </div>
       </div>
