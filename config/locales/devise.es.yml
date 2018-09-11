@@ -1,4 +1,10 @@
 es:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%H:%M"
   devise:
     confirmations:
       confirmed: "Tu cuenta ya ha sido confirmada. Has sido indentificado."
