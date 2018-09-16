@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Estructura Organizacional</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.css" />
 </head>
 <body>
   <div class="row">
@@ -19,62 +19,14 @@
         <div class="box-body">
           <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
-              <div class="col-sm-4"></div>
-              <div class="col-sm-4">      
-                <div id="jstree">
-                  <ul>
-                    <li><a>Honducaribe</a>
-                      <ul>
-                        <% @areas.each do |area|%>
-                          <li>
-                            <a>
-                              <%=area.name%>
-                            </a>
-                            <ul>
-                            <% @departments.each do |department|%>
-                              <%if department.area == area%>
-                                <li>
-                                  <a>
-                                    <%=department.name%>
-                                  </a>
-                                  <ul>
-                                    <%@positions.each do |position|%>
-                                      <%if position.department == department%>
-                                        <li>
-                                          <a>
-                                            <%=position.name%>
-                                          </a>
-                                          <ul>
-                                            <%@employees.each do |employee|%>
-                                              <%if employee.position == position%>
-                                                <li>
-                                                  <a >
-                                                    <%=employee.name%>
-                                                  </a>
-                                              </li>
-                                              <%end%>
-                                            <%end%>
-                                          </ul>
-                                        </li>
-                                      <%end%>
-                                    <%end%>
-                                  </ul>
-                                </li>
-                              <%end%>
-                            <%end%>
-                          </ul> 
-                        </li>
-                      <%end%>
-                    </ul>
-                    </li>
-                  </ul>
-                </div>
+              <div class="col-sm-12">      
+                <div id="myDiagramDiv"
+     style="width:800px; height:400px; background-color: #F7F9F9 ;"></div>
 
           <div class="input-group-btn" align="right">
             <%= link_to 'Imprimir', '#', :onclick => 'window.print();return false;', class: "btn bg-green btn-flat"%>
           </div>          
               </div>
-              <div class="col-sm-4"></div>
             </div>
           </div>
         </div>
@@ -82,15 +34,174 @@
   </div>
 </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.8.29/go.js"></script>
   <script type="text/javascript">
-    var $treeview = $("#jstree");
-$treeview
-  .jstree(options)
-  .on('loaded.jstree', function() {
-    $treeview.jstree('open_all');
-  });
+    var areas,departments,positions,employees;
+    areas = getAreas();
+    departments = getDepartments();
+    positions = getPositions();
+    employees = getEmployees();
+
+    var $ = go.GraphObject.make;
+     
+     var myDiagram =
+      $(go.Diagram, "myDiagramDiv",
+        {
+          allowDrop: true,
+          layout:  // Diagram has simple horizontal layout
+            $(go.GridLayout,
+              { wrappingWidth: Infinity, alignment: go.GridLayout.Position, cellSize: new go.Size(1, 1) }),
+          initialContentAlignment: go.Spot.Center,
+          "commandHandler.archetypeGroupData": { isGroup: true, category: "OfNodes" },
+          "undoManager.isEnabled": true
+        });
+
+       myDiagram.groupTemplateMap.add("OfGroups",
+      $(go.Group, "Auto",
+        {
+          background: "transparent",
+          computesBoundsAfterDrag: true,
+          handlesDragDropForMembers: true,  // don't need to define handlers on member Nodes and Links
+          // Groups containing Groups lay out their members horizontally
+          layout:
+            $(go.GridLayout,
+              { wrappingWidth: Infinity, alignment: go.GridLayout.Position,
+                  cellSize: new go.Size(1, 1), spacing: new go.Size(4, 4) })
+        },
+        new go.Binding("background", "isHighlighted", function(h) { return h ? "rgba(255,0,0,0.2)" : "transparent"; }).ofObject(),
+        $(go.Shape, "Rectangle",
+          { fill: null, stroke: "#FFDD33", strokeWidth: 2 }),
+        $(go.Panel, "Vertical",  // title above Placeholder
+          $(go.Panel, "Horizontal",  // button next to TextBlock
+            { stretch: go.GraphObject.Horizontal, background: "#FFDD33" },
+            $("SubGraphExpanderButton",
+              { alignment: go.Spot.Right, margin: 5 }),
+            $(go.TextBlock,
+              {
+                alignment: go.Spot.Left,
+                editable: true,
+                margin: 5,
+                font: "bold 18px sans-serif",
+                opacity: 0.75,
+                stroke: "#404040"
+              },
+              new go.Binding("text", "text").makeTwoWay())
+          ),  // end Horizontal Panel
+          $(go.Placeholder,
+            { padding: 5, alignment: go.Spot.TopLeft })
+        )  // end Vertical Panel
+      ));  // end Group and call to add to template Map
+
+    myDiagram.groupTemplateMap.add("OfNodes",
+      $(go.Group, "Auto",
+        {
+          background: "transparent",
+          ungroupable: true,
+          computesBoundsAfterDrag: true,
+          handlesDragDropForMembers: true,  // don't need to define handlers on member Nodes and Links
+          // Groups containing Nodes lay out their members vertically
+          layout:
+            $(go.GridLayout,
+              { wrappingColumn: 1, alignment: go.GridLayout.Position,
+                  cellSize: new go.Size(1, 1), spacing: new go.Size(4, 4) })
+        },
+        new go.Binding("background", "isHighlighted", function(h) { return h ? "rgba(255,0,0,0.2)" : "transparent"; }).ofObject(),
+        $(go.Shape, "Rectangle",
+          { fill: null, stroke: "#33D3E5", strokeWidth: 2 }),
+        $(go.Panel, "Vertical",  // title above Placeholder
+          $(go.Panel, "Horizontal",  // button next to TextBlock
+            { stretch: go.GraphObject.Horizontal, background: "#33D3E5" },
+            $("SubGraphExpanderButton",
+              { alignment: go.Spot.Right, margin: 5 }),
+            $(go.TextBlock,
+              {
+                alignment: go.Spot.Left,
+                editable: true,
+                margin: 5,
+                font: "bold 16px sans-serif",
+                opacity: 0.75,
+                stroke: "#404040"
+              },
+              new go.Binding("text", "text").makeTwoWay())
+          ),  // end Horizontal Panel
+          $(go.Placeholder,
+            { padding: 5, alignment: go.Spot.TopLeft })
+        )  // end Vertical Panel
+      ));  // end Group and call to add to template Map
+
+    var model = $(go.GraphLinksModel);
+    model.nodeDataArray = getDataArray(areas,departments,positions,employees);
+    myDiagram.model = model;
+
+    function getAreas(){
+      var arr = [];
+      "<%@areas.each do |area|%>"
+        arr.push({name: "<%=area.name%>"});
+      "<%end%>"
+      return arr;
+    }
+
+    function getDepartments(){
+      var arr = [];
+      "<%@departments.each do |department|%>"
+        arr.push({
+          name: "<%=department.name%>",
+          area: "<%=department.area.name%>"})
+      "<%end%>"
+      return arr;
+    }
+
+    function getPositions(){
+      var arr = [];
+      "<%@positions.each do |position|%>"
+        arr.push({
+          name: "<%=position.name%>",
+          department: "<%=position.department.name%>"})
+      "<%end%>"
+      return arr;
+    }
+
+    function getEmployees(){
+      var arr = [];
+      "<%@employees.each do |employee|%>"
+        arr.push({
+          name: "<%=employee.name%>",
+          position: "<%=employee.position.name%>"})
+      "<%end%>"
+      return arr;
+    }
+
+    function getDataArray(areas,departments,positions,employees){
+      var arr = [{key: "1", text: "Honducaribe", isGroup: true, category : "OfGroups"}];
+      var key = 0,parent = 0;
+      for(let i = 0; i < areas.length; i++){
+        key += i+2;
+        parent = 1;
+        arr.push({key: key.toString() ,group: parent.toString(), isGroup: true, category: "OfNodes", text: areas[i].name});
+        for(let j = 0; j < departments.length;j++){
+          if(departments[j].area === areas[i].name){
+            parent = key;
+            key += j+1;
+            arr.push({key: key.toString() ,group: parent.toString(), isGroup: true, category: "OfNodes", text: departments[j].name});
+            for(let k = 0; k < positions.length; k++){
+              if(positions[k].department === departments[j].name){
+                parent = key;
+                key += k+1;
+                arr.push({key: key.toString() ,group: parent.toString(), isGroup: true, category: "OfNodes", text: positions[k].name});
+                for(let z = 0; z < employees.length;z++){
+                  if(employees[z].position === positions[k].name){
+                    parent = key;
+                    key += z+1;
+                    arr.push({key: key.toString() ,group: parent.toString(), text: employees[z].name});
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      return arr;
+    }
   </script>
 </body>
 </html>

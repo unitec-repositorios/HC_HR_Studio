@@ -30,6 +30,7 @@ gem "spreadsheet"
 gem "roo"
 gem "iconv", "~> 1.0.3"
 gem "rubyXL"
+gem 'visjs-rails'
 gem "roo-xls"
 
 # Only Development env gems
