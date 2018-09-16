@@ -38,9 +38,9 @@
   <script type="text/javascript">
     var areas,departments,positions,employees;
     areas = getAreas();
-    departments = getDepartments();
-    positions = getPositions();
-    employees = getEmployees();
+    departments = getDepartments(areas.length+1);
+    positions = getPositions(areas.length + departments.length+1);
+    employees = getEmployees(areas.length + departments.length + positions.length+1);
 
     var $ = go.GraphObject.make;
      
@@ -135,64 +135,70 @@
 
     function getAreas(){
       var arr = [];
+      var numero = 1;
       "<%@areas.each do |area|%>"
-        arr.push({name: "<%=area.name%>"});
+        arr.push({name: "<%=area.name%>", key: numero});
+        numero++;
       "<%end%>"
+      console.log(arr);
       return arr;
     }
 
-    function getDepartments(){
+    function getDepartments(numero){
       var arr = [];
+      var num = 0;
       "<%@departments.each do |department|%>"
         arr.push({
           name: "<%=department.name%>",
-          area: "<%=department.area.name%>"})
+          area: "<%=department.area.name%>",
+          key: numero + num});
+        num++;
       "<%end%>"
+      console.log(arr);
       return arr;
     }
 
-    function getPositions(){
+    function getPositions(numero){
       var arr = [];
+      var num = 0;
       "<%@positions.each do |position|%>"
         arr.push({
           name: "<%=position.name%>",
-          department: "<%=position.department.name%>"})
+          department: "<%=position.department.name%>", 
+          key : numero + num});
+        num++;
       "<%end%>"
+      console.log(arr);
       return arr;
     }
 
-    function getEmployees(){
+    function getEmployees(numero){
       var arr = [];
+      var num = 0;
       "<%@employees.each do |employee|%>"
         arr.push({
           name: "<%=employee.name%>",
-          position: "<%=employee.position.name%>"})
+          position: "<%=employee.position.name%>",
+          key: numero + num});
+        num++;
       "<%end%>"
+      console.log(arr);
       return arr;
     }
 
     function getDataArray(areas,departments,positions,employees){
-      var arr = [{key: "1", text: "Honducaribe", isGroup: true, category : "OfGroups"}];
-      var key = 0,parent = 0;
+      var arr = [{key: "0", text: "Honducaribe", isGroup: true, category : "OfGroups"}];
       for(let i = 0; i < areas.length; i++){
-        key += i+2;
-        parent = 1;
-        arr.push({key: key.toString() ,group: parent.toString(), isGroup: true, category: "OfNodes", text: areas[i].name});
+        arr.push({key: areas[i].key.toString() ,group: "0", isGroup: true, category: "OfNodes", text: areas[i].name});
         for(let j = 0; j < departments.length;j++){
           if(departments[j].area === areas[i].name){
-            parent = key;
-            key += j+1;
-            arr.push({key: key.toString() ,group: parent.toString(), isGroup: true, category: "OfNodes", text: departments[j].name});
+            arr.push({key: departments[j].key.toString() ,group: areas[i].key.toString(), isGroup: true, category: "OfNodes", text: departments[j].name});
             for(let k = 0; k < positions.length; k++){
               if(positions[k].department === departments[j].name){
-                parent = key;
-                key += k+1;
-                arr.push({key: key.toString() ,group: parent.toString(), isGroup: true, category: "OfNodes", text: positions[k].name});
+                arr.push({key: positions[k].key.toString() ,group: departments[j].key.toString(), isGroup: true, category: "OfNodes", text: positions[k].name});
                 for(let z = 0; z < employees.length;z++){
                   if(employees[z].position === positions[k].name){
-                    parent = key;
-                    key += z+1;
-                    arr.push({key: key.toString() ,group: parent.toString(), text: employees[z].name});
+                    arr.push({key: employees[z].key.toString() ,group: positions[k].key.toString(), text: employees[z].name});
                   }
                 }
               }
