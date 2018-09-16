@@ -6,15 +6,15 @@ module Admin
         def index
             @schedules = Schedule.all
             #@employees = Employee.all
-            @employees = Employee.select(:name).where(:employee_id_number => :employees_id)
-            #@employees = Employee.select(:name).where(:employee_id_number => 21)
-            puts :employees_id.inspect
+            @employees = Employee.all
+            puts @employees.name
         end
 
         def new
             @schedule = Schedule.new
-            @url = admin_schedules_path
             @employees = Employee.all
+            @url = admin_schedules_path
+            
         end
 
         def edit
@@ -23,9 +23,7 @@ module Admin
 
         def create
             @schedule = Schedule.new(schedule_params)
-            @employees = Employee.select(:name).where(:employee_id_number => :employees_id)
-            #@employee = Employee.where(:employee_id_number => :employees_id)
-            #@employees = Employee.select(:name).where(:employee_id_number => 21)
+            @employees = Employee.all
             if @schedule.save
                 redirect_to admin_schedules_path
               else
@@ -35,7 +33,7 @@ module Admin
 
         def show
             @schedule = Schedule.all
-            @employees = Employee.select(:name).where("employee_id_number = ?",21)
+            @employees = Employee.all
         end
 
         def import
@@ -47,7 +45,7 @@ module Admin
         private 
 
         def schedule_params
-            params.require(:schedule).permit(:fecha,:hora_entrada, :hora_salida,:employees_id, employees_attributes: [:name, :employee_id_number]) #falta department????
+            params.require(:schedule).permit(:fecha,:hora_entrada, :hora_salida,:employee_id_number, employees_attributes: [:employee_id_number, :name]) #falta department????
         end
     
     end

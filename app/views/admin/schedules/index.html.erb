@@ -28,22 +28,24 @@
                 <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
                   <thead>
                     <tr>
-                    <th width="8%">Codigo de Empleado</th>
+                      <th width="5%">Codigo de Empleado</th>
+                      <th width="5%">Nombre de Empleado</th>
                       <th width="5%">Fecha</th>
                       <th width="5%">Hora de Entrada</th>
                       <th width="5%">Hora de Salida</th>
-                      
+             
                     </tr>
                   </thead>
 
                   <tbody>
                     <% @schedules.each do |schedule| %>
                       <tr>
-                      <td> <%= schedule.employees_id%> </td>
+                        <td> <%= schedule.employee_id_number %> </td>
+                        <td> <%= @employees.select(:name).where(:employee_id_number => schedule.employee_id_number) %> </td>
                         <td> <%= schedule.fecha.strftime("%d/%m/%Y") %> </td>
                         <td> <%= schedule.hora_entrada.strftime("%I:%M %p")%> </td>
                         <td> <%= schedule.hora_salida.strftime("%I:%M %p")%> </td>
-
+                        
                       </tr>
                     <% end %>
                   </tbody>
