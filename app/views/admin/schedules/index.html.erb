@@ -18,6 +18,28 @@
               </li>
             </ul>
           </div>
+          <div class="dropdown pull-right">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Filtro<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item">
+                  <label>Fecha de inicio</label>
+                  <input type="date" name="Fecha" id = "inicio">
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item">
+                  <label>Fecha Finalizacion</label>
+                  <input type="date" name="Fecha" id = "final">
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item">
+                  <button type="button" class="btn btn-primary" onclick="getData()">Filtrar</button>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         
 
@@ -28,27 +50,32 @@
                 <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
                   <thead>
                     <tr>
-                    <th width="8%">Codigo de Empleado</th>
+                      <th width="5%">Codigo de Empleado</th>
+                      <th width="5%">Nombre de Empleado</th>
                       <th width="5%">Fecha</th>
                       <th width="5%">Hora de Entrada</th>
                       <th width="5%">Hora de Salida</th>
-                      
+             
                     </tr>
                   </thead>
 
                   <tbody>
                     <% @schedules.each do |schedule| %>
                       <tr>
-                      <td> <%= schedule.employees_id%> </td>
+                        <td> <%= schedule.employee_id_number %> </td>
+                        <%@employees.each do |employee|%>
+                          <%if schedule.employee_id_number.to_s == employee.employee_id_number%>
+                            <td> <%= employee.name %> </td>
+                          <%else%>
+                            <td></td>  
+                          <%end%>
+                        <%end%>
                         <td> <%= schedule.fecha.strftime("%d/%m/%Y") %> </td>
                         <td> <%= schedule.hora_entrada.strftime("%I:%M %p")%> </td>
                         <td> <%= schedule.hora_salida.strftime("%I:%M %p")%> </td>
-
                       </tr>
                     <% end %>
                   </tbody>
-                  
-
                 </table>
               </div>
             </div>
@@ -57,4 +84,11 @@
     </div>
   </div>
 </div>
-</div>
+
+<script type="text/javascript">
+  function getData(){
+    var begin = document.getElementById('inicio').value;
+    var end = document.getElementById('final').value;
+    window.open('http://localhost:3000/admin/schedules?filter=' + begin+'|' + end,'_self');
+  }
+</script>

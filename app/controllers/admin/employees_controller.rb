@@ -5,6 +5,7 @@ module Admin
 
     def index
         @exist = false  
+        puts params[:filter]; 
         if params[:filter] == '1'
           @employees= Employee.order("created_at ASC")
          elsif params[:filter] == '2'

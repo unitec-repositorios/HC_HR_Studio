@@ -70,12 +70,12 @@
         },
         new go.Binding("background", "isHighlighted", function(h) { return h ? "rgba(255,0,0,0.2)" : "transparent"; }).ofObject(),
         $(go.Shape, "Rectangle",
-          { fill: null, stroke: "#FFDD33", strokeWidth: 2 }),
+          { fill: null, stroke: "#0080FF", strokeWidth: 2 }),
         $(go.Panel, "Vertical",  // title above Placeholder
           $(go.Panel, "Horizontal",  // button next to TextBlock
-            { stretch: go.GraphObject.Horizontal, background: "#FFDD33" },
+            { stretch: go.GraphObject.Horizontal, background: "#0080FF" },
             $("SubGraphExpanderButton",
-              { alignment: go.Spot.Right, margin: 5 }),
+              { alignment: go.Spot.Right, margin: 5}),
             $(go.TextBlock,
               {
                 alignment: go.Spot.Left,
@@ -107,10 +107,10 @@
         },
         new go.Binding("background", "isHighlighted", function(h) { return h ? "rgba(255,0,0,0.2)" : "transparent"; }).ofObject(),
         $(go.Shape, "Rectangle",
-          { fill: null, stroke: "#33D3E5", strokeWidth: 2 }),
+          { fill: null, stroke: "#FF8000", strokeWidth: 2 }),
         $(go.Panel, "Vertical",  // title above Placeholder
           $(go.Panel, "Horizontal",  // button next to TextBlock
-            { stretch: go.GraphObject.Horizontal, background: "#33D3E5" },
+            { stretch: go.GraphObject.Horizontal, background: "#FACC2E" },
             $("SubGraphExpanderButton",
               { alignment: go.Spot.Right, margin: 5 }),
             $(go.TextBlock,

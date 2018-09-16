@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911164256) do
+ActiveRecord::Schema.define(version: 20180915171123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,10 +204,10 @@ ActiveRecord::Schema.define(version: 20180911164256) do
     t.date     "fecha"
     t.time     "hora_entrada"
     t.time     "hora_salida"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "employees_id"
-    t.index ["employees_id"], name: "index_schedules_on_employees_id", using: :btree
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "employee_id_number"
+    t.index ["employee_id_number"], name: "index_schedules_on_employee_id_number", using: :btree
   end
 
   create_table "schools", force: :cascade do |t|
