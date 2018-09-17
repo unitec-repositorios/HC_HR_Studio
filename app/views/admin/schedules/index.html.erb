@@ -28,12 +28,14 @@
                 <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
                   <thead>
                     <tr>
-                      <th width="5%">Codigo de Empleado</th>
+                      <th width="5%">Codigo</th>
                       <th width="5%">Nombre de Empleado</th>
+                      <th width="5%">Departamento</th>
                       <th width="5%">Fecha</th>
+                      <th width="5%">Horario</th>
                       <th width="5%">Hora de Entrada</th>
                       <th width="5%">Hora de Salida</th>
-             
+                      <th width="5%">Tiempo Extra</th>
                     </tr>
                   </thead>
 
@@ -41,11 +43,48 @@
                     <% @schedules.each do |schedule| %>
                       <tr>
                         <td> <%= schedule.employee_id_number %> </td>
-                        <td> <%= @employees.select(:name).where(:employee_id_number => schedule.employee_id_number) %> </td>
+                        <%@employees.each do |employee| %>
+                          <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
+                            <td> <%= employee.name %> </td>
+                            <td> <%= employee.position.department.name %> </td>
+                          <% end %>
+                        <% end %>
                         <td> <%= schedule.fecha.strftime("%d/%m/%Y") %> </td>
+                        <%@employees.each do |employee| %>
+                          <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
+                            <td> <%= employee.horario %> </td>
+                          <% end %>
+                        <% end %>
                         <td> <%= schedule.hora_entrada.strftime("%I:%M %p")%> </td>
                         <td> <%= schedule.hora_salida.strftime("%I:%M %p")%> </td>
                         
+                        <!-- CALCULO HORAS EXTRAS -->
+                        <%@employees.each do |employee| %>
+                          <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
+
+                            <% if employee.horario == "8AM - 4PM"%>
+                              <% if schedule.hora_salida > 4.hours %>
+                                <td> <%= ((schedule.hora_salida - 4.hours) - 12.hours).strftime("%H:%M") %> </td>
+                              <% end %>
+
+                            <% elsif employee.horario == "6AM - 2PM"%>
+                              <% if schedule.hora_salida > 2.hours %>
+                                <td> <%= ((schedule.hora_salida - 2.hours) - 12.hours).strftime("%H:%M")%> </td>
+                              <% end %>
+
+                            <% elsif employee.horario == "2PM - 9PM"%>
+                              <% if schedule.hora_salida > 9.hours %>
+                                <td> <%= ((schedule.hora_salida - 9.hours) - 12.hours).strftime("%H:%M") %> </td>
+                              <% end %>
+
+                            <% elsif employee.horario == "9PM - 6AM"%>
+                              <% if schedule.hora_salida > 18.hours %>
+                                <td> <%= ((schedule.hora_salida - 18.hours) - 12.hours).strftime("%H:%M") %> </td>
+                              <% end %>
+ 
+                            <% end %>
+                          <% end %>
+                        <% end %>
                       </tr>
                     <% end %>
                   </tbody>
