@@ -4,7 +4,9 @@
         <div class="box-header">
           <h3 class="box-title">Horas Extras</h3>
            <div class="dropdown pull-right">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Nuevo<b class="caret"></b></a>
+            <button class = "btn btn-primary" data-toggle="dropdown" class="dropdown-toggle">
+              Nuevo
+            </button>
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item">
@@ -18,27 +20,10 @@
               </li>
             </ul>
           </div>
-          <div class="dropdown pull-right">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Filtro<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item">
-                  <label>Fecha de inicio</label>
-                  <input type="date" name="Fecha" id = "inicio">
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item">
-                  <label>Fecha Finalizacion</label>
-                  <input type="date" name="Fecha" id = "final">
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item">
-                  <button type="button" class="btn btn-primary" onclick="getData()">Filtrar</button>
-                </a>
-              </li>
-            </ul>
+          <div class = "dropdown pull-right">
+            <button class = "btn btn-primary" data-toggle="modal" data-target="#miModal">
+              Filtrar
+            </button>
           </div>
         </div>
         
@@ -81,6 +66,37 @@
             </div>
           </div>
         </div>
+    </div>
+  </div>
+</div>
+<div id = "miModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filtrar por Fecha</h5>
+      </div>
+      <div class="modal-body">  
+        <div class = "col-sm-1"></div>
+        <div class = "col-sm-4">
+        <div class = "form-group">
+          <label>Fecha de inicio</label>
+          <input type="date" name="Fecha" id = "inicio">
+        </div>
+        </div>
+        <div class = "col-sm-2">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getData()">Filtrar</button>  
+        </div>
+        <div class = "col-sm-4">
+        <div class = "form-group">
+          <label>Fecha de Finalizacion</label>
+          <input type="date" name="Fecha" id = "final">
+        </div>
+        </div>
+        <div class = "col-sm-1"></div>
+      </div>
+      <div class="modal-footer">  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
