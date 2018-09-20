@@ -10,3 +10,5 @@ class Admin::OrganizacionalsController < ApplicationController
   
 end
 end
+
+

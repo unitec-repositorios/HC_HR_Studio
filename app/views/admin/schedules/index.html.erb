@@ -4,7 +4,9 @@
         <div class="box-header">
           <h3 class="box-title">Horas Extras</h3>
            <div class="dropdown pull-right">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Nuevo<b class="caret"></b></a>
+            <button class = "btn btn-primary" data-toggle="dropdown" class="dropdown-toggle">
+              Nuevo
+            </button>
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item">
@@ -17,6 +19,11 @@
                 </a>
               </li>
             </ul>
+          </div>
+          <div class = "dropdown pull-right">
+            <button class = "btn btn-primary" data-toggle="modal" data-target="#miModal">
+              Filtrar
+            </button>
           </div>
         </div>
         
@@ -43,6 +50,7 @@
                     <% @schedules.each do |schedule| %>
                       <tr>
                         <td> <%= schedule.employee_id_number %> </td>
+
                         <%@employees.each do |employee| %>
                           <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
                             <td> <%= employee.name %> </td>
@@ -81,15 +89,12 @@
                               <% if schedule.hora_salida > 18.hours %>
                                 <td> <%= ((schedule.hora_salida - 18.hours) - 12.hours).strftime("%H:%M") %> </td>
                               <% end %>
- 
                             <% end %>
                           <% end %>
                         <% end %>
                       </tr>
                     <% end %>
                   </tbody>
-                  
-
                 </table>
               </div>
             </div>
@@ -98,4 +103,42 @@
     </div>
   </div>
 </div>
+<div id = "miModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filtrar por Fecha</h5>
+      </div>
+      <div class="modal-body">  
+        <div class = "col-sm-1"></div>
+        <div class = "col-sm-4">
+        <div class = "form-group">
+          <label>Fecha de inicio</label>
+          <input type="date" name="Fecha" id = "inicio">
+        </div>
+        </div>
+        <div class = "col-sm-2">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getData()">Filtrar</button>  
+        </div>
+        <div class = "col-sm-4">
+        <div class = "form-group">
+          <label>Fecha de Finalizacion</label>
+          <input type="date" name="Fecha" id = "final">
+        </div>
+        </div>
+        <div class = "col-sm-1"></div>
+      </div>
+      <div class="modal-footer">  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script type="text/javascript">
+  function getData(){
+    var begin = document.getElementById('inicio').value;
+    var end = document.getElementById('final').value;
+    window.open('http://localhost:3000/admin/schedules?filter=' + begin+'|' + end,'_self');
+  }
+</script>

@@ -1,6 +1,6 @@
 class Schedule < ApplicationRecord
-    belongs_to :employees
-    accepts_nested_attributes_for :employees
+    belongs_to :employee
+    accepts_nested_attributes_for :employee
       
       def self.import(file)
         case File.extname(file.original_filename)
