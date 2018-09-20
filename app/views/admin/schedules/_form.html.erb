@@ -1,18 +1,18 @@
 <div class="col-md-6">
 <div class="form-group">
-        <%= f.label :employee_id, "Fecha" %>
-        <%= f.date_field :date, class: "form-control" %>
+        <%= f.label :fecha, "Fecha" %>
+        <%= f.date_field :fecha, class: "form-control" %>
     </div>
     <div class="form-group">
-        <%= f.label :employee_id, "Empleado" %>
-        <%= f.select(:employee_id, @employees.collect{|a| [a.employee_name, a.id]}, {include_blank: "Escoger..."}, { :class => 'form-control', :required => true }) %>
+    <%= f.label :employee_id_number, "Empleado" %>
+        <%= f.select(:employee_id_number, @employees.collect{|a| [a.employee_id_number]}, {include_blank: "Escoger..."}, { :class => 'form-control'})%>
     </div>
   <div class="form-group">
-    <%= f.label :start_time, "Hora de Entrada" %>
-    <%= f.time_field :start_time, class: "form-control"%>
+    <%= f.label :hora_entrada, "Hora de Entrada" %>
+    <%= f.time_field :hora_entrada, class: "form-control"%>
   </div>
   <div class="form-group">
-    <%= f.label :end_time, "Hora de Salida" %>
-    <%= f.time_field :end_time, class: "form-control"%>
+    <%= f.label :hora_salida, "Hora de Salida" %>
+    <%= f.time_field :hora_salida, class: "form-control"%>
   </div>
 </div>

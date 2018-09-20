@@ -1,5 +1,6 @@
 module Admin  
   class DepartmentsController < Admin::ApplicationController
+    respond_to :html, :js
     def index
       @departments = Department.all
     end
@@ -11,13 +12,27 @@ module Admin
     end
 
     def create
+      @exist = false
+      @departments = Department.all
+      
+      @departments.each do |department|
+        if(department.department_id_number == department_params[:department_id_number])
+         @exist = true
+       end
+      end
+
       @department = Department.new(department_params)
 
-      if @department.save
-        redirect_to admin_departments_path
+      if !@exist
+        if @department.save
+          redirect_to admin_departments_path
+        else
+          render :new
+        end
       else
-        render :new
-      end
+        flash[:alert] = "Ya existe ese codigo de departamento"
+        respond_with :new, :admin, :department
+      end 
     end
 
     def edit

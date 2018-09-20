@@ -2,12 +2,12 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group has-feedback">
-    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email', id: 'email' %>
     <span class='glyphicon glyphicon-envelope form-control-feedback'></span>
   </div>
 
   <div class="form-group has-feedback">
-    <%= f.password_field :password, autofocus: true, class: 'form-control', placeholder: 'Password' %>
+    <%= f.password_field :password, autofocus: true, class: 'form-control', placeholder: 'Password', id: 'password' %>
     <span class='glyphicon glyphicon-lock form-control-feedback'></span>
   </div>
 
@@ -20,7 +20,7 @@
     <% end -%>
 
     <div class="col-xs-4">
-      <%= f.submit "Iniciar", class: 'btn btn-success btn-block btn-flat' %>
+      <%= f.submit "Iniciar", class: 'btn btn-success btn-block btn-flat' , id: 'logIN'%>
     </div>
   </div>
 <% end %>

@@ -1,43 +1,100 @@
 <div class="row">
   <div class="col-xs-12">
       <div class="box">
-
         <div class="box-header">
-          <h3 class="box-title">Reloj de Empleados</h3>
-          <%= link_to 'Subir Archivo', new_admin_employee_path, class: 'btn btn-success pull-right' %>
-          <%= link_to 'Ingreso Manual', new_admin_schedule_path, class: 'btn btn-success pull-right' %>
+          <h3 class="box-title">Horas Extras</h3>
+           <div class="dropdown pull-right">
+            <button class = "btn btn-primary" data-toggle="dropdown" class="dropdown-toggle">
+              Nuevo
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item">
+                  <%= link_to 'Ingreso Manual', admin_schedules_new_path%>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item">
+                <%= link_to 'Subir Archivo', admin_schedules_show_path%> 
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class = "dropdown pull-right">
+            <button class = "btn btn-primary" data-toggle="modal" data-target="#miModal">
+              Filtrar
+            </button>
+          </div>
         </div>
+        
 
         <div class="box-body">
           <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-
             <div class="row">
               <div class="col-sm-12">
                 <table id="user_index" class="table table-bordered table-striped dataTable" role="grid">
                   <thead>
                     <tr>
-                      <th width="10%">Fecha</th>
-                      <th width="10%">Codigo</th>
-                      <th width="20%">Nombre de Empleado</th>
-                      <th width="15%">Departamento</th>
-                      <th width="15%">Hora de Entrada</th>
-                      <th width="15%">Hora de Salida</th>
+                      <th width="5%">Codigo</th>
+                      <th width="5%">Nombre de Empleado</th>
+                      <th width="5%">Departamento</th>
+                      <th width="5%">Fecha</th>
+                      <th width="5%">Horario</th>
+                      <th width="5%">Hora de Entrada</th>
+                      <th width="5%">Hora de Salida</th>
+                      <th width="5%">Tiempo Extra</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <% @schedules.each do |schedule| %>
                       <tr>
-                      <td> <%= schedule.date %> </td>
-                      <td> <%= schedule.employee.employee_id_number %> </td>
-                      <td> <%= schedule.employee.name %> </td>
-                      <td> <%= schedule.employee.department%> </td>
-                      <td> <%= schedule.start_time%> </td>
-                      <td> <%= schedule.end_time%> </td>
+                        <td> <%= schedule.employee_id_number %> </td>
+
+                        <%@employees.each do |employee| %>
+                          <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
+                            <td> <%= employee.name %> </td>
+                            <td> <%= employee.position.department.name %> </td>
+                          <% end %>
+                        <% end %>
+                        <td> <%= schedule.fecha.strftime("%d/%m/%Y") %> </td>
+                        <%@employees.each do |employee| %>
+                          <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
+                            <td> <%= employee.horario %> </td>
+                          <% end %>
+                        <% end %>
+                        <td> <%= schedule.hora_entrada.strftime("%I:%M %p")%> </td>
+                        <td> <%= schedule.hora_salida.strftime("%I:%M %p")%> </td>
+                        
+                        <!-- CALCULO HORAS EXTRAS -->
+                        <%@employees.each do |employee| %>
+                          <% if schedule.employee_id_number.to_s == employee.employee_id_number%>
+
+                            <% if employee.horario == "8AM - 4PM"%>
+                              <% if schedule.hora_salida > 4.hours %>
+                                <td> <%= ((schedule.hora_salida - 4.hours) - 12.hours).strftime("%H:%M") %> </td>
+                              <% end %>
+
+                            <% elsif employee.horario == "6AM - 2PM"%>
+                              <% if schedule.hora_salida > 2.hours %>
+                                <td> <%= ((schedule.hora_salida - 2.hours) - 12.hours).strftime("%H:%M")%> </td>
+                              <% end %>
+
+                            <% elsif employee.horario == "2PM - 9PM"%>
+                              <% if schedule.hora_salida > 9.hours %>
+                                <td> <%= ((schedule.hora_salida - 9.hours) - 12.hours).strftime("%H:%M") %> </td>
+                              <% end %>
+
+                            <% elsif employee.horario == "9PM - 6AM"%>
+                              <% if schedule.hora_salida > 18.hours %>
+                                <td> <%= ((schedule.hora_salida - 18.hours) - 12.hours).strftime("%H:%M") %> </td>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
                       </tr>
                     <% end %>
                   </tbody>
-
                 </table>
               </div>
             </div>
@@ -46,4 +103,42 @@
     </div>
   </div>
 </div>
+<div id = "miModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filtrar por Fecha</h5>
+      </div>
+      <div class="modal-body">  
+        <div class = "col-sm-1"></div>
+        <div class = "col-sm-4">
+        <div class = "form-group">
+          <label>Fecha de inicio</label>
+          <input type="date" name="Fecha" id = "inicio">
+        </div>
+        </div>
+        <div class = "col-sm-2">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getData()">Filtrar</button>  
+        </div>
+        <div class = "col-sm-4">
+        <div class = "form-group">
+          <label>Fecha de Finalizacion</label>
+          <input type="date" name="Fecha" id = "final">
+        </div>
+        </div>
+        <div class = "col-sm-1"></div>
+      </div>
+      <div class="modal-footer">  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script type="text/javascript">
+  function getData(){
+    var begin = document.getElementById('inicio').value;
+    var end = document.getElementById('final').value;
+    window.open('http://localhost:3000/admin/schedules?filter=' + begin+'|' + end,'_self');
+  }
+</script>

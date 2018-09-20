@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estructura Organizacional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.css" />
+</head>
+<body>
+  <div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="logo_header" style="text-align: center; display: none;">
+          <%= image_tag("front/Logo.png", :alt => "rss feed", :size => '400x100') %>
+          <br><br>
+        </div>
+          <h3 class="box-title">Estructura Organizacional</h3>
+        </div>
+
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+              <div class="col-sm-12">      
+                <div id="myDiagramDiv"
+     style="width:800px; height:400px; background-color: #F7F9F9 ;"></div>
+
+          <div class="input-group-btn" align="right">
+            <%= link_to 'Imprimir', '#', :onclick => 'window.print();return false;', class: "btn bg-green btn-flat"%>
+          </div>          
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.8.29/go.js"></script>
+  <script type="text/javascript">
+    var areas,departments,positions,employees;
+    areas = getAreas();
+    departments = getDepartments(areas.length+1);
+    positions = getPositions(areas.length + departments.length+1);
+    employees = getEmployees(areas.length + departments.length + positions.length+1);
+
+    var $ = go.GraphObject.make;
+     
+     var myDiagram =
+      $(go.Diagram, "myDiagramDiv",
+        {
+          allowDrop: true,
+          layout:  // Diagram has simple horizontal layout
+            $(go.GridLayout,
+              { wrappingWidth: Infinity, alignment: go.GridLayout.Position, cellSize: new go.Size(1, 1) }),
+          initialContentAlignment: go.Spot.Center,
+          "commandHandler.archetypeGroupData": { isGroup: true, category: "OfNodes" },
+          "undoManager.isEnabled": true
+        });
+
+       myDiagram.groupTemplateMap.add("OfGroups",
+      $(go.Group, "Auto",
+        {
+          background: "transparent",
+          computesBoundsAfterDrag: true,
+          handlesDragDropForMembers: true,  // don't need to define handlers on member Nodes and Links
+          // Groups containing Groups lay out their members horizontally
+          layout:
+            $(go.GridLayout,
+              { wrappingWidth: Infinity, alignment: go.GridLayout.Position,
+                  cellSize: new go.Size(1, 1), spacing: new go.Size(4, 4) })
+        },
+        new go.Binding("background", "isHighlighted", function(h) { return h ? "rgba(255,0,0,0.2)" : "transparent"; }).ofObject(),
+        $(go.Shape, "Rectangle",
+          { fill: null, stroke: "#0080FF", strokeWidth: 2 }),
+        $(go.Panel, "Vertical",  // title above Placeholder
+          $(go.Panel, "Horizontal",  // button next to TextBlock
+            { stretch: go.GraphObject.Horizontal, background: "#0080FF" },
+            $("SubGraphExpanderButton",
+              { alignment: go.Spot.Right, margin: 5}),
+            $(go.TextBlock,
+              {
+                alignment: go.Spot.Left,
+                editable: true,
+                margin: 5,
+                font: "bold 18px sans-serif",
+                opacity: 0.75,
+                stroke: "#404040"
+              },
+              new go.Binding("text", "text").makeTwoWay())
+          ),  // end Horizontal Panel
+          $(go.Placeholder,
+            { padding: 5, alignment: go.Spot.TopLeft })
+        )  // end Vertical Panel
+      ));  // end Group and call to add to template Map
+
+    myDiagram.groupTemplateMap.add("OfNodes",
+      $(go.Group, "Auto",
+        {
+          background: "transparent",
+          ungroupable: true,
+          computesBoundsAfterDrag: true,
+          handlesDragDropForMembers: true,  // don't need to define handlers on member Nodes and Links
+          // Groups containing Nodes lay out their members vertically
+          layout:
+            $(go.GridLayout,
+              { wrappingColumn: 1, alignment: go.GridLayout.Position,
+                  cellSize: new go.Size(1, 1), spacing: new go.Size(4, 4) })
+        },
+        new go.Binding("background", "isHighlighted", function(h) { return h ? "rgba(255,0,0,0.2)" : "transparent"; }).ofObject(),
+        $(go.Shape, "Rectangle",
+          { fill: null, stroke: "#FF8000", strokeWidth: 2 }),
+        $(go.Panel, "Vertical",  // title above Placeholder
+          $(go.Panel, "Horizontal",  // button next to TextBlock
+            { stretch: go.GraphObject.Horizontal, background: "#FACC2E" },
+            $("SubGraphExpanderButton",
+              { alignment: go.Spot.Right, margin: 5 }),
+            $(go.TextBlock,
+              {
+                alignment: go.Spot.Left,
+                editable: true,
+                margin: 5,
+                font: "bold 16px sans-serif",
+                opacity: 0.75,
+                stroke: "#404040"
+              },
+              new go.Binding("text", "text").makeTwoWay())
+          ),  // end Horizontal Panel
+          $(go.Placeholder,
+            { padding: 5, alignment: go.Spot.TopLeft })
+        )  // end Vertical Panel
+      ));  // end Group and call to add to template Map
+
+    var model = $(go.GraphLinksModel);
+    model.nodeDataArray = getDataArray(areas,departments,positions,employees);
+    myDiagram.model = model;
+
+    function getAreas(){
+      var arr = [];
+      var numero = 1;
+      "<%@areas.each do |area|%>"
+        arr.push({name: "<%=area.name%>", key: numero});
+        numero++;
+      "<%end%>"
+      console.log(arr);
+      return arr;
+    }
+
+    function getDepartments(numero){
+      var arr = [];
+      var num = 0;
+      "<%@departments.each do |department|%>"
+        arr.push({
+          name: "<%=department.name%>",
+          area: "<%=department.area.name%>",
+          key: numero + num});
+        num++;
+      "<%end%>"
+      console.log(arr);
+      return arr;
+    }
+
+    function getPositions(numero){
+      var arr = [];
+      var num = 0;
+      "<%@positions.each do |position|%>"
+        arr.push({
+          name: "<%=position.name%>",
+          department: "<%=position.department.name%>", 
+          key : numero + num});
+        num++;
+      "<%end%>"
+      console.log(arr);
+      return arr;
+    }
+
+    function getEmployees(numero){
+      var arr = [];
+      var num = 0;
+      "<%@employees.each do |employee|%>"
+        arr.push({
+          name: "<%=employee.name%>",
+          position: "<%=employee.position.name%>",
+          key: numero + num});
+        num++;
+      "<%end%>"
+      console.log(arr);
+      return arr;
+    }
+
+    function getDataArray(areas,departments,positions,employees){
+      var arr = [{key: "0", text: "Honducaribe", isGroup: true, category : "OfGroups"}];
+      for(let i = 0; i < areas.length; i++){
+        arr.push({key: areas[i].key.toString() ,group: "0", isGroup: true, category: "OfNodes", text: areas[i].name});
+        for(let j = 0; j < departments.length;j++){
+          if(departments[j].area === areas[i].name){
+            arr.push({key: departments[j].key.toString() ,group: areas[i].key.toString(), isGroup: true, category: "OfNodes", text: departments[j].name});
+            for(let k = 0; k < positions.length; k++){
+              if(positions[k].department === departments[j].name){
+                arr.push({key: positions[k].key.toString() ,group: departments[j].key.toString(), isGroup: true, category: "OfNodes", text: positions[k].name});
+                for(let z = 0; z < employees.length;z++){
+                  if(employees[z].position === positions[k].name){
+                    arr.push({key: employees[z].key.toString() ,group: positions[k].key.toString(), text: employees[z].name});
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      return arr;
+    }
+  </script>
+</body>
+</html>
+

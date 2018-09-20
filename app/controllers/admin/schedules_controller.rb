@@ -1,16 +1,26 @@
 module Admin
     class SchedulesController < ApplicationController
-        respond_to :json, :html
-        before_action :set_user, only: [:show, :edit, :update, :destroy]
+        respond_to :json, :html, :xls
+        before_action only: [:show, :edit, :update, :destroy, :index]
 
         def index
-            @schedules = Schedule.all
+            if params[:filter]
+                word = params[:filter].to_s
+                word = word.split('|');
+                puts word[0]
+                puts word[1];
+                @schedules = Schedule.where('fecha BETWEEN ? AND ?',word[0],word[1])
+            else
+                @schedules = Schedule.all
+            end
+            @employees = Employee.all
         end
 
         def new
             @schedule = Schedule.new
-            @url = admin_schedules_path
             @employees = Employee.all
+            @url = admin_schedules_path
+            
         end
 
         def edit
@@ -19,21 +29,29 @@ module Admin
 
         def create
             @schedule = Schedule.new(schedule_params)
-            @date = self.date
+            @employees = Employee.all
             if @schedule.save
-              redirect_to admin_schedules_path
-            else
-              render :new
-            end
+                redirect_to admin_schedules_path
+              else
+                render :new
+              end
         end
 
         def show
+            @schedule = Schedule.all
+            @employees = Employee.all
+        end
+
+        def import
+            @url = admin_schedules_import_path
+            Schedule.import(params[:file])
+            redirect_to admin_schedules_path, notice: "Datos Importados"
         end
 
         private 
 
         def schedule_params
-            params.require(:schedule).permit(:date, :start_time, :end_time, employees: [:employee_id_number,:name])
+            params.require(:schedule).permit(:fecha,:hora_entrada, :hora_salida,:employee_id_number, employees_attributes: [:employee_id_number, :name]) #falta department????
         end
     
     end

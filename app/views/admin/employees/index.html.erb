@@ -3,7 +3,7 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Lista de Empleados</h3>
-          <div class="dropdown pull-right">
+           <div class="dropdown pull-right">
             <a href="#" data-toggle="dropdown" class="btn btn-success">Filtrar por Contrato <b class="caret"></b></a>
     
             <ul class="dropdown-menu">
@@ -29,7 +29,7 @@
               </li>
             </ul>
           </div>
-          <%= link_to 'Nuevo Empleado', new_admin_employee_path, class: 'btn btn-success pull-right' %> 
+          <%= link_to 'Nuevo Empleado', new_admin_employee_path, class: 'btn btn-success pull-right', id: 'newEmployee'  %> 
         </div>
             
         <div class="box-body">

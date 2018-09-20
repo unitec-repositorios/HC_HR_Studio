@@ -12,6 +12,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'jstree-rails-4'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -25,6 +26,12 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'cocoon'
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
+gem "spreadsheet"
+gem "roo"
+gem "iconv", "~> 1.0.3"
+gem "rubyXL"
+gem 'visjs-rails'
+gem "roo-xls"
 
 # Only Development env gems
 group :development do
@@ -61,6 +68,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 # Only Production env gems
